@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B15DEBDA1D58BB7F00E42E6C /* XmlReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */; };
+		B1D7AD781D68A64200C8A6AF /* InterestPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */; };
 		B1E9D2351D4B7C8600C9CC45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2341D4B7C8600C9CC45 /* AppDelegate.swift */; };
 		B1E9D2371D4B7C8600C9CC45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2361D4B7C8600C9CC45 /* ViewController.swift */; };
 		B1E9D23A1D4B7C8600C9CC45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1E9D2381D4B7C8600C9CC45 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XmlReader.swift; sourceTree = "<group>"; };
+		B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestPoint.swift; sourceTree = "<group>"; };
 		B1E9D2311D4B7C8600C9CC45 /* DarkskyAlquevaIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DarkskyAlquevaIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1E9D2341D4B7C8600C9CC45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1E9D2361D4B7C8600C9CC45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */,
+				B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			files = (
 				B1E9D2371D4B7C8600C9CC45 /* ViewController.swift in Sources */,
 				B1E9D2351D4B7C8600C9CC45 /* AppDelegate.swift in Sources */,
+				B1D7AD781D68A64200C8A6AF /* InterestPoint.swift in Sources */,
 				B15DEBDA1D58BB7F00E42E6C /* XmlReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
