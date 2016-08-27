@@ -32,10 +32,26 @@ class XmlReader{
     let OTHER_TEXT_NODE = "other"
     let IMG_TEXT_NODE = "imagesURL"
     
-    var path: String
+    var data: NSData
     
-    init(path: String){
-        self.path = path
+    init(data: NSData){
+        
+        self.data = data
+        
+        do {
+            let xmlDoc = try AEXMLDocument(xmlData: data)
+            
+            // prints the same XML structure as original
+            print(xmlDoc.xmlString)
+            
+            // prints cats, dogs
+            for child in xmlDoc.root.children {
+                print(child.name)
+            }
+        }
+        catch {
+            print("\(error)")
+        }
     }
     
     func read() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, NSURLSessionDownloadDelegate, UIDocumentInteractionControllerDelegate, NSXMLParserDelegate {
+class ViewController: UIViewController, NSURLSessionDownloadDelegate, UIDocumentInteractionControllerDelegate{
     
     /* Version File URLs */
     let versionUrlPt = NSURL(string: "https://dl.dropboxusercontent.com/s/38qpt41e7ve607d/version-pt.txt?dl=1")!
@@ -19,8 +19,7 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate, UIDocument
     let xmlUrlPt = NSURL(string: "https://dl.dropboxusercontent.com/s/qfh0fw7ajdo3hyg/darkskyalqueva-pt.xml?dl=1")!
     let xmlUrlEs = NSURL(string: "https://dl.dropboxusercontent.com/s/if16iq36ak5jnwu/darkskyalqueva-es.xml?dl=1")!
     let xmlUrlEn = NSURL(string: "https://dl.dropboxusercontent.com/s/8c9y36n1sjh95b8/darkskyalqueva-en.xml?dl=1")!
-    
-    var parser: NSXMLParser?
+
     var xml: XmlReader!
     
     @IBOutlet weak var progressView: UIProgressView!
@@ -50,30 +49,23 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate, UIDocument
     
     func loadXml(){
         
-        let path = NSBundle.mainBundle().pathForResource("file", ofType: "xml")
-        //print("Path = " + path)
-        if path != nil {
-            parser = NSXMLParser(contentsOfURL: NSURL(fileURLWithPath: path!))
-        } else {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
+        let documentsDir = paths.firstObject as! String
+        
+        let xmlPath = documentsDir + "/file.xml"
+        //print(xmlPath)
+        
+        let fileManager = NSFileManager.defaultManager()
+        
+        if fileManager.fileExistsAtPath(xmlPath){
+            guard let data = NSData(contentsOfFile: xmlPath)
+                else{return}
+            print("path = " + xmlPath)
+            xml = XmlReader(data: data)
+            xml.read()
+        }else{
             NSLog("Failed to find file.xml")
         }
-        
-        if parser != nil {
-            // Do stuff with the parser here.
-            xml = XmlReader(path: path!)
-            xml.read()
-        }
-        
-        /*let urlString = NSURL(string: "http://www.blubrry.com/feeds/onorte.xml")
-        let rssUrlRequest:NSURLRequest = NSURLRequest(URL:urlString!)
-        let queue:NSOperationQueue = NSOperationQueue()
-        
-        NSURLConnection.sendAsynchronousRequest(rssUrlRequest, queue: queue) {
-            (response, data, error) -> Void in
-            self.xmlParser = NSXMLParser(data: data)
-            self.xmlParser.delegate = self
-            self.xmlParser.parse()
-        }*/
     }
     
     // 1
@@ -130,10 +122,10 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate, UIDocument
             print(error?.description)
         }else{
             print("The task finished transferring data successfully")
-            let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
-            let documentsDir = paths.firstObject as! String
+            //let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
+            //let documentsDir = paths.firstObject as! String
             
-            print("Path to the Documents directory\n\(documentsDir)")
+            //print("Path to the Documents directory\n\(documentsDir)")
             
             loadXml()
         }
