@@ -33,24 +33,103 @@ class XmlReader{
     let IMG_TEXT_NODE = "imagesURL"
     
     var data: NSData
+    var xmlDoc: AEXMLDocument!
+    
+    var interestPoints: [Int: InterestPoint]!
     
     init(data: NSData){
         
         self.data = data
         
         do {
-            let xmlDoc = try AEXMLDocument(xmlData: data)
+            self.xmlDoc = try AEXMLDocument(xmlData: data)
             
             // prints the same XML structure as original
-            print(xmlDoc.xmlString)
+            //print(xmlDoc.xmlString)
             
             // prints cats, dogs
-            for child in xmlDoc.root.children {
+            /*for child in xmlDoc.root.children {
                 print(child.name)
-            }
+            }*/
+            
+            readInterestPoints()
         }
         catch {
             print("\(error)")
+        }
+    }
+    
+    func readInterestPoints(){
+        self.interestPoints = [:]
+        //self.interestPoints[1] = InterestPoint(1,)
+        
+        //iterate over points
+        //print(xmlDoc.root["pointsOfInterest"]["poi"])
+        let points = xmlDoc.root["pointsOfInterest"][INTEREST_POINT_TEXT_NODE].all!
+        for point in points{
+            let id = Int(point.attributes[ID_TEXT_NODE]!)!
+            print(id)
+            var name: String!
+            var latitude: Double!
+            var longitude: Double!
+            var typeMap = [String: Bool]()
+            var shortDescription: String!
+            var longDescription: String!
+            var quality = [String: String]()
+            var images = [String]()
+            var other: String!
+            
+            let pointSpecifications = point.children
+            
+            for spec in pointSpecifications{
+                print(spec.name)
+                if spec.name == "name"{
+                    name = spec.value
+                }
+                if spec.name == "location"{
+                    latitude = Double(spec.children[0].value!)
+                    longitude = Double(spec.children[1].value!)
+                    //print(latitude.value!)
+                    
+                }
+                if spec.name == "type"{
+                    typeMap["astrophoto"] = toBool(spec.children[0].value!)
+                    typeMap["landscape"] = toBool(spec.children[1].value!)
+                    typeMap["observation"] = toBool(spec.children[2].value!)
+                    //print(astrophoto.value!)
+                    
+                }
+                if spec.name == "shortDescription"{
+                    shortDescription = spec.value
+                }
+                if spec.name == "longDescription"{
+                    longDescription = spec.value
+                }
+                if spec.name == "quality"{
+                    quality["brightness"] = spec.children[0].value
+                    quality["temperature"] = spec.children[1].value
+                }
+                if spec.name == "imagesURL"{
+                    for i in 1...spec.children.count-1{
+                        images[i] = spec.children[i].value! //error
+                    }
+                }
+                if spec.name == "other"{
+                    other = spec.value
+                }
+            }
+            self.interestPoints[id] = InterestPoint(id:id, name:name, latitude:latitude, longitude:longitude, typeMap:typeMap, shortDescription:shortDescription, longDescription:longDescription, qualityParameters:quality, imagesURL:images, other:other)
+        }
+    }
+
+    func toBool(value:String) -> Bool? {
+        switch value {
+        case "True", "true", "yes", "1":
+            return true
+        case "False", "false", "no", "0":
+            return false
+        default:
+            return nil
         }
     }
     
