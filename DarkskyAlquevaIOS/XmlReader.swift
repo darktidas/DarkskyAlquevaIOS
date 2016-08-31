@@ -68,7 +68,6 @@ class XmlReader{
         let points = xmlDoc.root["pointsOfInterest"][INTEREST_POINT_TEXT_NODE].all!
         for point in points{
             let id = Int(point.attributes[ID_TEXT_NODE]!)!
-            print(id)
             var name: String!
             var latitude: Double!
             var longitude: Double!
@@ -77,7 +76,7 @@ class XmlReader{
             var longDescription: String!
             var quality = [String: String]()
             var images = [String]()
-            var other: String!
+            var other: String = ""
             
             let pointSpecifications = point.children
             
@@ -110,14 +109,27 @@ class XmlReader{
                     quality["temperature"] = spec.children[1].value
                 }
                 if spec.name == "imagesURL"{
-                    for i in 1...spec.children.count-1{
-                        images[i] = spec.children[i].value! //error
+                    //print("\(id) -- \(spec.children.count)")
+                    for i in 0...spec.children.count-1{
+                        images.append(spec.children[i].value!) //error
                     }
                 }
                 if spec.name == "other"{
-                    other = spec.value
+                    //print(other)
+                    other = String(spec.value)
                 }
             }
+            print(id)
+            print(name)
+            print(latitude)
+            print(longitude)
+            print(typeMap)
+            print(shortDescription)
+            print(longDescription)
+            print(quality)
+            print(images)
+            print(other)
+            
             self.interestPoints[id] = InterestPoint(id:id, name:name, latitude:latitude, longitude:longitude, typeMap:typeMap, shortDescription:shortDescription, longDescription:longDescription, qualityParameters:quality, imagesURL:images, other:other)
         }
     }
@@ -131,6 +143,10 @@ class XmlReader{
         default:
             return nil
         }
+    }
+    
+    func getInterestPoints() -> [Int: InterestPoint]{
+        return self.interestPoints
     }
     
     func read() {

@@ -128,6 +128,9 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate, UIDocument
             //print("Path to the Documents directory\n\(documentsDir)")
             
             loadXml()
+            
+            var interestPoints = self.xml.getInterestPoints()
+            print("Nome = \((interestPoints[1]?.name)!)")
         }
     }
 
