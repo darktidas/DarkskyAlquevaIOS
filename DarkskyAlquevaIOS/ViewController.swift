@@ -60,9 +60,8 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate, UIDocument
         if fileManager.fileExistsAtPath(xmlPath){
             guard let data = NSData(contentsOfFile: xmlPath)
                 else{return}
-            print("path = " + xmlPath)
+            //print("path = " + xmlPath)
             xml = XmlReader(data: data)
-            xml.read()
         }else{
             NSLog("Failed to find file.xml")
         }
@@ -130,7 +129,7 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate, UIDocument
             loadXml()
             
             var interestPoints = self.xml.getInterestPoints()
-            print("Nome = \((interestPoints[1]?.name)!)")
+            //print("Nome = \((interestPoints[1]?.name)!)")
         }
     }
 

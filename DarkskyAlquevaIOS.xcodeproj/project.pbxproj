@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B134960E1D7B8A49001427F4 /* Clothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134960D1D7B8A49001427F4 /* Clothing.swift */; };
+		B13496101D7B8CCB001427F4 /* Constellation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134960F1D7B8CCB001427F4 /* Constellation.swift */; };
+		B13496121D7B8E4D001427F4 /* HeaderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13496111D7B8E4D001427F4 /* HeaderInfo.swift */; };
+		B13496141D7B913C001427F4 /* Phenomenon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13496131D7B913C001427F4 /* Phenomenon.swift */; };
 		B15DEBDA1D58BB7F00E42E6C /* XmlReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */; };
 		B1801FE41D71B0FE00889F70 /* AEXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1801FE31D71B0FE00889F70 /* AEXML.swift */; };
 		B1D7AD781D68A64200C8A6AF /* InterestPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */; };
@@ -37,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B134960D1D7B8A49001427F4 /* Clothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clothing.swift; sourceTree = "<group>"; };
+		B134960F1D7B8CCB001427F4 /* Constellation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constellation.swift; sourceTree = "<group>"; };
+		B13496111D7B8E4D001427F4 /* HeaderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderInfo.swift; sourceTree = "<group>"; };
+		B13496131D7B913C001427F4 /* Phenomenon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phenomenon.swift; sourceTree = "<group>"; };
 		B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XmlReader.swift; sourceTree = "<group>"; };
 		B1801FE31D71B0FE00889F70 /* AEXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AEXML.swift; path = "../../../AEXML-master/Sources/AEXML.swift"; sourceTree = "<group>"; };
 		B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestPoint.swift; sourceTree = "<group>"; };
@@ -86,6 +94,10 @@
 				B1801FE31D71B0FE00889F70 /* AEXML.swift */,
 				B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */,
 				B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */,
+				B134960D1D7B8A49001427F4 /* Clothing.swift */,
+				B134960F1D7B8CCB001427F4 /* Constellation.swift */,
+				B13496111D7B8E4D001427F4 /* HeaderInfo.swift */,
+				B13496131D7B913C001427F4 /* Phenomenon.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -274,11 +286,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B13496121D7B8E4D001427F4 /* HeaderInfo.swift in Sources */,
 				B1801FE41D71B0FE00889F70 /* AEXML.swift in Sources */,
+				B134960E1D7B8A49001427F4 /* Clothing.swift in Sources */,
 				B1E9D2371D4B7C8600C9CC45 /* ViewController.swift in Sources */,
+				B13496101D7B8CCB001427F4 /* Constellation.swift in Sources */,
 				B1E9D2351D4B7C8600C9CC45 /* AppDelegate.swift in Sources */,
 				B1D7AD781D68A64200C8A6AF /* InterestPoint.swift in Sources */,
 				B15DEBDA1D58BB7F00E42E6C /* XmlReader.swift in Sources */,
+				B13496141D7B913C001427F4 /* Phenomenon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

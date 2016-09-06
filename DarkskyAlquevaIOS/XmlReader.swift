@@ -35,7 +35,13 @@ class XmlReader{
     var data: NSData
     var xmlDoc: AEXMLDocument!
     
+    var headerInfo: HeaderInfo!
+    var general: String!
+    var route: String!
     var interestPoints: [Int: InterestPoint]!
+    var phenomenas: [Int: Phenomenon]!
+    var constellations: [Int: Constellation]!
+    var clothing: [Int: Clothing]!
     
     init(data: NSData){
         
@@ -52,11 +58,97 @@ class XmlReader{
                 print(child.name)
             }*/
             
+            readHeaderInfo()
+            readMain()
             readInterestPoints()
+            readInformation()
+            
         }
         catch {
             print("\(error)")
         }
+    }
+    
+    func readHeaderInfo(){
+        print("version = \(xmlDoc.version)")
+        print("encoding = \(xmlDoc.encoding)")
+        print("language = \(xmlDoc.root.attributes["language"]!)")
+        guard let language = xmlDoc.root.attributes["language"] where xmlDoc.root.attributes["language"] != nil else{
+            print("no language found")
+            return
+        }
+        print("date = \(xmlDoc.root.attributes["date"]!)")
+        guard let date = xmlDoc.root.attributes["date"] where xmlDoc.root.attributes["date"] != nil else{
+            print("no date found")
+            return
+        }
+        print("xmlSchemaVersion = \(xmlDoc.root.attributes["xmlSchemaVersion"]!)")
+        guard let xmlSchemaVersion = xmlDoc.root.attributes["xmlSchemaVersion"] where xmlDoc.root.attributes["xmlSchemaVersion"] != nil else{
+            print("no xmlSchemaVersion found")
+            return
+        }
+        headerInfo = HeaderInfo(xmlVersion: String(xmlDoc.version), encoding: xmlDoc.encoding, language: language, date: date, schemaVersion: xmlSchemaVersion)
+    }
+    
+    func readMain(){
+        general = xmlDoc.root["main"]["general"].value
+        route = xmlDoc.root["main"]["route"].value
+        //print("general = \(general)")
+        //print("route = \(route)")
+    }
+    
+    func readInformation(){
+        readPhenoms()
+        readConstellations()
+        readClothing()
+    }
+    
+    func readPhenoms(){
+        self.phenomenas = [:]
+        let phenoms = xmlDoc.root["information"]["listOfPhenomenas"].children
+        
+        for phenom in phenoms{
+            let id = Int(phenom.attributes["id"]!)!
+            //print("id = \(id)")
+            let name = phenom["name"].value!
+            //print("name = \(name)")
+            let period = phenom["period"].value!
+            //print("period = \(period)")
+            self.phenomenas[id] = Phenomenon(id: id, name: name, period: period)
+        }
+    }
+    
+    func readConstellations(){
+        self.constellations = [:]
+        
+        let consts = xmlDoc.root["information"]["listOfConstellations"].children
+        
+        for const in consts{
+            let id = Int(const.attributes["id"]!)!
+            //print("id = \(id)")
+            let name = const["name"].value!
+            //print("name = \(name)")
+            let period = const["period"].value!
+            //print("period = \(period)")
+            self.constellations[id] = Constellation(id: id, name: name, period: period)
+        }
+    }
+    
+    func readClothing(){
+        self.clothing = [:]
+        
+        let cloths = xmlDoc.root["information"]["listOfClothings"].children
+        
+        for cloth in cloths{
+            let id = Int(cloth.attributes["id"]!)!
+            //print("id = \(id)")
+            let type = cloth["type"].value!
+            //print("name = \(name)")
+            let period = cloth["period"].value!
+            //print("period = \(period)")
+            self.clothing[id] = Clothing(id: id, type: type, period: period)
+        }
+
     }
     
     func readInterestPoints(){
@@ -81,7 +173,7 @@ class XmlReader{
             let pointSpecifications = point.children
             
             for spec in pointSpecifications{
-                print(spec.name)
+                //print(spec.name)
                 if spec.name == "name"{
                     name = spec.value
                 }
@@ -119,6 +211,7 @@ class XmlReader{
                     other = String(spec.value)
                 }
             }
+            /*
             print(id)
             print(name)
             print(latitude)
@@ -128,7 +221,7 @@ class XmlReader{
             print(longDescription)
             print(quality)
             print(images)
-            print(other)
+            print(other)*/
             
             self.interestPoints[id] = InterestPoint(id:id, name:name, latitude:latitude, longitude:longitude, typeMap:typeMap, shortDescription:shortDescription, longDescription:longDescription, qualityParameters:quality, imagesURL:images, other:other)
         }
@@ -146,10 +239,7 @@ class XmlReader{
     }
     
     func getInterestPoints() -> [Int: InterestPoint]{
+        //if nil have to do something
         return self.interestPoints
-    }
-    
-    func read() {
-        print("jaciara")
     }
 }
