@@ -13,7 +13,7 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate, UIDocument
     /* Version File URLs */
     let versionUrlPt = NSURL(string: "https://dl.dropboxusercontent.com/s/38qpt41e7ve607d/version-pt.txt?dl=1")!
     let versionUrlEs = NSURL(string: "https://dl.dropboxusercontent.com/s/egez7y46ldq2z9r/version-es.txt?dl=1")!
-    let versionUrlEn = NSURL(string: "https://dl.dropboxusercontent.com/s/xrf6b6raspmugr2/version-en.txt?dl=1")!
+    let versionUrlEn = NSURL(string: "https://dl.dropboxusercontent.com/s/xrf6b6raspmugr2/versio                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               n-en.txt?dl=1")!
     
     /* XML File URLs */
     let xmlUrlPt = NSURL(string: "https://dl.dropboxusercontent.com/s/qfh0fw7ajdo3hyg/darkskyalqueva-pt.xml?dl=1")!
@@ -26,7 +26,9 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate, UIDocument
     
     var downloadTask: NSURLSessionDownloadTask!
     var backgroundSession: NSURLSession!
-
+    
+    @IBOutlet weak var openSideMenu: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -40,6 +42,12 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate, UIDocument
         //let url = NSURL(string: "http://publications.gbdirect.co.uk/c_book/thecbook.pdf")!
         downloadTask = backgroundSession.downloadTaskWithURL(xmlUrlEn)
         downloadTask.resume()
+        
+        if self.revealViewController() != nil{
+            openSideMenu.target = self.revealViewController()
+            openSideMenu.action = "revealToggle:" //selector
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
 
     override func didReceiveMemoryWarning() {
