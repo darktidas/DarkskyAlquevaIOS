@@ -32,7 +32,7 @@ class XmlReader{
     let OTHER_TEXT_NODE = "other"
     let IMG_TEXT_NODE = "imagesURL"
     
-    var data: NSData
+    var data: Data
     var xmlDoc: AEXMLDocument!
     
     var headerInfo: HeaderInfo!
@@ -43,12 +43,12 @@ class XmlReader{
     var constellations: [Int: Constellation]!
     var clothing: [Int: Clothing]!
     
-    init(data: NSData){
+    init(data: Data){
         
         self.data = data
         
         do {
-            self.xmlDoc = try AEXMLDocument(xmlData: data)
+            self.xmlDoc = try AEXMLDocument(xml: data)
             
             // prints the same XML structure as original
             //print(xmlDoc.xmlString)
@@ -70,24 +70,25 @@ class XmlReader{
     }
     
     func readHeaderInfo(){
-        print("version = \(xmlDoc.version)")
-        print("encoding = \(xmlDoc.encoding)")
+        
+        //print("version = \(xmlDoc.version)")
+        //print("encoding = \(xmlDoc.encoding)")
         print("language = \(xmlDoc.root.attributes["language"]!)")
-        guard let language = xmlDoc.root.attributes["language"] where xmlDoc.root.attributes["language"] != nil else{
+        guard let language = xmlDoc.root.attributes["language"] , xmlDoc.root.attributes["language"] != nil else{
             print("no language found")
             return
         }
         print("date = \(xmlDoc.root.attributes["date"]!)")
-        guard let date = xmlDoc.root.attributes["date"] where xmlDoc.root.attributes["date"] != nil else{
+        guard let date = xmlDoc.root.attributes["date"] , xmlDoc.root.attributes["date"] != nil else{
             print("no date found")
             return
         }
         print("xmlSchemaVersion = \(xmlDoc.root.attributes["xmlSchemaVersion"]!)")
-        guard let xmlSchemaVersion = xmlDoc.root.attributes["xmlSchemaVersion"] where xmlDoc.root.attributes["xmlSchemaVersion"] != nil else{
+        guard let xmlSchemaVersion = xmlDoc.root.attributes["xmlSchemaVersion"] , xmlDoc.root.attributes["xmlSchemaVersion"] != nil else{
             print("no xmlSchemaVersion found")
             return
         }
-        headerInfo = HeaderInfo(xmlVersion: String(xmlDoc.version), encoding: xmlDoc.encoding, language: language, date: date, schemaVersion: xmlSchemaVersion)
+        headerInfo = HeaderInfo(xmlVersion: String(xmlDoc.options.documentHeader.version), encoding: xmlDoc.options.documentHeader.encoding, language: language, date: date, schemaVersion: xmlSchemaVersion)
     }
     
     func readMain(){
@@ -208,7 +209,7 @@ class XmlReader{
                 }
                 if spec.name == "other"{
                     //print(other)
-                    other = String(spec.value)
+                    other = String(describing: spec.value)
                 }
             }
             /*
@@ -227,7 +228,7 @@ class XmlReader{
         }
     }
 
-    func toBool(value:String) -> Bool? {
+    func toBool(_ value:String) -> Bool? {
         switch value {
         case "True", "true", "yes", "1":
             return true
