@@ -34,7 +34,7 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
         // Do any additional setup after loading the view, typically from a nib.
         print("loaded")
         
-        
+        /*
         let backgroundSessionConfiguration = URLSessionConfiguration.background(withIdentifier: "backgroundSession")
         backgroundSession = Foundation.URLSession(configuration: backgroundSessionConfiguration, delegate: self, delegateQueue: OperationQueue.main)
         
@@ -42,9 +42,10 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
         
         //let url = NSURL(string: "http://publications.gbdirect.co.uk/c_book/thecbook.pdf")!
         downloadTask = backgroundSession.downloadTask(with: xmlUrlEn)
-        downloadTask.resume()
+        downloadTask.resume()*/
         
         if self.revealViewController() != nil{
+            
             openSideMenu.target = self.revealViewController()
             openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:)) //selector
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
