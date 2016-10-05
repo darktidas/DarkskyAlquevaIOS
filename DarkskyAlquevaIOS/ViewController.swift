@@ -29,12 +29,14 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
     
     @IBOutlet weak var openSideMenu: UIBarButtonItem!
     
+    @IBOutlet weak var abstract: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         print("loaded")
         
-        /*
+        
         let backgroundSessionConfiguration = URLSessionConfiguration.background(withIdentifier: "backgroundSession")
         backgroundSession = Foundation.URLSession(configuration: backgroundSessionConfiguration, delegate: self, delegateQueue: OperationQueue.main)
         
@@ -42,7 +44,7 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
         
         //let url = NSURL(string: "http://publications.gbdirect.co.uk/c_book/thecbook.pdf")!
         downloadTask = backgroundSession.downloadTask(with: xmlUrlEn)
-        downloadTask.resume()*/
+        downloadTask.resume()
         
         if self.revealViewController() != nil{
             
@@ -50,6 +52,7 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
             openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:)) //selector
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        abstract.sizeToFit()
     }
 
     override func didReceiveMemoryWarning() {
@@ -140,6 +143,10 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
             
             var interestPoints = self.xml.getInterestPoints()
             //print("Nome = \((interestPoints[1]?.name)!)")
+            //print("geral = \(self.xml.general)")
+            
+            self.abstract.numberOfLines = 0
+            self.abstract.text = self.xml.general
         }
     }
 
