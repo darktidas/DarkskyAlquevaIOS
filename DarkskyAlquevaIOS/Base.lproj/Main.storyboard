@@ -225,15 +225,85 @@
                         <viewControllerLayoutGuide type="bottom" id="Fcx-Wh-iUt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oOa-Ou-yac">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nH-TJ-q6U">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ZV8-1o-cRa"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="gastronomyButtonAction:" destination="I21-lu-ayL" eventType="touchUpInside" id="605-7s-K2P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5s-8L-nNv">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="pfH-n1-z1b"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="activitiesButtonAction:" destination="I21-lu-ayL" eventType="touchUpInside" id="Sbc-47-DO5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndd-Xz-Zp0">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="q4W-By-PEN"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="newsEventsButtonAction:" destination="I21-lu-ayL" eventType="touchUpInside" id="Ugq-KN-Tz0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2j-md-xn7">
+                                <frame key="frameInset" minX="20" minY="291" width="335" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZtH-do-Rj7">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="iY2-VI-ANf"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="accomodationButtonAction:" destination="I21-lu-ayL" eventType="touchUpInside" id="MS5-Tg-Mem"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.090196078430000007" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="6nH-TJ-q6U" firstAttribute="top" secondItem="ZtH-do-Rj7" secondAttribute="bottom" constant="9" id="1zf-fd-TsJ"/>
+                            <constraint firstAttribute="trailing" secondItem="6nH-TJ-q6U" secondAttribute="trailing" id="64F-vM-DzG"/>
+                            <constraint firstItem="6nH-TJ-q6U" firstAttribute="centerX" secondItem="oOa-Ou-yac" secondAttribute="centerX" id="CWD-bN-VtJ"/>
+                            <constraint firstItem="A5s-8L-nNv" firstAttribute="centerX" secondItem="oOa-Ou-yac" secondAttribute="centerX" id="CZG-jg-K0g"/>
+                            <constraint firstAttribute="trailing" secondItem="ZtH-do-Rj7" secondAttribute="trailing" id="I5o-71-iP7"/>
+                            <constraint firstItem="A5s-8L-nNv" firstAttribute="leading" secondItem="oOa-Ou-yac" secondAttribute="leading" id="Uee-lW-iln"/>
+                            <constraint firstAttribute="trailing" secondItem="A5s-8L-nNv" secondAttribute="trailing" id="XNQ-5W-Lq6"/>
+                            <constraint firstItem="ndd-Xz-Zp0" firstAttribute="centerX" secondItem="oOa-Ou-yac" secondAttribute="centerX" id="d9V-9o-io6"/>
+                            <constraint firstAttribute="trailing" secondItem="ndd-Xz-Zp0" secondAttribute="trailing" id="epH-fg-0Cf"/>
+                            <constraint firstItem="h2j-md-xn7" firstAttribute="centerX" secondItem="oOa-Ou-yac" secondAttribute="centerX" id="ga3-wH-Clp"/>
+                            <constraint firstItem="ndd-Xz-Zp0" firstAttribute="top" secondItem="A5s-8L-nNv" secondAttribute="bottom" constant="8" id="hLd-yJ-Bm7"/>
+                            <constraint firstItem="A5s-8L-nNv" firstAttribute="top" secondItem="6nH-TJ-q6U" secondAttribute="bottom" constant="8" id="iJe-kM-uRe"/>
+                            <constraint firstItem="h2j-md-xn7" firstAttribute="top" secondItem="ndd-Xz-Zp0" secondAttribute="bottom" constant="26" id="inV-ab-vSb"/>
+                            <constraint firstItem="6nH-TJ-q6U" firstAttribute="leading" secondItem="oOa-Ou-yac" secondAttribute="leading" id="kDv-v6-Yml"/>
+                            <constraint firstItem="ZtH-do-Rj7" firstAttribute="leading" secondItem="oOa-Ou-yac" secondAttribute="leading" id="kUj-9e-Cfs"/>
+                            <constraint firstItem="ZtH-do-Rj7" firstAttribute="top" secondItem="44p-WR-ub3" secondAttribute="bottom" id="t7s-fV-r9O"/>
+                            <constraint firstItem="ZtH-do-Rj7" firstAttribute="centerX" secondItem="oOa-Ou-yac" secondAttribute="centerX" id="vaY-vu-8qn"/>
+                            <constraint firstItem="ndd-Xz-Zp0" firstAttribute="leading" secondItem="oOa-Ou-yac" secondAttribute="leading" id="x11-Qc-pYF"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="AT5-0u-wEX">
                         <barButtonItem key="leftBarButtonItem" title="Open" id="AJT-Ah-Eyj"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="accommodationButton" destination="ZtH-do-Rj7" id="NOP-gn-dTp"/>
+                        <outlet property="activitiesButton" destination="A5s-8L-nNv" id="bA9-eD-ZMl"/>
+                        <outlet property="gastronomyButton" destination="6nH-TJ-q6U" id="42D-R8-YgK"/>
+                        <outlet property="newsEventsButton" destination="ndd-Xz-Zp0" id="uDi-33-Sg8"/>
                         <outlet property="openSideMenu" destination="AJT-Ah-Eyj" id="QxM-on-syF"/>
+                        <outlet property="routeText" destination="h2j-md-xn7" id="AHu-df-mKr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dBO-FV-PUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
