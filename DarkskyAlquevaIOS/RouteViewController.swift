@@ -11,16 +11,29 @@ import UIKit
 class RouteViewController: UIViewController {
 
     @IBOutlet weak var openSideMenu: UIBarButtonItem!
-    
     @IBOutlet weak var accommodationButton: UIButton!
     @IBOutlet weak var gastronomyButton: UIButton!
     @IBOutlet weak var activitiesButton: UIButton!
     @IBOutlet weak var newsEventsButton: UIButton!
-    
     @IBOutlet weak var routeText: UILabel!
     
-    let screenSize: CGRect = UIScreen.main.bounds
-    var largerSide: CGFloat!
+    //EN
+    let accomodationEN = "Accomodation"
+    let gastronomyEN = "Gastronomy"
+    let activitiesEN = "Activities"
+    let newsEN = "News and  Events"
+    
+    //PT
+    let accomodationPT = "Alojamento"
+    let gastronomyPT = "Gastronomia"
+    let activitiesPT = "Atividades"
+    let newsPT = "Notícias e Eventos"
+    
+    //ES
+    let accomodationES = "Alojamiento"
+    let gastronomyES = "Gastronomía"
+    let activitiesES = "Actividades"
+    let newsES = "Noticias y Eventos"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,17 +95,24 @@ class RouteViewController: UIViewController {
         print("activitiesbutton = \(activitiesButton.frame.size.height)")
     }
 
+    func loadRouteContent(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let xml = appDelegate.xml!
+        
+        let screenSize: CGRect = UIScreen.main.bounds
+        var largerSide: CGFloat!
+        
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func accomodationButtonAction(_ sender: AnyObject) {
         if let url = URL(string: "http://www.darkskyalqueva.com/en/alojamento-en/") {
             UIApplication.shared.open(url, options: [:])
         }
-        print(screenSize.width)
-        print(screenSize.height)
     }
     
     @IBAction func gastronomyButtonAction(_ sender: AnyObject) {

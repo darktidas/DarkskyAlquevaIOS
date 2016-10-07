@@ -9,6 +9,9 @@
 import UIKit
 
 class InformationsViewController: UIViewController {
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
 
     @IBOutlet weak var openSideMenu: UIBarButtonItem!
     override func viewDidLoad() {
@@ -21,6 +24,8 @@ class InformationsViewController: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        let delegateVar = appDelegate.ten
+        print(delegateVar)
         // Do any additional setup after loading the view.
     }
 
