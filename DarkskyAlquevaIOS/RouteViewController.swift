@@ -45,6 +45,17 @@ class RouteViewController: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        loadRouteContent()
+    }
+
+    func loadRouteContent(){
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let xml = appDelegate.xml!
+        
+        let screenSize: CGRect = UIScreen.main.bounds
+        var largerSide: CGFloat!
+        
         if screenSize.width > screenSize.height{
             largerSide = screenSize.width
         }else{
@@ -88,21 +99,7 @@ class RouteViewController: UIViewController {
         lineViewFour.backgroundColor=UIColor.white
         newsEventsButton.addSubview(lineViewFour)
         
-        routeText.text = "Sweet Potato"
-        // Do any additional setup after loading the view.
-        
-        print("accomodationbutton = \(accommodationButton.frame.size.height)")
-        print("activitiesbutton = \(activitiesButton.frame.size.height)")
-    }
-
-    func loadRouteContent(){
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let xml = appDelegate.xml!
-        
-        let screenSize: CGRect = UIScreen.main.bounds
-        var largerSide: CGFloat!
-        
-        
+        routeText.text = xml.route
     }
     
     override func didReceiveMemoryWarning() {
