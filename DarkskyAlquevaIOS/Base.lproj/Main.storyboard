@@ -201,15 +201,64 @@
                         <viewControllerLayoutGuide type="bottom" id="etE-kR-aJF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iO9-Yi-jMy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnc-8d-0zG">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="kHW-uS-fum"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3DP-rT-AOw">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="UQL-2t-7P2"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPB-8t-kkm">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ODK-9c-kbN"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-WJ-cVG">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="lqQ-6H-KOY"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.062745098040000002" green="0.090196078430000007" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="pnc-8d-0zG" firstAttribute="centerX" secondItem="iO9-Yi-jMy" secondAttribute="centerX" id="0XB-3Q-2KK"/>
+                            <constraint firstAttribute="trailing" secondItem="nil-WJ-cVG" secondAttribute="trailing" id="4lF-ga-ec6"/>
+                            <constraint firstItem="uPB-8t-kkm" firstAttribute="leading" secondItem="iO9-Yi-jMy" secondAttribute="leading" id="7XN-gQ-zVH"/>
+                            <constraint firstItem="nil-WJ-cVG" firstAttribute="top" secondItem="uPB-8t-kkm" secondAttribute="bottom" constant="8" id="BRx-R2-wbI"/>
+                            <constraint firstItem="3DP-rT-AOw" firstAttribute="leading" secondItem="iO9-Yi-jMy" secondAttribute="leading" id="KH4-nB-Gmc"/>
+                            <constraint firstItem="pnc-8d-0zG" firstAttribute="leading" secondItem="iO9-Yi-jMy" secondAttribute="leading" id="MWh-0N-aBb"/>
+                            <constraint firstAttribute="trailing" secondItem="pnc-8d-0zG" secondAttribute="trailing" id="Ni0-Xb-ShZ"/>
+                            <constraint firstItem="pnc-8d-0zG" firstAttribute="top" secondItem="8cr-cw-0Mt" secondAttribute="bottom" id="ZAn-hF-Bko"/>
+                            <constraint firstAttribute="trailing" secondItem="3DP-rT-AOw" secondAttribute="trailing" id="bEp-Xz-Ioh"/>
+                            <constraint firstItem="3DP-rT-AOw" firstAttribute="centerX" secondItem="iO9-Yi-jMy" secondAttribute="centerX" id="bzF-YK-LSL"/>
+                            <constraint firstItem="nil-WJ-cVG" firstAttribute="leading" secondItem="iO9-Yi-jMy" secondAttribute="leading" id="g65-4Z-g1W"/>
+                            <constraint firstItem="3DP-rT-AOw" firstAttribute="top" secondItem="pnc-8d-0zG" secondAttribute="bottom" constant="8" id="iLZ-BY-qHl"/>
+                            <constraint firstItem="uPB-8t-kkm" firstAttribute="centerX" secondItem="iO9-Yi-jMy" secondAttribute="centerX" id="thx-PA-Aof"/>
+                            <constraint firstItem="nil-WJ-cVG" firstAttribute="centerX" secondItem="iO9-Yi-jMy" secondAttribute="centerX" id="uEE-s0-AmO"/>
+                            <constraint firstItem="uPB-8t-kkm" firstAttribute="top" secondItem="3DP-rT-AOw" secondAttribute="bottom" constant="8" id="vID-SG-a8v"/>
+                            <constraint firstAttribute="trailing" secondItem="uPB-8t-kkm" secondAttribute="trailing" id="zy5-ib-nRQ"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="R43-cw-vl8">
                         <barButtonItem key="leftBarButtonItem" title="Open" id="24C-Gy-l7r"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="clothingButton" destination="uPB-8t-kkm" id="dHe-96-2J7"/>
+                        <outlet property="constellationsButton" destination="3DP-rT-AOw" id="0LZ-86-Hen"/>
+                        <outlet property="moonPhases" destination="nil-WJ-cVG" id="F6K-t7-C3u"/>
                         <outlet property="openSideMenu" destination="24C-Gy-l7r" id="TCc-cM-Ce6"/>
+                        <outlet property="phenomenaButton" destination="pnc-8d-0zG" id="rkX-1Q-og2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCE-yN-egt" userLabel="First Responder" sceneMemberID="firstResponder"/>
