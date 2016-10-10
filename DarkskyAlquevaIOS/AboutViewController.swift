@@ -21,9 +21,6 @@ class AboutViewController: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        let calculation = MoonCalculator()
-        let number = calculation.moonPhase(year: 2016, month: 10, day: 30)
-        print(calculation.phaseName(phase: number))
         // Do any additional setup after loading the view.
     }
 

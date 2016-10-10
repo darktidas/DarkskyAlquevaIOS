@@ -33,6 +33,7 @@
 		B1E9D23F1D4B7C8600C9CC45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1E9D23D1D4B7C8600C9CC45 /* LaunchScreen.storyboard */; };
 		B1E9D24A1D4B7C8600C9CC45 /* DarkskyAlquevaIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2491D4B7C8600C9CC45 /* DarkskyAlquevaIOSTests.swift */; };
 		B1E9D2551D4B7C8600C9CC45 /* DarkskyAlquevaIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2541D4B7C8600C9CC45 /* DarkskyAlquevaIOSUITests.swift */; };
+		B1EA3F9B1DAC5378007C1F2C /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EA3F9A1DAC5378007C1F2C /* DatePickerDialog.swift */; };
 		B1EF2D771D933B350064DCEC /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EF2D761D933B350064DCEC /* SlideMenuViewController.swift */; };
 		B1EF2D791D93552A0064DCEC /* headerMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EF2D781D93552A0064DCEC /* headerMenuViewCell.swift */; };
 		B1FC7EFB1D88DF8300000C61 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FC7EF61D88DF8300000C61 /* Document.swift */; };
@@ -94,6 +95,7 @@
 		B1E9D2501D4B7C8600C9CC45 /* DarkskyAlquevaIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DarkskyAlquevaIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1E9D2541D4B7C8600C9CC45 /* DarkskyAlquevaIOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkskyAlquevaIOSUITests.swift; sourceTree = "<group>"; };
 		B1E9D2561D4B7C8600C9CC45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1EA3F9A1DAC5378007C1F2C /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		B1EF2D761D933B350064DCEC /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
 		B1EF2D781D93552A0064DCEC /* headerMenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerMenuViewCell.swift; sourceTree = "<group>"; };
 		B1FC7EF61D88DF8300000C61 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		B15DEBD81D58BA9D00E42E6C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B1EA3F9A1DAC5378007C1F2C /* DatePickerDialog.swift */,
 				B1FC7EF51D88DF5300000C61 /* AEXML */,
 				B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */,
 				B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */,
@@ -390,6 +393,7 @@
 				B1E9D2371D4B7C8600C9CC45 /* ViewController.swift in Sources */,
 				B13496101D7B8CCB001427F4 /* Constellation.swift in Sources */,
 				B1FC7EFD1D88DF8300000C61 /* Error.swift in Sources */,
+				B1EA3F9B1DAC5378007C1F2C /* DatePickerDialog.swift in Sources */,
 				B1516A741DAB1C6600F9D86D /* ClothingTableViewCell.swift in Sources */,
 				B1FC7EFF1D88DF8300000C61 /* Parser.swift in Sources */,
 				B1516A6C1DAB0BD000F9D86D /* ClothingTableViewController.swift in Sources */,
