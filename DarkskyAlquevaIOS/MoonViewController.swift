@@ -1,29 +1,22 @@
 //
-//  AboutViewController.swift
+//  MoonViewController.swift
 //  DarkskyAlquevaIOS
 //
-//  Created by tiago  on 24/09/16.
+//  Created by tiago  on 10/10/16.
 //  Copyright © 2016 tiago . All rights reserved.
 //
 
 import UIKit
 
-class AboutViewController: UIViewController {
+class MoonViewController: UIViewController {
 
-    @IBOutlet weak var openSideMenu: UIBarButtonItem!
+    @IBOutlet weak var topText: UILabel!
+    @IBOutlet weak var moonImage: UIImageView!
+    @IBOutlet weak var moonName: UILabel!
+    @IBOutlet weak var dayButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if self.revealViewController() != nil{
-            
-            openSideMenu.target = self.revealViewController()
-            openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:)) //selector
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
-        
-        let calculation = MoonCalculator()
-        let number = calculation.moonPhase(year: 2016, month: 10, day: 30)
-        print(calculation.phaseName(phase: number))
         // Do any additional setup after loading the view.
     }
 
@@ -32,6 +25,8 @@ class AboutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func chooseDay(_ sender: AnyObject) {
+    }
 
     /*
     // MARK: - Navigation
