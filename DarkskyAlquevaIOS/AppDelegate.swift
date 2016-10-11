@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegate{
@@ -35,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         
         
         fileVerification()
+        
+        GMSServices.provideAPIKey("AIzaSyAakLWKXp_Ce3B3fIOc4GolFrwK7pcWxng")
+        //GMSPlacesClient.provideAPIKey("AIzaSyAakLWKXp_Ce3B3fIOc4GolFrwK7pcWxng")
         
         return true
     }
