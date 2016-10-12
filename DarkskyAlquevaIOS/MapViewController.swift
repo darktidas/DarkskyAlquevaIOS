@@ -13,6 +13,8 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var openSideMenu: UIBarButtonItem!
     
+    var interestPoints: [Int: InterestPoint]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +24,6 @@ class MapViewController: UIViewController {
             openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:)) //selector
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,21 +32,44 @@ class MapViewController: UIViewController {
     }
     
     override func loadView() {
-        // Create a GMSCameraPosition that tells the map to display the
-        // coordinate -33.86,151.20 at zoom level 6.
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let xml = appDelegate.xml!
+        
+        interestPoints = xml.interestPoints
+        let latitude = 38.3120211
+        let longitude = -7.418052
+        
+        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 11.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.isMyLocationEnabled = true
         view = mapView
         
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
+        loadMarkers(mapView: mapView)
     }
-
+    
+    func loadMarkers(mapView: GMSMapView){
+        for i in 0...interestPoints.count{
+            if(interestPoints[i] != nil){
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
+                marker.title = interestPoints[i]?.name
+                marker.snippet = interestPoints[i]?.shortDescription
+                var count = 0
+                for type in (interestPoints[i]?.typeMap)!{
+                    if(type.value){
+                        count += 1
+                    }
+                }
+                if(count == 1){
+                    marker.icon = GMSMarker.markerImage(with: UIColor.yellow)
+                } else if(count == 2){
+                    marker.icon = GMSMarker.markerImage(with: UIColor.orange)
+                }
+                marker.map = mapView
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
