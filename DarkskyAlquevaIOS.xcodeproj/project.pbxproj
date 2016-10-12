@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37D3F0E21DAE62B400695D99 /* InterestPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3F0E11DAE62B400695D99 /* InterestPointViewController.swift */; };
 		37F2E4171DAD1BC300344D3A /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 37F2E4161DAD1BC300344D3A /* Podfile */; };
 		B134960E1D7B8A49001427F4 /* Clothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134960D1D7B8A49001427F4 /* Clothing.swift */; };
 		B13496101D7B8CCB001427F4 /* Constellation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134960F1D7B8CCB001427F4 /* Constellation.swift */; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		0E3DA2E54EDAFF96A7DC6A31 /* libPods-DarkskyAlquevaIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DarkskyAlquevaIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2637EE9F47CE3DE09E5F0D3E /* Pods-DarkskyAlquevaIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DarkskyAlquevaIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DarkskyAlquevaIOS/Pods-DarkskyAlquevaIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		37D3F0E11DAE62B400695D99 /* InterestPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestPointViewController.swift; sourceTree = "<group>"; };
 		37F2E4161DAD1BC300344D3A /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		69E43BEF380239C7419B52C5 /* Pods-DarkskyAlquevaIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DarkskyAlquevaIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-DarkskyAlquevaIOS/Pods-DarkskyAlquevaIOS.release.xcconfig"; sourceTree = "<group>"; };
 		B134960D1D7B8A49001427F4 /* Clothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clothing.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				B1516A6B1DAB0BD000F9D86D /* ClothingTableViewController.swift */,
 				B1516A6D1DAB0BE600F9D86D /* ConstellationsTableViewController.swift */,
 				B1516A751DAB2C3600F9D86D /* MoonViewController.swift */,
+				37D3F0E11DAE62B400695D99 /* InterestPointViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				B1FC7EFF1D88DF8300000C61 /* Parser.swift in Sources */,
 				B1516A6C1DAB0BD000F9D86D /* ClothingTableViewController.swift in Sources */,
 				B1FC7EFB1D88DF8300000C61 /* Document.swift in Sources */,
+				37D3F0E21DAE62B400695D99 /* InterestPointViewController.swift in Sources */,
 				B1516A721DAB17B300F9D86D /* ConstellationTableViewCell.swift in Sources */,
 				B1E9D2351D4B7C8600C9CC45 /* AppDelegate.swift in Sources */,
 				B1516A6E1DAB0BE600F9D86D /* ConstellationsTableViewController.swift in Sources */,

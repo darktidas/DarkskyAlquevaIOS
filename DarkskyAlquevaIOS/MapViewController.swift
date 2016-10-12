@@ -9,11 +9,12 @@
 import UIKit
 import GoogleMaps
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, GMSMapViewDelegate {
 
     @IBOutlet weak var openSideMenu: UIBarButtonItem!
     
     var interestPoints: [Int: InterestPoint]!
+    var interestPointChoosen: InterestPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +68,33 @@ class MapViewController: UIViewController {
                 }
                 marker.map = mapView
             }
+        }
+        mapView.delegate = self
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        print(marker.title)
+        for i in 0...interestPoints.count{
+            if(interestPoints[i] != nil){
+                if(marker.title == interestPoints[i]?.name){
+                    interestPointChoosen = interestPoints[i]
+                }
+            }
+        }
+        
+        performSegue(withIdentifier: "segue", sender: nil)
+        /*
+         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+         
+         let interestPointInfoView = storyBoard.instantiateViewController(withIdentifier: "InterestPointViewController") as! InterestPointViewController
+         self.navigationController?.pushViewController(interestPointInfoView, animated: true)*/
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segue") {
+            let svc = segue.destination as! InterestPointViewController
+            svc.interestPoint = interestPointChoosen
+            
         }
     }
     
