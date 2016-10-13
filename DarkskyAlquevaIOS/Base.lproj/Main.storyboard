@@ -411,7 +411,7 @@
                         <viewControllerLayoutGuide type="top" id="jBM-BZ-1jF"/>
                         <viewControllerLayoutGuide type="bottom" id="PGx-2y-qsg"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="JL1-ne-bcH">
+                    <view key="view" contentMode="scaleToFill" id="JL1-ne-bcH">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

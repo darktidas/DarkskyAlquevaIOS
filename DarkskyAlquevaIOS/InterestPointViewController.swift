@@ -31,19 +31,33 @@ class InterestPointViewController: UIViewController {
         //if let
         var imagesViews = [UIImageView]()
         
-        for i in 0...imagesURL.count-1{
-            imagesViews.append(UIImageView(frame: CGRect(x: hScrollWidth*CGFloat(i), y: 0, width: hScrollWidth, height: hScrollHeight)))
-            print(imagesURL[i])
+       
+        var validImgs = [UIImage]()
+        
+        DispatchQueue.global().async {
+            DispatchQueue.main.async {
+                for img in imagesURL{
+                    let url: NSURL = NSURL(string: img)!
+                    do {
+                        let imgData = try NSData(contentsOf: url as URL, options: NSData.ReadingOptions())
+                        validImgs.append(UIImage(data: imgData as Data)!)
+                    } catch {
+                        print(error)
+                    }
+                }
+                for i in 0...validImgs.count-1{
+                    imagesViews.append(UIImageView(frame: CGRect(x: hScrollWidth*CGFloat(i), y: 0, width: hScrollWidth, height: hScrollHeight)))
+                    print(imagesURL[i])
+                    imagesViews[i].image = validImgs[i]
+                    self.horizontalScroll.addSubview(imagesViews[i])
+                }
+        
+                print("total valid images = \(validImgs.count)")
+                self.horizontalScroll.contentSize = CGSize(width: self.horizontalScroll.frame.width*CGFloat(validImgs.count), height: self.horizontalScroll.frame.height)
+            }
         }
-        imagesViews[0].image = UIImage(named: "logo")
-        imagesViews[1].image = UIImage(named: "labsi2")
-        
-        self.horizontalScroll.addSubview(imagesViews[0])
-        self.horizontalScroll.addSubview(imagesViews[1])
-        
-        self.horizontalScroll.contentSize = CGSize(width: self.horizontalScroll.frame.width*2, height: self.horizontalScroll.frame.height)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
