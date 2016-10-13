@@ -25,6 +25,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:)) //selector
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        loadMapContent()
+    }
+    
+    func loadMapContent(){
+        
     }
 
     override func didReceiveMemoryWarning() {
