@@ -25,6 +25,9 @@ class InterestPointViewController: UIViewController {
     @IBOutlet weak var longDescription: UILabel!
     
     var interestPoint: InterestPoint!
+    var imagesViews = [UIImageView]()
+    var hScrollWidth: CGFloat!
+    var hScrollHeight: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,31 +35,16 @@ class InterestPointViewController: UIViewController {
         print("Passed: \(interestPoint.name)")
 
         loadPointInfo()
-        
     }
     
     func loadPointInfo(){
         
-        self.pointName.text = interestPoint.name
-        self.shortDescription.text = interestPoint.shortDescription
-        self.coordinates.text = "Lat: \(interestPoint.latitude), Long: \(interestPoint.longitude)"
-        
-        loadCategoryInfo()
-        
-        brightness.text = "Brightness: \(interestPoint.qualityParameters["brightness"]!)"
-        temperature.text = "Temperature: \(interestPoint.qualityParameters["temperature"]!)"
-        
-        longDescription.text = interestPoint.longDescription
-        
         self.horizontalScroll.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200)
-        let hScrollWidth = self.horizontalScroll.frame.width
-        let hScrollHeight = self.horizontalScroll.frame.height
+        hScrollWidth = self.horizontalScroll.frame.width
+        hScrollHeight = self.horizontalScroll.frame.height
         
         let imagesURL = self.interestPoint.imagesURL
         //if let
-        var imagesViews = [UIImageView]()
-        
-       
         var validImgs = [UIImage]()
         
         DispatchQueue.global().async {
@@ -71,18 +59,31 @@ class InterestPointViewController: UIViewController {
                     }
                 }
                 for i in 0...validImgs.count-1{
-                    imagesViews.append(UIImageView(frame: CGRect(x: hScrollWidth*CGFloat(i)-1, y: 0, width: hScrollWidth, height: hScrollHeight)))
-                    //white linevi
+                    self.imagesViews.append(UIImageView(frame: CGRect(x: self.hScrollWidth*CGFloat(i)-1, y: 0, width: self.hScrollWidth, height: self.hScrollHeight)))
+                    //white line
                     print(imagesURL[i])
-                    imagesViews[i].clipsToBounds = true
-                    imagesViews[i].image = validImgs[i]
-                    self.horizontalScroll.addSubview(imagesViews[i])
+                    self.imagesViews[i].clipsToBounds = true
+                    self.imagesViews[i].image = validImgs[i]
+                    self.horizontalScroll.addSubview(self.imagesViews[i])
                 }
-        
+                
                 print("total valid images = \(validImgs.count)")
                 self.horizontalScroll.contentSize = CGSize(width: self.horizontalScroll.frame.width*CGFloat(validImgs.count), height: self.horizontalScroll.frame.height)
             }
         }
+
+        
+        self.pointName.text = interestPoint.name
+        self.shortDescription.text = interestPoint.shortDescription
+        self.coordinates.text = "Lat: \(interestPoint.latitude), Long: \(interestPoint.longitude)"
+        
+        loadCategoryInfo()
+        
+        brightness.text = "Brightness: \(interestPoint.qualityParameters["brightness"]!)"
+        temperature.text = "Temperature: \(interestPoint.qualityParameters["temperature"]!)"
+        
+        longDescription.text = interestPoint.longDescription
+       
     }
     
     func loadCategoryInfo(){
@@ -133,6 +134,36 @@ class InterestPointViewController: UIViewController {
             for q in qual{
                 q?.text = ""
             }
+        }
+    }
+    
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        let screenSize: CGRect = UIScreen.main.bounds
+        var largerSide: CGFloat!
+        var smallerSide: CGFloat!
+        
+        if screenSize.width > screenSize.height{
+            largerSide = screenSize.width
+            smallerSide = screenSize.height
+        }else{
+            largerSide = screenSize.height
+            smallerSide = screenSize.width
+        }
+        if (toInterfaceOrientation.isLandscape) {
+            
+            for i in 0...self.imagesViews.count-1{
+            self.imagesViews[i].frame = CGRect(x: largerSide*CGFloat(i)-1, y: 0, width: largerSide, height: self.hScrollHeight)
+            }
+            self.horizontalScroll.contentSize = CGSize(width: largerSide*CGFloat(self.imagesViews.count), height: self.horizontalScroll.frame.height)
+            self.horizontalScroll.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        }
+        else {
+            print("Portrait")
+            for i in 0...self.imagesViews.count-1{
+                self.imagesViews[i].frame = CGRect(x: smallerSide*CGFloat(i)-1, y: 0, width: smallerSide, height: self.hScrollHeight)
+            }
+            self.horizontalScroll.contentSize = CGSize(width: smallerSide*CGFloat(self.imagesViews.count), height: self.horizontalScroll.frame.height)
+            self.horizontalScroll.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         }
     }
     
