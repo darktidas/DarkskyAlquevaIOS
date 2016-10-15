@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     let xmlUrlEn = URL(string: "https://dl.dropboxusercontent.com/s/8c9y36n1sjh95b8/darkskyalqueva-en.xml?dl=1")!
     
     var xml: XmlReader!
+    var mapFilterStatus = [String: Bool]()
     
     var downloadTask: URLSessionDownloadTask!
     var backgroundSession: Foundation.URLSession!
@@ -39,6 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         
         GMSServices.provideAPIKey("AIzaSyAakLWKXp_Ce3B3fIOc4GolFrwK7pcWxng")
         //GMSPlacesClient.provideAPIKey("AIzaSyAakLWKXp_Ce3B3fIOc4GolFrwK7pcWxng")
+        
+        self.mapFilterStatus["astrophoto"] = true
+        self.mapFilterStatus["landscape"] = true
+        self.mapFilterStatus["observation"] = true
         
         return true
     }

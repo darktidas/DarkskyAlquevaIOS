@@ -28,6 +28,7 @@
 		B1516A761DAB2C3600F9D86D /* MoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1516A751DAB2C3600F9D86D /* MoonViewController.swift */; };
 		B1516A7A1DAB319500F9D86D /* MoonCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1516A791DAB319500F9D86D /* MoonCalculator.swift */; };
 		B15DEBDA1D58BB7F00E42E6C /* XmlReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */; };
+		B1CB15F51DB257D9008D983D /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB15F41DB257D9008D983D /* PopoverViewController.swift */; };
 		B1D7AD781D68A64200C8A6AF /* InterestPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */; };
 		B1E9D2351D4B7C8600C9CC45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2341D4B7C8600C9CC45 /* AppDelegate.swift */; };
 		B1E9D2371D4B7C8600C9CC45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2361D4B7C8600C9CC45 /* ViewController.swift */; };
@@ -90,6 +91,7 @@
 		B1516A751DAB2C3600F9D86D /* MoonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoonViewController.swift; sourceTree = "<group>"; };
 		B1516A791DAB319500F9D86D /* MoonCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoonCalculator.swift; sourceTree = "<group>"; };
 		B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XmlReader.swift; sourceTree = "<group>"; };
+		B1CB15F41DB257D9008D983D /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestPoint.swift; sourceTree = "<group>"; };
 		B1E9D2311D4B7C8600C9CC45 /* DarkskyAlquevaIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DarkskyAlquevaIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1E9D2341D4B7C8600C9CC45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				B1516A6D1DAB0BE600F9D86D /* ConstellationsTableViewController.swift */,
 				B1516A751DAB2C3600F9D86D /* MoonViewController.swift */,
 				37D3F0E11DAE62B400695D99 /* InterestPointViewController.swift */,
+				B1CB15F41DB257D9008D983D /* PopoverViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				B134FF7F1D96E24A00861AE5 /* InformationsViewController.swift in Sources */,
 				B1EF2D771D933B350064DCEC /* SlideMenuViewController.swift in Sources */,
 				B1D7AD781D68A64200C8A6AF /* InterestPoint.swift in Sources */,
+				B1CB15F51DB257D9008D983D /* PopoverViewController.swift in Sources */,
 				B134FF7D1D96E21C00861AE5 /* MapViewController.swift in Sources */,
 				B1EF2D791D93552A0064DCEC /* headerMenuViewCell.swift in Sources */,
 				B13F46D31D85AD2600FFB7CF /* SWRevealViewController.m in Sources */,

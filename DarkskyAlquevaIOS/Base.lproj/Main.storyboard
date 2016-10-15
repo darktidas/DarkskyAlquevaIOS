@@ -89,7 +89,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wUk-zf-v2H" id="N7v-9V-uwb">
-                                    <frame key="frameInset" width="375" height="89"/>
+                                    <frame key="frameInset" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MRM-60-1Rj">
@@ -107,7 +107,7 @@
                                 <rect key="frame" x="0.0" y="118" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="etW-qs-Wnh" id="Q4U-oL-F4c">
-                                    <frame key="frameInset" width="375" height="89"/>
+                                    <frame key="frameInset" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -118,7 +118,7 @@
                                 <rect key="frame" x="0.0" y="208" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IXU-9Q-3rr" id="p6n-Ao-ed2">
-                                    <frame key="frameInset" width="375" height="89"/>
+                                    <frame key="frameInset" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -129,7 +129,7 @@
                                 <rect key="frame" x="0.0" y="298" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="11i-g8-kj4" id="rve-Ev-p30">
-                                    <frame key="frameInset" width="375" height="89"/>
+                                    <frame key="frameInset" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -140,7 +140,7 @@
                                 <rect key="frame" x="0.0" y="388" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hyg-Gk-oNz" id="w5o-YA-YCd">
-                                    <frame key="frameInset" width="375" height="89"/>
+                                    <frame key="frameInset" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -151,7 +151,7 @@
                                 <rect key="frame" x="0.0" y="478" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kVH-b1-G5U" id="eUk-hq-1dc">
-                                    <frame key="frameInset" width="375" height="89"/>
+                                    <frame key="frameInset" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -377,10 +377,10 @@
             </objects>
             <point key="canvasLocation" x="3917.5999999999999" y="625.63718140929541"/>
         </scene>
-        <!--View Controller-->
+        <!--Popover View Controller-->
         <scene sceneID="qnI-tg-KZg">
             <objects>
-                <viewController storyboardIdentifier="popover" id="3gs-1o-svP" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="popover" id="3gs-1o-svP" customClass="PopoverViewController" customModule="DarkskyAlquevaIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vxj-XH-sR7"/>
                         <viewControllerLayoutGuide type="bottom" id="VIM-9R-JTa"/>
@@ -389,16 +389,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EV-uR-hPX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUH-gV-0qr">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="uyS-TW-TpJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="150" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-280" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="300" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="landscapeClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="H4s-F5-iMY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rI-nv-TIK">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JhQ-Ap-pGY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="150" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-280" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="300" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="observationClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="x06-D9-uxH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EV-uR-hPX">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6W3-YR-zFc"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="150" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-280" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="300" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Button" image="checked_checkbox48"/>
+                                <connections>
+                                    <action selector="astrophotoClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="qKP-Kv-yzQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.090196078430000007" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="8EV-uR-hPX" firstAttribute="centerX" secondItem="h9K-3O-FXE" secondAttribute="centerX" id="g9Q-92-xx9"/>
-                            <constraint firstItem="8EV-uR-hPX" firstAttribute="centerY" secondItem="h9K-3O-FXE" secondAttribute="centerY" id="ycU-qd-mFJ"/>
+                            <constraint firstItem="1rI-nv-TIK" firstAttribute="top" secondItem="IUH-gV-0qr" secondAttribute="bottom" constant="8" id="7Za-8e-quH"/>
+                            <constraint firstItem="8EV-uR-hPX" firstAttribute="leading" secondItem="h9K-3O-FXE" secondAttribute="leading" id="IG0-Wq-b4I"/>
+                            <constraint firstItem="8EV-uR-hPX" firstAttribute="top" secondItem="h9K-3O-FXE" secondAttribute="top" constant="8" id="Ptg-SA-zVP"/>
+                            <constraint firstAttribute="trailing" secondItem="8EV-uR-hPX" secondAttribute="trailing" id="YFN-Vy-Fd1"/>
+                            <constraint firstItem="IUH-gV-0qr" firstAttribute="leading" secondItem="h9K-3O-FXE" secondAttribute="leading" id="cGR-uG-Y3y"/>
+                            <constraint firstAttribute="trailing" secondItem="1rI-nv-TIK" secondAttribute="trailing" id="eu2-8G-fqS"/>
+                            <constraint firstItem="1rI-nv-TIK" firstAttribute="leading" secondItem="h9K-3O-FXE" secondAttribute="leading" id="iC5-KP-10G"/>
+                            <constraint firstAttribute="trailing" secondItem="IUH-gV-0qr" secondAttribute="trailing" id="lxn-vD-2jo"/>
+                            <constraint firstItem="IUH-gV-0qr" firstAttribute="top" secondItem="8EV-uR-hPX" secondAttribute="bottom" constant="8" id="pxw-JD-KNm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="astrophoto" destination="8EV-uR-hPX" id="7tT-Kw-qyY"/>
+                        <outlet property="landscape" destination="IUH-gV-0qr" id="nde-3X-FZc"/>
+                        <outlet property="observation" destination="1rI-nv-TIK" id="HG0-f2-17h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tT1-kU-P9R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -420,7 +467,7 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="0Hl-3L-nPr">
                         <barButtonItem key="leftBarButtonItem" title="Open" id="Dnv-Or-Zc5"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="rub-YP-pgQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="rub-YP-pgQ">
                             <connections>
                                 <action selector="filterAction:" destination="Lxs-La-yn2" id="GqW-G0-4Pg"/>
                                 <segue destination="3gs-1o-svP" kind="popoverPresentation" identifier="pop" popoverAnchorBarButtonItem="rub-YP-pgQ" id="HfJ-Pq-W7S">
@@ -781,7 +828,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c4J-Az-rag" id="rrE-0z-RFD">
-                                    <frame key="frameInset" width="375" height="119"/>
+                                    <frame key="frameInset" width="375" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Mb-qQ-gIa">
@@ -836,7 +883,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cK5-Nr-eZi" id="tpD-nv-0yi">
-                                    <frame key="frameInset" width="375" height="119"/>
+                                    <frame key="frameInset" width="375" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsC-TM-hwj">
@@ -892,7 +939,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lJK-D6-byR" id="yVB-6X-oc9">
-                                    <frame key="frameInset" width="375" height="119"/>
+                                    <frame key="frameInset" width="375" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paA-WT-Tdd">
@@ -973,6 +1020,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checked_checkbox48" width="48" height="48"/>
         <image name="mapa_rota" width="367" height="495"/>
         <image name="marker48" width="48" height="48"/>
     </resources>

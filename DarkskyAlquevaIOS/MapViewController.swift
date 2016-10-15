@@ -20,6 +20,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     
     @IBOutlet weak var filterButton: UIBarButtonItem!
     
+    var mapView: GMSMapView!
+    var markers = [GMSMarker]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,11 +31,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
             openSideMenu.target = self.revealViewController()
             openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:)) //selector
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
-        /*
-        self.filter = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(MapViewController.loadFilter))
-        self.navigationItem.rightBarButtonItem = filter*/
-        
+        }        
     }
     
     @IBAction func filterAction(_ sender: AnyObject) {
@@ -42,23 +41,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-    
-    /*
-    func loadFilter(){
-        let playerInformationViewController = (self.storyboard?.instantiateViewController(withIdentifier: "popover"))! as UIViewController
-        playerInformationViewController.modalPresentationStyle = .popover
-        playerInformationViewController.preferredContentSize = CGSize(width: 300, height: 300)
-        
-        
-        
-        let popoverPresentationViewController = playerInformationViewController.popoverPresentationController
-        popoverPresentationViewController?.permittedArrowDirections = .any
-        popoverPresentationViewController?.delegate = self
-        popoverPresentationController?.barButtonItem = self.filter
-        present(playerInformationViewController, animated: true, completion: nil)
-        
-        //popoverPresentationViewController?.barButtonItem = sender as UIBarButtonItem
-    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,32 +56,85 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         let longitude = -7.418052
         
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 11.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.isMyLocationEnabled = true
         view = mapView
         
         loadMarkers(mapView: mapView)
     }
     
+    func updateMarkers(){
+        print("updated")
+        print(markers.count)
+        loadMarkers(mapView: self.mapView)
+    }
+    
     func loadMarkers(mapView: GMSMapView){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        for mark in markers{
+            mark.map = nil
+        }
+        
         for i in 0...interestPoints.count{
             if(interestPoints[i] != nil){
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
-                marker.title = interestPoints[i]?.name
-                marker.snippet = interestPoints[i]?.shortDescription
-                var count = 0
-                for type in (interestPoints[i]?.typeMap)!{
-                    if(type.value){
-                        count += 1
+                if(appDelegate.mapFilterStatus["astrophoto"]! && (interestPoints[i]?.typeMap["astrophoto"])!){
+                    let marker = GMSMarker()
+                    marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
+                    marker.title = interestPoints[i]?.name
+                    marker.snippet = interestPoints[i]?.shortDescription
+                    var count = 0
+                    for type in (interestPoints[i]?.typeMap)!{
+                        if(type.value){
+                            count += 1
+                        }
                     }
+                    if(count == 1){
+                        marker.icon = GMSMarker.markerImage(with: UIColor.yellow)
+                    } else if(count == 2){
+                        marker.icon = GMSMarker.markerImage(with: UIColor.orange)
+                    }
+                    marker.map = mapView
+                    markers.append(marker)
+                } else if(appDelegate.mapFilterStatus["landscape"]! && (interestPoints[i]?.typeMap["landscape"])!){
+                    let marker = GMSMarker()
+                    marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
+                    marker.title = interestPoints[i]?.name
+                    marker.snippet = interestPoints[i]?.shortDescription
+                    var count = 0
+                    for type in (interestPoints[i]?.typeMap)!{
+                        if(type.value){
+                            count += 1
+                        }
+                    }
+                    if(count == 1){
+                        marker.icon = GMSMarker.markerImage(with: UIColor.yellow)
+                    } else if(count == 2){
+                        marker.icon = GMSMarker.markerImage(with: UIColor.orange)
+                    }
+                    marker.map = mapView
+                    markers.append(marker)
+                } else if(appDelegate.mapFilterStatus["observation"]! && (interestPoints[i]?.typeMap["observation"])!){
+                    let marker = GMSMarker()
+                    marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
+                    marker.title = interestPoints[i]?.name
+                    marker.snippet = interestPoints[i]?.shortDescription
+                    var count = 0
+                    for type in (interestPoints[i]?.typeMap)!{
+                        if(type.value){
+                            count += 1
+                        }
+                    }
+                    if(count == 1){
+                        marker.icon = GMSMarker.markerImage(with: UIColor.yellow)
+                    } else if(count == 2){
+                        marker.icon = GMSMarker.markerImage(with: UIColor.orange)
+                    }
+                    marker.map = mapView
+                    markers.append(marker)
+                }else{
+                    
                 }
-                if(count == 1){
-                    marker.icon = GMSMarker.markerImage(with: UIColor.yellow)
-                } else if(count == 2){
-                    marker.icon = GMSMarker.markerImage(with: UIColor.orange)
-                }
-                marker.map = mapView
             }
         }
         mapView.delegate = self
@@ -133,6 +168,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
             if let pop = svc.popoverPresentationController{
                 pop.delegate = self
             }
+            let inst = segue.destination as! PopoverViewController
+            inst.mapViewController = self
         }
     }
     
