@@ -35,10 +35,18 @@ class InterestPointViewController: UIViewController {
         print("Passed: \(interestPoint.name)")
 
         loadPointInfo()
+        
+        let share = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(InterestPointViewController.test))
+        self.navigationItem.rightBarButtonItem = share
+    }
+    
+    func test(){
+        print("DEU")
     }
     
     func loadPointInfo(){
-        
+        //let screenSize: CGRect = UIScreen.main.bounds
+        //image proportion
         self.horizontalScroll.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200)
         hScrollWidth = self.horizontalScroll.frame.width
         hScrollHeight = self.horizontalScroll.frame.height
@@ -64,6 +72,7 @@ class InterestPointViewController: UIViewController {
                     print(imagesURL[i])
                     self.imagesViews[i].clipsToBounds = true
                     self.imagesViews[i].image = validImgs[i]
+                    //self.imagesViews[i].contentMode = .scaleAspectFit
                     self.horizontalScroll.addSubview(self.imagesViews[i])
                 }
                 

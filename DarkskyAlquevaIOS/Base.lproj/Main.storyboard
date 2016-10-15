@@ -281,7 +281,7 @@
         <!--Route View Controller-->
         <scene sceneID="sb0-1k-tyW">
             <objects>
-                <viewController id="I21-lu-ayL" customClass="RouteViewController" customModule="DarkskyAlquevaIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RouteViewController" id="I21-lu-ayL" customClass="RouteViewController" customModule="DarkskyAlquevaIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="44p-WR-ub3"/>
                         <viewControllerLayoutGuide type="bottom" id="Fcx-Wh-iUt"/>
@@ -377,10 +377,37 @@
             </objects>
             <point key="canvasLocation" x="3917.5999999999999" y="625.63718140929541"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="qnI-tg-KZg">
+            <objects>
+                <viewController storyboardIdentifier="popover" id="3gs-1o-svP" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vxj-XH-sR7"/>
+                        <viewControllerLayoutGuide type="bottom" id="VIM-9R-JTa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h9K-3O-FXE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EV-uR-hPX">
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.062745098040000002" green="0.090196078430000007" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="8EV-uR-hPX" firstAttribute="centerX" secondItem="h9K-3O-FXE" secondAttribute="centerX" id="g9Q-92-xx9"/>
+                            <constraint firstItem="8EV-uR-hPX" firstAttribute="centerY" secondItem="h9K-3O-FXE" secondAttribute="centerY" id="ycU-qd-mFJ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tT1-kU-P9R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2054" y="-780"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="HNw-CV-vQq">
             <objects>
-                <viewController id="Lxs-La-yn2" customClass="MapViewController" customModule="DarkskyAlquevaIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="Lxs-La-yn2" customClass="MapViewController" customModule="DarkskyAlquevaIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rxm-hw-aHw"/>
                         <viewControllerLayoutGuide type="bottom" id="ivD-L1-65D"/>
@@ -393,8 +420,17 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="0Hl-3L-nPr">
                         <barButtonItem key="leftBarButtonItem" title="Open" id="Dnv-Or-Zc5"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="rub-YP-pgQ">
+                            <connections>
+                                <action selector="filterAction:" destination="Lxs-La-yn2" id="GqW-G0-4Pg"/>
+                                <segue destination="3gs-1o-svP" kind="popoverPresentation" identifier="pop" popoverAnchorBarButtonItem="rub-YP-pgQ" id="HfJ-Pq-W7S">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="filterButton" destination="rub-YP-pgQ" id="jbX-Us-N2u"/>
                         <outlet property="openSideMenu" destination="Dnv-Or-Zc5" id="n1s-Ze-snb"/>
                         <segue destination="GMb-m1-JXh" kind="show" identifier="segue" id="E63-ST-8CU"/>
                     </connections>
@@ -419,7 +455,7 @@
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dal-GW-esN">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="clo-i1-F2n"/>
+                                            <constraint firstAttribute="height" constant="200" id="JxN-Rw-dtm"/>
                                         </constraints>
                                     </scrollView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marker48" translatesAutoresizingMaskIntoConstraints="NO" id="IVB-PD-yO2">

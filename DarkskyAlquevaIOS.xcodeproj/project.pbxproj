@@ -18,6 +18,7 @@
 		B134FF811D96E26700861AE5 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134FF801D96E26700861AE5 /* RouteViewController.swift */; };
 		B134FF831D96E31B00861AE5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134FF821D96E31B00861AE5 /* AboutViewController.swift */; };
 		B13F46D31D85AD2600FFB7CF /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B13F46D21D85AD2600FFB7CF /* SWRevealViewController.m */; };
+		B14578DC1DB1C9BF00ADAE23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B14578DA1DB1C9BF00ADAE23 /* Main.storyboard */; };
 		B1516A661DAA73BA00F9D86D /* PhenomenaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1516A651DAA73BA00F9D86D /* PhenomenaTableViewController.swift */; };
 		B1516A681DAAF61B00F9D86D /* PhenomenaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1516A671DAAF61B00F9D86D /* PhenomenaTableViewCell.swift */; };
 		B1516A6C1DAB0BD000F9D86D /* ClothingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1516A6B1DAB0BD000F9D86D /* ClothingTableViewController.swift */; };
@@ -30,7 +31,6 @@
 		B1D7AD781D68A64200C8A6AF /* InterestPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */; };
 		B1E9D2351D4B7C8600C9CC45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2341D4B7C8600C9CC45 /* AppDelegate.swift */; };
 		B1E9D2371D4B7C8600C9CC45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2361D4B7C8600C9CC45 /* ViewController.swift */; };
-		B1E9D23A1D4B7C8600C9CC45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1E9D2381D4B7C8600C9CC45 /* Main.storyboard */; };
 		B1E9D23C1D4B7C8600C9CC45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1E9D23B1D4B7C8600C9CC45 /* Assets.xcassets */; };
 		B1E9D23F1D4B7C8600C9CC45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1E9D23D1D4B7C8600C9CC45 /* LaunchScreen.storyboard */; };
 		B1E9D24A1D4B7C8600C9CC45 /* DarkskyAlquevaIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2491D4B7C8600C9CC45 /* DarkskyAlquevaIOSTests.swift */; };
@@ -80,6 +80,7 @@
 		B13F46D01D85AD2600FFB7CF /* DarkskyAlquevaIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DarkskyAlquevaIOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		B13F46D11D85AD2600FFB7CF /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		B13F46D21D85AD2600FFB7CF /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		B14578DB1DB1C9BF00ADAE23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1516A651DAA73BA00F9D86D /* PhenomenaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhenomenaTableViewController.swift; sourceTree = "<group>"; };
 		B1516A671DAAF61B00F9D86D /* PhenomenaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhenomenaTableViewCell.swift; sourceTree = "<group>"; };
 		B1516A6B1DAB0BD000F9D86D /* ClothingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClothingTableViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		B1E9D2311D4B7C8600C9CC45 /* DarkskyAlquevaIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DarkskyAlquevaIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1E9D2341D4B7C8600C9CC45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1E9D2361D4B7C8600C9CC45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B1E9D2391D4B7C8600C9CC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1E9D23B1D4B7C8600C9CC45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1E9D23E1D4B7C8600C9CC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1E9D2401D4B7C8600C9CC45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 				B1516A6F1DAB0BF400F9D86D /* View */,
 				B15DEBD81D58BA9D00E42E6C /* Model */,
 				B1E9D2341D4B7C8600C9CC45 /* AppDelegate.swift */,
-				B1E9D2381D4B7C8600C9CC45 /* Main.storyboard */,
+				B14578DA1DB1C9BF00ADAE23 /* Main.storyboard */,
 				B1E9D23D1D4B7C8600C9CC45 /* LaunchScreen.storyboard */,
 				B1E9D23B1D4B7C8600C9CC45 /* Assets.xcassets */,
 				B1E9D2401D4B7C8600C9CC45 /* Info.plist */,
@@ -394,7 +394,7 @@
 				B1E9D23F1D4B7C8600C9CC45 /* LaunchScreen.storyboard in Resources */,
 				B1E9D23C1D4B7C8600C9CC45 /* Assets.xcassets in Resources */,
 				37F2E4171DAD1BC300344D3A /* Podfile in Resources */,
-				B1E9D23A1D4B7C8600C9CC45 /* Main.storyboard in Resources */,
+				B14578DC1DB1C9BF00ADAE23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,10 +532,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B1E9D2381D4B7C8600C9CC45 /* Main.storyboard */ = {
+		B14578DA1DB1C9BF00ADAE23 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B1E9D2391D4B7C8600C9CC45 /* Base */,
+				B14578DB1DB1C9BF00ADAE23 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

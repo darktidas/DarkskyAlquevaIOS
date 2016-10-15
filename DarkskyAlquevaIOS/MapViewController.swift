@@ -9,12 +9,16 @@
 import UIKit
 import GoogleMaps
 
-class MapViewController: UIViewController, GMSMapViewDelegate {
+class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresentationControllerDelegate{
 
     @IBOutlet weak var openSideMenu: UIBarButtonItem!
     
     var interestPoints: [Int: InterestPoint]!
     var interestPointChoosen: InterestPoint!
+    
+    var filter: UIBarButtonItem!
+    
+    @IBOutlet weak var filterButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +29,36 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:)) //selector
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        /*
+        self.filter = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(MapViewController.loadFilter))
+        self.navigationItem.rightBarButtonItem = filter*/
         
-        loadMapContent()
     }
     
-    func loadMapContent(){
-        
+    @IBAction func filterAction(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "pop", sender: self)
     }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    /*
+    func loadFilter(){
+        let playerInformationViewController = (self.storyboard?.instantiateViewController(withIdentifier: "popover"))! as UIViewController
+        playerInformationViewController.modalPresentationStyle = .popover
+        playerInformationViewController.preferredContentSize = CGSize(width: 300, height: 300)
+        
+        
+        
+        let popoverPresentationViewController = playerInformationViewController.popoverPresentationController
+        popoverPresentationViewController?.permittedArrowDirections = .any
+        popoverPresentationViewController?.delegate = self
+        popoverPresentationController?.barButtonItem = self.filter
+        present(playerInformationViewController, animated: true, completion: nil)
+        
+        //popoverPresentationViewController?.barButtonItem = sender as UIBarButtonItem
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -100,7 +127,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         if (segue.identifier == "segue") {
             let svc = segue.destination as! InterestPointViewController
             svc.interestPoint = interestPointChoosen
-            
+        }
+        if (segue.identifier == "pop") {
+            let svc = segue.destination
+            if let pop = svc.popoverPresentationController{
+                pop.delegate = self
+            }
         }
     }
     
