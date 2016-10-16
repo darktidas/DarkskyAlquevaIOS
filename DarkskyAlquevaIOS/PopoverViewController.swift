@@ -23,10 +23,6 @@ class PopoverViewController: UIViewController {
     @IBOutlet weak var satelliteMap: UIButton!
     @IBOutlet weak var terrainMap: UIButton!
     
-    var astrophotoCheck: UIImage!
-    var landscapeCheck: UIImage!
-    var observationCheck: UIImage!
-    
     var mapViewController: MapViewController!
     var stateControlData: StateControlData!
     
@@ -35,16 +31,16 @@ class PopoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.preferredContentSize = CGSize(width: 200, height: 200)
+        self.preferredContentSize = CGSize(width: 160, height: 275)
         
         loadButtons()
-        
-        print(self.stateControlData.mapFilterStatus["astrophoto"])
-        print(self.stateControlData.mapFilterStatus["landscape"])
-        print(self.stateControlData.mapFilterStatus["observation"])
     }
     
     func loadButtons(){
+        
+        var astrophotoCheck: UIImage!
+        var landscapeCheck: UIImage!
+        var observationCheck: UIImage!
         
         if (self.stateControlData.mapFilterStatus["astrophoto"])! {
             astrophotoCheck = UIImage(named: "checked_checkbox48")!
@@ -85,6 +81,55 @@ class PopoverViewController: UIViewController {
     
     func loadRadioButtons(){
         
+        var normalMapRadio: UIImage!
+        var hybridMapRadio: UIImage!
+        var satelliteMapRadio: UIImage!
+        var terrainMapRadio: UIImage!
+        
+        if (self.stateControlData.mapConfiguration["normal"])! {
+            normalMapRadio = UIImage(named: "checked_radio_button")!
+        }else{
+            normalMapRadio = UIImage(named: "unchecked_radio_button")!
+        }
+        if (self.stateControlData.mapConfiguration["hybrid"])! {
+            hybridMapRadio = UIImage(named: "checked_radio_button")!
+        }else{
+            hybridMapRadio = UIImage(named: "unchecked_radio_button")!
+        }
+        if (self.stateControlData.mapConfiguration["satellite"])! {
+            satelliteMapRadio = UIImage(named: "checked_radio_button")!
+        }else{
+            satelliteMapRadio = UIImage(named: "unchecked_radio_button")!
+        }
+        if (self.stateControlData.mapConfiguration["terrain"])! {
+            terrainMapRadio = UIImage(named: "checked_radio_button")!
+        }else{
+            terrainMapRadio = UIImage(named: "unchecked_radio_button")!
+        }
+        
+        normalMap.imageView?.contentMode = .scaleAspectFit
+        normalMap.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+        normalMap.setImage(normalMapRadio, for: .normal)
+        normalMap.tintColor = .white
+        normalMap.setTitle("Normal Map", for: .normal)
+        
+        hybridMap.imageView?.contentMode = .scaleAspectFit
+        hybridMap.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+        hybridMap.setImage(hybridMapRadio, for: .normal)
+        hybridMap.tintColor = .white
+        hybridMap.setTitle("Hybrid Map", for: .normal)
+        
+        satelliteMap.imageView?.contentMode = .scaleAspectFit
+        satelliteMap.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+        satelliteMap.setImage(satelliteMapRadio, for: .normal)
+        satelliteMap.tintColor = .white
+        satelliteMap.setTitle("Satellite Map", for: .normal)
+        
+        terrainMap.imageView?.contentMode = .scaleAspectFit
+        terrainMap.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+        terrainMap.setImage(terrainMapRadio, for: .normal)
+        terrainMap.tintColor = .white
+        terrainMap.setTitle("Terrain Map", for: .normal)
         
     }
     

@@ -67,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     }
     
     func fileVerification(file: URL){
+        
         let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         let documentDirectoryPath:String = path[0]
         let fileManager = FileManager()
