@@ -12,13 +12,12 @@ class ConstellationsTableViewController: UITableViewController {
 
     var constellationsData: [Int:Constellation]!
     
+    var stateControlData: StateControlData!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let xml = appDelegate.xml!
-        
-        self.constellationsData = xml.constellations
+        self.constellationsData = self.stateControlData.xml.constellations
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         

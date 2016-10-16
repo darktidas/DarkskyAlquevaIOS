@@ -12,13 +12,12 @@ class ClothingTableViewController: UITableViewController {
 
     var clothingData: [Int:Clothing]!
     
+    var stateControlData: StateControlData!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let xml = appDelegate.xml!
-        
-        self.clothingData = xml.clothing
+        self.clothingData = self.stateControlData.xml.clothing
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         

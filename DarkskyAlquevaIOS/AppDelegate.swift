@@ -13,42 +13,60 @@ import GoogleMaps
 class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegate{
 
     var window: UIWindow?
-
-    /* Version File URLs */
-    let versionUrlPt = URL(string: "https://dl.dropboxusercontent.com/s/38qpt41e7ve607d/version-pt.txt?dl=1")!
-    let versionUrlEs = URL(string: "https://dl.dropboxusercontent.com/s/egez7y46ldq2z9r/version-es.txt?dl=1")!
-    let versionUrlEn = URL(string: "https://dl.dropboxusercontent.com/s/xrf6b6raspmugr2/version-en.txt?dl=1")!
-    
-    /* XML File URLs */
-    let xmlUrlPt = URL(string: "https://dl.dropboxusercontent.com/s/qfh0fw7ajdo3hyg/darkskyalqueva-pt.xml?dl=1")!
-    let xmlUrlEs = URL(string: "https://dl.dropboxusercontent.com/s/if16iq36ak5jnwu/darkskyalqueva-es.xml?dl=1")!
-    let xmlUrlEn = URL(string: "https://dl.dropboxusercontent.com/s/8c9y36n1sjh95b8/darkskyalqueva-en.xml?dl=1")!
-    
-    var xml: XmlReader!
-    var mapFilterStatus = [String: Bool]()
     
     var downloadTask: URLSessionDownloadTask!
     var backgroundSession: Foundation.URLSession!
-
-    var ten = 10
+    var xml: XmlReader!
+    var stateControlData: StateControlData!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        
-        fileVerification()
+        stateControlDataInitialization()
         
         GMSServices.provideAPIKey("AIzaSyAakLWKXp_Ce3B3fIOc4GolFrwK7pcWxng")
         //GMSPlacesClient.provideAPIKey("AIzaSyAakLWKXp_Ce3B3fIOc4GolFrwK7pcWxng")
         
-        self.mapFilterStatus["astrophoto"] = true
-        self.mapFilterStatus["landscape"] = true
-        self.mapFilterStatus["observation"] = true
-        
         return true
     }
-
-    func fileVerification(){
+    
+    func stateControlDataInitialization(){
+        
+        var mapFilterStatus = [String: Bool]()
+        var mapconfiguration = [String: Bool]()
+        
+        mapFilterStatus["astrophoto"] = true
+        mapFilterStatus["landscape"] = true
+        mapFilterStatus["observation"] = true
+        
+        mapconfiguration["normal"] = true
+        mapconfiguration["hybrid"] = false
+        mapconfiguration["satellite"] = false
+        mapconfiguration["terrain"] = false
+        
+        let languageFileURL = getAppLanguage()
+        fileVerification(file: languageFileURL)
+        
+        self.stateControlData = StateControlData(xml: self.xml, mapFilterStatus: mapFilterStatus, mapConfiguration: mapconfiguration)
+        
+    }
+    
+    func getAppLanguage() -> URL{
+        
+        /* Version File URLs */
+        let versionUrlPt = URL(string: "https://dl.dropboxusercontent.com/s/38qpt41e7ve607d/version-pt.txt?dl=1")!
+        let versionUrlEs = URL(string: "https://dl.dropboxusercontent.com/s/egez7y46ldq2z9r/version-es.txt?dl=1")!
+        let versionUrlEn = URL(string: "https://dl.dropboxusercontent.com/s/xrf6b6raspmugr2/version-en.txt?dl=1")!
+        
+        /* XML File URLs */
+        let xmlUrlPt = URL(string: "https://dl.dropboxusercontent.com/s/qfh0fw7ajdo3hyg/darkskyalqueva-pt.xml?dl=1")!
+        let xmlUrlEs = URL(string: "https://dl.dropboxusercontent.com/s/if16iq36ak5jnwu/darkskyalqueva-es.xml?dl=1")!
+        let xmlUrlEn = URL(string: "https://dl.dropboxusercontent.com/s/8c9y36n1sjh95b8/darkskyalqueva-en.xml?dl=1")!
+        
+        return xmlUrlEn
+    }
+    
+    func fileVerification(file: URL){
         let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         let documentDirectoryPath:String = path[0]
         let fileManager = FileManager()
@@ -66,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
             //progressView.setProgress(0.0, animated: false)
             
             //let url = NSURL(string: "http://publications.gbdirect.co.uk/c_book/thecbook.pdf")!
-            downloadTask = backgroundSession.downloadTask(with: xmlUrlEn)
+            downloadTask = backgroundSession.downloadTask(with: file)
             downloadTask.resume()
         }
     }
@@ -132,10 +150,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
             //print("Path to the Documents directory\n\(documentsDir)")
             
             loadXml()
-            
-            var interestPoints = self.xml.getInterestPoints()
-            print("Nome = \((interestPoints[1]?.name)!)")
-            print("geral = \(self.xml.general)")
         }
     }
 

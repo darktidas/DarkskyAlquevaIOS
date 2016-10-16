@@ -9,29 +9,29 @@
 import UIKit
 import GoogleMaps
 
-class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresentationControllerDelegate{
+class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresentationControllerDelegate, DestinationViewControllerDelegate{
 
     @IBOutlet weak var openSideMenu: UIBarButtonItem!
+    @IBOutlet weak var filterButton: UIBarButtonItem!
+    
+    var filter: UIBarButtonItem!
+    var mapView: GMSMapView!
+    var markers = [GMSMarker]()
     
     var interestPoints: [Int: InterestPoint]!
     var interestPointChoosen: InterestPoint!
-    
-    var filter: UIBarButtonItem!
-    
-    @IBOutlet weak var filterButton: UIBarButtonItem!
-    
-    var mapView: GMSMapView!
-    var markers = [GMSMarker]()
+    var stateControlData: StateControlData!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        openSideMenu.image = UIImage(named: "slide_menu")
         if self.revealViewController() != nil{
             
             openSideMenu.target = self.revealViewController()
             openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:)) //selector
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }        
+        }
     }
     
     @IBAction func filterAction(_ sender: AnyObject) {
@@ -66,19 +66,38 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     func updateMarkers(){
         print("updated")
         print(markers.count)
-        loadMarkers(mapView: self.mapView)
-    }
-    
-    func loadMarkers(mapView: GMSMapView){
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         for mark in markers{
             mark.map = nil
         }
+        //remove nil markers
+        
+        loadMarkers(mapView: self.mapView)
+    }
+    
+    func loadMarkers(mapView: GMSMapView){
         
         for i in 0...interestPoints.count{
             if(interestPoints[i] != nil){
-                if(appDelegate.mapFilterStatus["astrophoto"]! && (interestPoints[i]?.typeMap["astrophoto"])!){
+                if(self.stateControlData.mapFilterStatus["astrophoto"]! && (interestPoints[i]?.typeMap["astrophoto"])!){
+                    var marker = GMSMarker()
+                    marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
+                    marker.title = interestPoints[i]?.name
+                    marker.snippet = interestPoints[i]?.shortDescription
+                    var count = 0
+                    for type in (interestPoints[i]?.typeMap)!{
+                        if(type.value){
+                            count += 1
+                        }
+                    }
+                    if(count == 1){
+                        marker.icon = GMSMarker.markerImage(with: UIColor.yellow)
+                    } else if(count == 2){
+                        marker.icon = GMSMarker.markerImage(with: UIColor.orange)
+                    }
+                    marker.map = mapView
+                    markers.append(marker)
+                } else if(self.stateControlData.mapFilterStatus["landscape"]! && (interestPoints[i]?.typeMap["landscape"])!){
                     let marker = GMSMarker()
                     marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
                     marker.title = interestPoints[i]?.name
@@ -96,25 +115,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
                     }
                     marker.map = mapView
                     markers.append(marker)
-                } else if(appDelegate.mapFilterStatus["landscape"]! && (interestPoints[i]?.typeMap["landscape"])!){
-                    let marker = GMSMarker()
-                    marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
-                    marker.title = interestPoints[i]?.name
-                    marker.snippet = interestPoints[i]?.shortDescription
-                    var count = 0
-                    for type in (interestPoints[i]?.typeMap)!{
-                        if(type.value){
-                            count += 1
-                        }
-                    }
-                    if(count == 1){
-                        marker.icon = GMSMarker.markerImage(with: UIColor.yellow)
-                    } else if(count == 2){
-                        marker.icon = GMSMarker.markerImage(with: UIColor.orange)
-                    }
-                    marker.map = mapView
-                    markers.append(marker)
-                } else if(appDelegate.mapFilterStatus["observation"]! && (interestPoints[i]?.typeMap["observation"])!){
+                } else if(self.stateControlData.mapFilterStatus["observation"]! && (interestPoints[i]?.typeMap["observation"])!){
                     let marker = GMSMarker()
                     marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
                     marker.title = interestPoints[i]?.name
@@ -163,14 +164,25 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
             let svc = segue.destination as! InterestPointViewController
             svc.interestPoint = interestPointChoosen
         }
-        if (segue.identifier == "pop") {
+        if (segue.identifier == "toPopover") {
             let svc = segue.destination
             if let pop = svc.popoverPresentationController{
                 pop.delegate = self
             }
             let inst = segue.destination as! PopoverViewController
-            inst.mapViewController = self
+            inst.stateControlData = self.stateControlData
+            //inst.mapViewController = self
+            
+            //for delegate
+            if let destinationViewController = segue.destination as? PopoverViewController {
+                destinationViewController.delegate = self
+            }
         }
+    }
+    
+    func doSomethingWithData() {
+        print("passou informaçao")
+        updateMarkers()
     }
     
     /*

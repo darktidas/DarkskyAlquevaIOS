@@ -28,6 +28,7 @@
 		B1516A761DAB2C3600F9D86D /* MoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1516A751DAB2C3600F9D86D /* MoonViewController.swift */; };
 		B1516A7A1DAB319500F9D86D /* MoonCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1516A791DAB319500F9D86D /* MoonCalculator.swift */; };
 		B15DEBDA1D58BB7F00E42E6C /* XmlReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */; };
+		B187B5371DB38981005740DD /* StateControlData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B187B5361DB38981005740DD /* StateControlData.swift */; };
 		B1CB15F51DB257D9008D983D /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB15F41DB257D9008D983D /* PopoverViewController.swift */; };
 		B1D7AD781D68A64200C8A6AF /* InterestPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */; };
 		B1E9D2351D4B7C8600C9CC45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2341D4B7C8600C9CC45 /* AppDelegate.swift */; };
@@ -91,6 +92,7 @@
 		B1516A751DAB2C3600F9D86D /* MoonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoonViewController.swift; sourceTree = "<group>"; };
 		B1516A791DAB319500F9D86D /* MoonCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoonCalculator.swift; sourceTree = "<group>"; };
 		B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XmlReader.swift; sourceTree = "<group>"; };
+		B187B5361DB38981005740DD /* StateControlData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateControlData.swift; sourceTree = "<group>"; };
 		B1CB15F41DB257D9008D983D /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestPoint.swift; sourceTree = "<group>"; };
 		B1E9D2311D4B7C8600C9CC45 /* DarkskyAlquevaIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DarkskyAlquevaIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,6 +213,7 @@
 				B13496111D7B8E4D001427F4 /* HeaderInfo.swift */,
 				B13496131D7B913C001427F4 /* Phenomenon.swift */,
 				B1516A791DAB319500F9D86D /* MoonCalculator.swift */,
+				B187B5361DB38981005740DD /* StateControlData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				B134960E1D7B8A49001427F4 /* Clothing.swift in Sources */,
 				B1FC7EFE1D88DF8300000C61 /* Options.swift in Sources */,
 				B134FF831D96E31B00861AE5 /* AboutViewController.swift in Sources */,
+				B187B5371DB38981005740DD /* StateControlData.swift in Sources */,
 				B1E9D2371D4B7C8600C9CC45 /* ViewController.swift in Sources */,
 				B13496101D7B8CCB001427F4 /* Constellation.swift in Sources */,
 				B1FC7EFD1D88DF8300000C61 /* Error.swift in Sources */,

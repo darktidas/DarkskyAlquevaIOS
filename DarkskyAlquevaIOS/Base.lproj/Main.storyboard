@@ -58,7 +58,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="kiN-5m-fea">
-                        <barButtonItem key="leftBarButtonItem" title="Open" id="W0w-c0-DiF">
+                        <barButtonItem key="leftBarButtonItem" image="slide_menu" id="W0w-c0-DiF">
                             <connections>
                                 <action selector="open:" destination="BYZ-38-t0r" id="lfH-Sn-EeE"/>
                             </connections>
@@ -89,7 +89,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wUk-zf-v2H" id="N7v-9V-uwb">
-                                    <frame key="frameInset" width="375" height="89.5"/>
+                                    <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MRM-60-1Rj">
@@ -107,55 +107,55 @@
                                 <rect key="frame" x="0.0" y="118" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="etW-qs-Wnh" id="Q4U-oL-F4c">
-                                    <frame key="frameInset" width="375" height="89.5"/>
+                                    <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ehX-aA-2F6" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Q9S-Ao-nF1"/>
+                                    <segue destination="ehX-aA-2F6" kind="custom" identifier="toHome" customClass="SWRevealViewControllerSeguePushController" id="Q9S-Ao-nF1"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Map" id="IXU-9Q-3rr">
                                 <rect key="frame" x="0.0" y="208" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IXU-9Q-3rr" id="p6n-Ao-ed2">
-                                    <frame key="frameInset" width="375" height="89.5"/>
+                                    <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="QOE-2h-VCn" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Nlh-Us-0Y2"/>
+                                    <segue destination="QOE-2h-VCn" kind="custom" identifier="toMap" customClass="SWRevealViewControllerSeguePushController" id="Nlh-Us-0Y2"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Route" id="11i-g8-kj4">
                                 <rect key="frame" x="0.0" y="298" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="11i-g8-kj4" id="rve-Ev-p30">
-                                    <frame key="frameInset" width="375" height="89.5"/>
+                                    <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="09T-w3-cjY" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="EIa-di-xMJ"/>
+                                    <segue destination="09T-w3-cjY" kind="custom" identifier="toRoute" customClass="SWRevealViewControllerSeguePushController" id="EIa-di-xMJ"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Informations" id="Hyg-Gk-oNz">
                                 <rect key="frame" x="0.0" y="388" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hyg-Gk-oNz" id="w5o-YA-YCd">
-                                    <frame key="frameInset" width="375" height="89.5"/>
+                                    <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="6h1-Zt-Aco" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="sur-a4-I5i"/>
+                                    <segue destination="6h1-Zt-Aco" kind="custom" identifier="toInformation" customClass="SWRevealViewControllerSeguePushController" id="sur-a4-I5i"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="About" id="kVH-b1-G5U">
                                 <rect key="frame" x="0.0" y="478" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kVH-b1-G5U" id="eUk-hq-1dc">
-                                    <frame key="frameInset" width="375" height="89.5"/>
+                                    <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="qZu-bk-Hd1" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="vmN-yY-9D1"/>
+                                    <segue destination="qZu-bk-Hd1" kind="custom" identifier="toAbout" customClass="SWRevealViewControllerSeguePushController" id="vmN-yY-9D1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -183,7 +183,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="bTn-YH-M1j">
-                        <barButtonItem key="leftBarButtonItem" title="Open" id="pf6-Pt-03H"/>
+                        <barButtonItem key="leftBarButtonItem" id="pf6-Pt-03H"/>
                     </navigationItem>
                     <connections>
                         <outlet property="openSideMenu" destination="pf6-Pt-03H" id="2dK-TI-yVh"/>
@@ -211,7 +211,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="5xC-ey-HoY" kind="show" id="LCd-jN-Hml"/>
+                                    <segue destination="5xC-ey-HoY" kind="show" identifier="toPhenomena" id="LCd-jN-Hml"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3DP-rT-AOw">
@@ -220,7 +220,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="1K9-lv-3EY" kind="show" id="ibe-hW-QZX"/>
+                                    <segue destination="1K9-lv-3EY" kind="show" identifier="toConstellations" id="ibe-hW-QZX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPB-8t-kkm">
@@ -229,7 +229,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="e2k-5I-kdt" kind="show" id="QuW-Gc-C5C"/>
+                                    <segue destination="e2k-5I-kdt" kind="show" identifier="toClothing" id="QuW-Gc-C5C"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-WJ-cVG">
@@ -264,7 +264,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="R43-cw-vl8">
-                        <barButtonItem key="leftBarButtonItem" title="Open" id="24C-Gy-l7r"/>
+                        <barButtonItem key="leftBarButtonItem" id="24C-Gy-l7r"/>
                     </navigationItem>
                     <connections>
                         <outlet property="clothingButton" destination="uPB-8t-kkm" id="dHe-96-2J7"/>
@@ -362,7 +362,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="AT5-0u-wEX">
-                        <barButtonItem key="leftBarButtonItem" title="Open" id="AJT-Ah-Eyj"/>
+                        <barButtonItem key="leftBarButtonItem" id="AJT-Ah-Eyj"/>
                     </navigationItem>
                     <connections>
                         <outlet property="accommodationButton" destination="ZtH-do-Rj7" id="NOP-gn-dTp"/>
@@ -415,6 +415,48 @@
                                     <action selector="observationClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="x06-D9-uxH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtD-db-kSt">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MbW-hq-xOd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="150" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-280" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="300" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="normalMapClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="iWN-sT-qYK"/>
+                                    <action selector="observationClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="viC-fP-Er6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ro0-OR-0Uy">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Zef-dH-RZT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="150" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-280" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="300" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="observationClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="fvv-8R-YjC"/>
+                                    <action selector="satelliteMapClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="hCr-zK-wDe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elQ-7I-v7H">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Qtr-CD-wwt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="150" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-280" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="300" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="observationClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="KL5-l8-PnN"/>
+                                    <action selector="terrainMapClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="gu4-RP-ul6"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EV-uR-hPX">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="6W3-YR-zFc"/>
@@ -427,24 +469,54 @@
                                     <action selector="astrophotoClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="qKP-Kv-yzQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WU2-hW-Q6Q">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JHZ-mE-98z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="150" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-280" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="300" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="hybridMapClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="KYf-oJ-cuJ"/>
+                                    <action selector="observationClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="cst-zI-m5i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.090196078430000007" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Ro0-OR-0Uy" firstAttribute="top" secondItem="WU2-hW-Q6Q" secondAttribute="bottom" constant="8" id="6wA-hs-Sln"/>
                             <constraint firstItem="1rI-nv-TIK" firstAttribute="top" secondItem="IUH-gV-0qr" secondAttribute="bottom" constant="8" id="7Za-8e-quH"/>
                             <constraint firstItem="8EV-uR-hPX" firstAttribute="leading" secondItem="h9K-3O-FXE" secondAttribute="leading" id="IG0-Wq-b4I"/>
                             <constraint firstItem="8EV-uR-hPX" firstAttribute="top" secondItem="h9K-3O-FXE" secondAttribute="top" constant="8" id="Ptg-SA-zVP"/>
+                            <constraint firstAttribute="trailing" secondItem="BtD-db-kSt" secondAttribute="trailing" id="Xh2-1s-WS8"/>
                             <constraint firstAttribute="trailing" secondItem="8EV-uR-hPX" secondAttribute="trailing" id="YFN-Vy-Fd1"/>
+                            <constraint firstAttribute="trailing" secondItem="WU2-hW-Q6Q" secondAttribute="trailing" id="YmP-E9-b72"/>
+                            <constraint firstItem="WU2-hW-Q6Q" firstAttribute="top" secondItem="BtD-db-kSt" secondAttribute="bottom" constant="8" id="ZFO-Om-H6k"/>
+                            <constraint firstItem="Ro0-OR-0Uy" firstAttribute="leading" secondItem="h9K-3O-FXE" secondAttribute="leading" id="acZ-V5-eci"/>
                             <constraint firstItem="IUH-gV-0qr" firstAttribute="leading" secondItem="h9K-3O-FXE" secondAttribute="leading" id="cGR-uG-Y3y"/>
+                            <constraint firstItem="elQ-7I-v7H" firstAttribute="leading" secondItem="h9K-3O-FXE" secondAttribute="leading" id="eZI-0Q-pXO"/>
+                            <constraint firstItem="WU2-hW-Q6Q" firstAttribute="leading" secondItem="h9K-3O-FXE" secondAttribute="leading" id="esD-6P-a3W"/>
                             <constraint firstAttribute="trailing" secondItem="1rI-nv-TIK" secondAttribute="trailing" id="eu2-8G-fqS"/>
+                            <constraint firstItem="BtD-db-kSt" firstAttribute="top" secondItem="1rI-nv-TIK" secondAttribute="bottom" constant="8" id="h42-P4-ReK"/>
                             <constraint firstItem="1rI-nv-TIK" firstAttribute="leading" secondItem="h9K-3O-FXE" secondAttribute="leading" id="iC5-KP-10G"/>
+                            <constraint firstAttribute="trailing" secondItem="elQ-7I-v7H" secondAttribute="trailing" id="iSG-hr-KGt"/>
+                            <constraint firstAttribute="trailing" secondItem="Ro0-OR-0Uy" secondAttribute="trailing" id="izB-dk-FJQ"/>
                             <constraint firstAttribute="trailing" secondItem="IUH-gV-0qr" secondAttribute="trailing" id="lxn-vD-2jo"/>
+                            <constraint firstItem="BtD-db-kSt" firstAttribute="leading" secondItem="h9K-3O-FXE" secondAttribute="leading" id="nO6-rr-nuN"/>
                             <constraint firstItem="IUH-gV-0qr" firstAttribute="top" secondItem="8EV-uR-hPX" secondAttribute="bottom" constant="8" id="pxw-JD-KNm"/>
+                            <constraint firstItem="elQ-7I-v7H" firstAttribute="top" secondItem="Ro0-OR-0Uy" secondAttribute="bottom" constant="8" id="waM-cw-AtA"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="astrophoto" destination="8EV-uR-hPX" id="7tT-Kw-qyY"/>
+                        <outlet property="hybridMap" destination="WU2-hW-Q6Q" id="2ae-Ux-urj"/>
                         <outlet property="landscape" destination="IUH-gV-0qr" id="nde-3X-FZc"/>
+                        <outlet property="normalMap" destination="BtD-db-kSt" id="kr0-ch-jCu"/>
                         <outlet property="observation" destination="1rI-nv-TIK" id="HG0-f2-17h"/>
+                        <outlet property="satelliteMap" destination="Ro0-OR-0Uy" id="7LH-F2-yy5"/>
+                        <outlet property="terrainMap" destination="elQ-7I-v7H" id="lKv-BF-cxb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tT1-kU-P9R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -466,11 +538,11 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="0Hl-3L-nPr">
-                        <barButtonItem key="leftBarButtonItem" title="Open" id="Dnv-Or-Zc5"/>
+                        <barButtonItem key="leftBarButtonItem" id="Dnv-Or-Zc5"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="rub-YP-pgQ">
                             <connections>
                                 <action selector="filterAction:" destination="Lxs-La-yn2" id="GqW-G0-4Pg"/>
-                                <segue destination="3gs-1o-svP" kind="popoverPresentation" identifier="pop" popoverAnchorBarButtonItem="rub-YP-pgQ" id="HfJ-Pq-W7S">
+                                <segue destination="3gs-1o-svP" kind="popoverPresentation" identifier="toPopover" popoverAnchorBarButtonItem="rub-YP-pgQ" id="HfJ-Pq-W7S">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
                                 </segue>
                             </connections>
@@ -828,7 +900,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c4J-Az-rag" id="rrE-0z-RFD">
-                                    <frame key="frameInset" width="375" height="119.5"/>
+                                    <frame key="frameInset" width="375" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Mb-qQ-gIa">
@@ -883,7 +955,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cK5-Nr-eZi" id="tpD-nv-0yi">
-                                    <frame key="frameInset" width="375" height="119.5"/>
+                                    <frame key="frameInset" width="375" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsC-TM-hwj">
@@ -939,7 +1011,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lJK-D6-byR" id="yVB-6X-oc9">
-                                    <frame key="frameInset" width="375" height="119.5"/>
+                                    <frame key="frameInset" width="375" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paA-WT-Tdd">
@@ -1023,8 +1095,9 @@
         <image name="checked_checkbox48" width="48" height="48"/>
         <image name="mapa_rota" width="367" height="495"/>
         <image name="marker48" width="48" height="48"/>
+        <image name="slide_menu" width="33" height="33"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Q9S-Ao-nF1"/>
+        <segue reference="ms5-01-GkU"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,8 +14,17 @@ class ViewController: UIViewController{
     @IBOutlet weak var openSideMenu: UIBarButtonItem!
     @IBOutlet weak var abstract: UILabel!
     
+    var stateControlData: StateControlData!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.stateControlData = appDelegate.stateControlData
+        
+        openSideMenu.image = UIImage(named: "slide_menu")
+        //openSideMenu.imageInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 30)
+        
         
         if self.revealViewController() != nil{
             
@@ -28,10 +37,10 @@ class ViewController: UIViewController{
     }
     
     func loadHomeContent(){
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let xml = appDelegate.xml!
+        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let xml = stateControlData.xml
         
-        abstract.text = xml.general
+        abstract.text = xml?.general
         abstract.sizeToFit()
     }
     

@@ -35,9 +35,12 @@ class RouteViewController: UIViewController {
     let activitiesES = "Actividades"
     let newsES = "Noticias y Eventos"
     
+    var stateControlData: StateControlData!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        openSideMenu.image = UIImage(named: "slide_menu")
         if self.revealViewController() != nil{
             
             openSideMenu.target = self.revealViewController()
@@ -49,9 +52,6 @@ class RouteViewController: UIViewController {
     }
 
     func loadRouteContent(){
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let xml = appDelegate.xml!
         
         let screenSize: CGRect = UIScreen.main.bounds
         var largerSide: CGFloat!
@@ -99,7 +99,7 @@ class RouteViewController: UIViewController {
         lineViewFour.backgroundColor=UIColor.white
         newsEventsButton.addSubview(lineViewFour)
         
-        routeText.text = xml.route
+        routeText.text = stateControlData.xml.route
     }
     
     override func didReceiveMemoryWarning() {

@@ -11,14 +11,13 @@ import UIKit
 class PhenomenaTableViewController: UITableViewController {
     
     var phenomenasData: [Int:Phenomenon]!
+    
+    var stateControlData: StateControlData!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let xml = appDelegate.xml!
         
-        self.phenomenasData = xml.phenomenas
+        self.phenomenasData = self.stateControlData.xml.phenomenas
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

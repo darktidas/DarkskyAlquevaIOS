@@ -34,9 +34,12 @@ class InformationsViewController: UIViewController {
     let clothingES = "Ropa"
     let moonPhasesES = "Fases de la Luna"
     
+    var stateControlData: StateControlData!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        openSideMenu.image = UIImage(named: "slide_menu")
         if self.revealViewController() != nil{
             
             openSideMenu.target = self.revealViewController()
@@ -94,6 +97,22 @@ class InformationsViewController: UIViewController {
         lineViewFour.backgroundColor=UIColor.white
         moonPhases.addSubview(lineViewFour)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toPhenomena") {
+            let destinationController = segue.destination as! PhenomenaTableViewController
+            destinationController.stateControlData = self.stateControlData
+        }
+        if (segue.identifier == "toConstellations") {
+            let destinationController = segue.destination as! ConstellationsTableViewController
+            destinationController.stateControlData = self.stateControlData
+        }
+        if (segue.identifier == "toClothing") {
+            let destinationController = segue.destination as! ClothingTableViewController
+            destinationController.stateControlData = self.stateControlData
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

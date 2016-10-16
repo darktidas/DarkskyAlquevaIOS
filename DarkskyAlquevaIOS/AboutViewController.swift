@@ -14,6 +14,7 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        openSideMenu.image = UIImage(named: "slide_menu")
         if self.revealViewController() != nil{
             
             openSideMenu.target = self.revealViewController()

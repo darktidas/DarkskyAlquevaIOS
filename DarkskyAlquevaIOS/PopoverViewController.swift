@@ -8,19 +8,29 @@
 
 import UIKit
 
+
+protocol DestinationViewControllerDelegate {
+    func doSomethingWithData()
+}
+
 class PopoverViewController: UIViewController {
 
     @IBOutlet weak var astrophoto: UIButton!
     @IBOutlet weak var landscape: UIButton!
     @IBOutlet weak var observation: UIButton!
-    
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    @IBOutlet weak var normalMap: UIButton!
+    @IBOutlet weak var hybridMap: UIButton!
+    @IBOutlet weak var satelliteMap: UIButton!
+    @IBOutlet weak var terrainMap: UIButton!
     
     var astrophotoCheck: UIImage!
     var landscapeCheck: UIImage!
     var observationCheck: UIImage!
     
     var mapViewController: MapViewController!
+    var stateControlData: StateControlData!
+    
+    var delegate: DestinationViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,24 +39,24 @@ class PopoverViewController: UIViewController {
         
         loadButtons()
         
-        print(appDelegate.mapFilterStatus["astrophoto"])
-        print(appDelegate.mapFilterStatus["landscape"])
-        print(appDelegate.mapFilterStatus["observation"])
+        print(self.stateControlData.mapFilterStatus["astrophoto"])
+        print(self.stateControlData.mapFilterStatus["landscape"])
+        print(self.stateControlData.mapFilterStatus["observation"])
     }
     
     func loadButtons(){
         
-        if (appDelegate.mapFilterStatus["astrophoto"])! {
+        if (self.stateControlData.mapFilterStatus["astrophoto"])! {
             astrophotoCheck = UIImage(named: "checked_checkbox48")!
         }else{
             astrophotoCheck = UIImage(named: "unchecked_checkbox48")!
         }
-        if (appDelegate.mapFilterStatus["landscape"])! {
+        if (self.stateControlData.mapFilterStatus["landscape"])! {
             landscapeCheck = UIImage(named: "checked_checkbox48")!
         }else{
             landscapeCheck = UIImage(named: "unchecked_checkbox48")!
         }
-        if (appDelegate.mapFilterStatus["observation"])! {
+        if (self.stateControlData.mapFilterStatus["observation"])! {
             observationCheck = UIImage(named: "checked_checkbox48")!
         }else{
             observationCheck = UIImage(named: "unchecked_checkbox48")!
@@ -69,49 +79,56 @@ class PopoverViewController: UIViewController {
         observation.setImage(observationCheck, for: .normal)
         observation.tintColor = .white
         observation.setTitle("Observation", for: .normal)
+        
+        loadRadioButtons()
+    }
+    
+    func loadRadioButtons(){
+        
+        
     }
     
     @IBAction func astrophotoClick(_ sender: AnyObject) {
-        if (appDelegate.mapFilterStatus["astrophoto"])! {
-            appDelegate.mapFilterStatus["astrophoto"] = false
-            astrophoto.setImage(UIImage(named: "unchecked_checkbox48"), for: .normal)
-        }else{
-            appDelegate.mapFilterStatus["astrophoto"] = true
-            astrophoto.setImage(UIImage(named: "checked_checkbox48"), for: .normal)
-        }
-        self.mapViewController.updateMarkers()
-        print(appDelegate.mapFilterStatus["astrophoto"])
-        print(appDelegate.mapFilterStatus["landscape"])
-        print(appDelegate.mapFilterStatus["observation"])
+        filterCheck(button: astrophoto, name: "astrophoto")
     }
     
     @IBAction func landscapeClick(_ sender: AnyObject) {
-        if (appDelegate.mapFilterStatus["landscape"])! {
-            appDelegate.mapFilterStatus["landscape"] = false
-            landscape.setImage(UIImage(named: "unchecked_checkbox48"), for: .normal)
-        }else{
-            appDelegate.mapFilterStatus["landscape"] = true
-            landscape.setImage(UIImage(named: "checked_checkbox48"), for: .normal)
-        }
-        
-        self.mapViewController.updateMarkers()
-        print(appDelegate.mapFilterStatus["astrophoto"])
-        print(appDelegate.mapFilterStatus["landscape"])
-        print(appDelegate.mapFilterStatus["observation"])
+        filterCheck(button: landscape, name: "landscape")
     }
     
     @IBAction func observationClick(_ sender: AnyObject) {
-        if (appDelegate.mapFilterStatus["observation"])! {
-            appDelegate.mapFilterStatus["observation"] = false
-            observation.setImage(UIImage(named: "unchecked_checkbox48"), for: .normal)
+        filterCheck(button: observation, name: "observation")
+    }
+    
+    func filterCheck(button: UIButton, name: String) {
+        if (self.stateControlData.mapFilterStatus[name])! {
+            self.stateControlData.mapFilterStatus[name] = false
+            button.setImage(UIImage(named: "unchecked_checkbox48"), for: .normal)
         }else{
-            appDelegate.mapFilterStatus["observation"] = true
-            observation.setImage(UIImage(named: "checked_checkbox48"), for: .normal)
+            self.stateControlData.mapFilterStatus[name] = true
+            button.setImage(UIImage(named: "checked_checkbox48"), for: .normal)
         }
-        self.mapViewController.updateMarkers()
-        print(appDelegate.mapFilterStatus["astrophoto"])
-        print(appDelegate.mapFilterStatus["landscape"])
-        print(appDelegate.mapFilterStatus["observation"])
+        filterAsChanged()
+        print(self.stateControlData.mapFilterStatus["astrophoto"])
+        print(self.stateControlData.mapFilterStatus["landscape"])
+        print(self.stateControlData.mapFilterStatus["observation"])
+    }
+    
+    func filterAsChanged() {
+        //let data = "passou uma batata"
+        delegate?.doSomethingWithData()
+    }
+    
+    @IBAction func normalMapClick(_ sender: AnyObject) {
+    }
+    
+    @IBAction func hybridMapClick(_ sender: AnyObject) {
+    }
+    
+    @IBAction func satelliteMapClick(_ sender: AnyObject) {
+    }
+    
+    @IBAction func terrainMapClick(_ sender: AnyObject) {
     }
     
     override func didReceiveMemoryWarning() {
