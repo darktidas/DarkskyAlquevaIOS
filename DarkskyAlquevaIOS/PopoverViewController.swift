@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol DestinationViewControllerDelegate {
-    func doSomethingWithData()
+    func popoverOptionsClick(type: String)
 }
 
 class PopoverViewController: UIViewController {
@@ -153,27 +153,76 @@ class PopoverViewController: UIViewController {
             self.stateControlData.mapFilterStatus[name] = true
             button.setImage(UIImage(named: "checked_checkbox48"), for: .normal)
         }
-        filterAsChanged()
+        filterAsChanged(type: "mapFilter")
         print(self.stateControlData.mapFilterStatus["astrophoto"])
         print(self.stateControlData.mapFilterStatus["landscape"])
         print(self.stateControlData.mapFilterStatus["observation"])
     }
     
-    func filterAsChanged() {
-        //let data = "passou uma batata"
-        delegate?.doSomethingWithData()
+    func filterAsChanged(type: String) {
+        delegate?.popoverOptionsClick(type: type)
     }
     
     @IBAction func normalMapClick(_ sender: AnyObject) {
+        
+        self.stateControlData.mapConfiguration["normal"] = true
+        self.stateControlData.mapConfiguration["hybrid"] = false
+        self.stateControlData.mapConfiguration["satellite"] = false
+        self.stateControlData.mapConfiguration["terrain"] = false
+        
+        normalMap.setImage(UIImage(named: "checked_radio_button"), for: .normal)
+        hybridMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
+        satelliteMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
+        terrainMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
+        
+        filterAsChanged(type: "mapConfiguration")
+        
+        print(self.stateControlData.mapConfiguration["normal"])
+        print(self.stateControlData.mapConfiguration["hybrid"])
+        print(self.stateControlData.mapConfiguration["satellite"])
+        print(self.stateControlData.mapConfiguration["terrain"])
     }
     
     @IBAction func hybridMapClick(_ sender: AnyObject) {
+        self.stateControlData.mapConfiguration["normal"] = false
+        self.stateControlData.mapConfiguration["hybrid"] = true
+        self.stateControlData.mapConfiguration["satellite"] = false
+        self.stateControlData.mapConfiguration["terrain"] = false
+        
+        normalMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
+        hybridMap.setImage(UIImage(named: "checked_radio_button"), for: .normal)
+        satelliteMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
+        terrainMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
+        
+        filterAsChanged(type: "mapConfiguration")
     }
     
     @IBAction func satelliteMapClick(_ sender: AnyObject) {
+        self.stateControlData.mapConfiguration["normal"] = false
+        self.stateControlData.mapConfiguration["hybrid"] = false
+        self.stateControlData.mapConfiguration["satellite"] = true
+        self.stateControlData.mapConfiguration["terrain"] = false
+        
+        normalMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
+        hybridMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
+        satelliteMap.setImage(UIImage(named: "checked_radio_button"), for: .normal)
+        terrainMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
+        
+        filterAsChanged(type: "mapConfiguration")
     }
     
     @IBAction func terrainMapClick(_ sender: AnyObject) {
+        self.stateControlData.mapConfiguration["normal"] = false
+        self.stateControlData.mapConfiguration["hybrid"] = false
+        self.stateControlData.mapConfiguration["satellite"] = false
+        self.stateControlData.mapConfiguration["terrain"] = true
+        
+        normalMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
+        hybridMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
+        satelliteMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
+        terrainMap.setImage(UIImage(named: "checked_radio_button"), for: .normal)
+        
+        filterAsChanged(type: "mapConfiguration")
     }
     
     override func didReceiveMemoryWarning() {

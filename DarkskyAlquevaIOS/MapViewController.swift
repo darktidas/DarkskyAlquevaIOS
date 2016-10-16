@@ -22,6 +22,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     var interestPointChoosen: InterestPoint!
     var stateControlData: StateControlData!
     
+    var legendView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,20 +50,72 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     }
     
     override func loadView() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let xml = appDelegate.xml!
         
-        interestPoints = xml.interestPoints
+        interestPoints = self.stateControlData.xml.interestPoints
         let latitude = 38.3120211
         let longitude = -7.418052
         
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 11.0)
-        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.isMyLocationEnabled = true
-        view = mapView
         
+        self.mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        self.mapView.isMyLocationEnabled = true
+        
+        //compass
+        self.mapView.settings.compassButton = true
+        //mylocation
+        self.mapView.settings.myLocationButton = true
+        view = self.mapView
+        
+        
+        popoverOptionsClick(type: "mapConfiguration")
         loadMarkers(mapView: mapView)
+        
+        loadMapLegend()
     }
+    
+    func loadMapLegend(){
+        self.legendView = UIView(frame: CGRect(x: 10, y: 10, width: 150, height: 145))
+        self.legendView.backgroundColor = UIColor(white: 1, alpha: 0.8)
+        let title = UILabel(frame: CGRect(x: 5, y: 5, width: 140, height: 20))
+        title.font = title.font.withSize(14)
+        title.text = "Interest Points Types"
+        title.textAlignment = .center
+        self.legendView.addSubview(title)
+        
+        let markerOneView = UIImageView(frame: CGRect(x: 10, y: 30, width: 40, height: 40))
+        let markerOne = UIImage(named: "marker_1_70")
+        markerOneView.image = markerOne
+        markerOneView.contentMode = .scaleAspectFit
+        let markerOneText = UILabel(frame: CGRect(x: 55, y: 40, width: 120, height: 20))
+        markerOneText.font = markerOneText.font.withSize(13)
+        markerOneText.text = "One Type"
+        self.legendView.addSubview(markerOneView)
+        self.legendView.addSubview(markerOneText)
+        
+        let markerTwoView = UIImageView(frame: CGRect(x: 10, y: 65, width: 40, height: 40))
+        let markerTwo = UIImage(named: "marker_2_70")
+        markerTwoView.image = markerTwo
+        markerTwoView.contentMode = .scaleAspectFit
+        let markerTwoText = UILabel(frame: CGRect(x: 55, y: 75, width: 120, height: 20))
+        markerTwoText.font = markerTwoText.font.withSize(13)
+        markerTwoText.text = "Two Types"
+        self.legendView.addSubview(markerTwoView)
+        self.legendView.addSubview(markerTwoText)
+        
+        let markerThreeView = UIImageView(frame: CGRect(x: 10, y: 100, width: 40, height: 40))
+        let markerThree = UIImage(named: "marker_3_70")
+        markerThreeView.image = markerThree
+        markerThreeView.contentMode = .scaleAspectFit
+        let markerThreeText = UILabel(frame: CGRect(x: 55, y: 110, width: 120, height: 20))
+        markerThreeText.font = markerThreeText.font.withSize(13)
+        markerThreeText.text = "Three Types"
+        self.legendView.addSubview(markerThreeView)
+        self.legendView.addSubview(markerThreeText)
+        
+        self.view.addSubview(self.legendView)
+        self.view.bringSubview(toFront: self.legendView)
+    }
+    
     
     func updateMarkers(){
         print("updated")
@@ -180,9 +234,23 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         }
     }
     
-    func doSomethingWithData() {
+    func popoverOptionsClick(type: String) {
         print("passou informaçao")
-        updateMarkers()
+        if type == "mapFilter" {
+            updateMarkers()
+        }
+        if type == "mapConfiguration"{
+            
+            if self.stateControlData.mapConfiguration["normal"]! {
+                self.mapView.mapType = kGMSTypeNormal
+            }else if self.stateControlData.mapConfiguration["hybrid"]! {
+                self.mapView.mapType = kGMSTypeHybrid
+            }else if self.stateControlData.mapConfiguration["satellite"]! {
+                self.mapView.mapType = kGMSTypeSatellite
+            }else{
+                self.mapView.mapType = kGMSTypeTerrain
+            }
+        }
     }
     
     /*
