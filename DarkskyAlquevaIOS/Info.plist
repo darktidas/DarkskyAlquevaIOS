@@ -55,5 +55,7 @@
     </array>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>$(PRODUCT_NAME) location use.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>$(PRODUCT_NAME)</string>
 </dict>
 </plist>

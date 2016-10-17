@@ -36,12 +36,40 @@ class InterestPointViewController: UIViewController {
 
         loadPointInfo()
         
-        let share = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(InterestPointViewController.test))
-        self.navigationItem.rightBarButtonItem = share
+        /*
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(InterestPointViewController.test))
+        self.navigationItem.rightBarButtonItem = shareButton*/
     }
     
     func test(){
-        print("DEU")
+        
+    }
+    @IBAction func shareButtonClick(_ sender: AnyObject) {
+        
+        let title: NSString = self.interestPoint.name as NSString
+        let description: NSString = self.interestPoint.longDescription as NSString
+        
+        let url = NSURL(string: "http://www.darkskyalqueva.com/")
+        var shareImg = UIImage()
+        if imagesViews[0].image != nil{
+            shareImg = imagesViews[0].image!
+        }
+        
+        guard let link = url else {
+            print("nothing found")
+            return
+        }
+        
+        let share = [title, description, shareImg, link] as [Any]
+        // set up activity view controller
+        let activityViewController = UIActivityViewController(activityItems: share, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.barButtonItem = (sender as! UIBarButtonItem)// so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.assignToContact, UIActivityType.addToReadingList]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     func loadPointInfo(){
