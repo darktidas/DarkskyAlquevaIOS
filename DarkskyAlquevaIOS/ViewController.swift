@@ -28,6 +28,7 @@ class ViewController: UIViewController{
         
         if self.revealViewController() != nil{
             
+            self.revealViewController().rearViewRevealOverdraw = 0
             openSideMenu.target = self.revealViewController()
             openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:)) //selector
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())

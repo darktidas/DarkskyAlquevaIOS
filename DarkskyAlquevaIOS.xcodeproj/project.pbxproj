@@ -39,7 +39,6 @@
 		B1E9D2551D4B7C8600C9CC45 /* DarkskyAlquevaIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2541D4B7C8600C9CC45 /* DarkskyAlquevaIOSUITests.swift */; };
 		B1EA3F9B1DAC5378007C1F2C /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EA3F9A1DAC5378007C1F2C /* DatePickerDialog.swift */; };
 		B1EF2D771D933B350064DCEC /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EF2D761D933B350064DCEC /* SlideMenuViewController.swift */; };
-		B1EF2D791D93552A0064DCEC /* headerMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EF2D781D93552A0064DCEC /* headerMenuViewCell.swift */; };
 		B1FC7EFB1D88DF8300000C61 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FC7EF61D88DF8300000C61 /* Document.swift */; };
 		B1FC7EFC1D88DF8300000C61 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FC7EF71D88DF8300000C61 /* Element.swift */; };
 		B1FC7EFD1D88DF8300000C61 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FC7EF81D88DF8300000C61 /* Error.swift */; };
@@ -109,7 +108,6 @@
 		B1E9D2561D4B7C8600C9CC45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1EA3F9A1DAC5378007C1F2C /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		B1EF2D761D933B350064DCEC /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
-		B1EF2D781D93552A0064DCEC /* headerMenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerMenuViewCell.swift; sourceTree = "<group>"; };
 		B1FC7EF61D88DF8300000C61 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		B1FC7EF71D88DF8300000C61 /* Element.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
 		B1FC7EF81D88DF8300000C61 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 		B1516A6F1DAB0BF400F9D86D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B1EF2D781D93552A0064DCEC /* headerMenuViewCell.swift */,
 				B1516A671DAAF61B00F9D86D /* PhenomenaTableViewCell.swift */,
 				B1516A711DAB17B300F9D86D /* ConstellationTableViewCell.swift */,
 				B1516A731DAB1C6600F9D86D /* ClothingTableViewCell.swift */,
@@ -497,7 +494,6 @@
 				B1D7AD781D68A64200C8A6AF /* InterestPoint.swift in Sources */,
 				B1CB15F51DB257D9008D983D /* PopoverViewController.swift in Sources */,
 				B134FF7D1D96E21C00861AE5 /* MapViewController.swift in Sources */,
-				B1EF2D791D93552A0064DCEC /* headerMenuViewCell.swift in Sources */,
 				B13F46D31D85AD2600FFB7CF /* SWRevealViewController.m in Sources */,
 				B1516A7A1DAB319500F9D86D /* MoonCalculator.swift in Sources */,
 				B15DEBDA1D58BB7F00E42E6C /* XmlReader.swift in Sources */,
