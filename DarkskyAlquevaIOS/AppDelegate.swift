@@ -19,15 +19,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     var xml: XmlReader!
     var stateControlData: StateControlData!
     
+    var appLanguage: String!
+    let xmlDataFilename = "/data.xml"
+    let versionFilename = "/dataVersion.txt"
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        stateControlDataInitialization()
+        appLanguage = getAppLanguage()
+        print("appLanguage = \(appLanguage)")
+        //First time?
+        if checkFirstTime(){
+            downloadFile(file: getLanguageUrlFileData(language: appLanguage), identifier: "xmlDownload")
+            print("First time download")
+        }else{
+            downloadVersion(version: appLanguage)
+            print("Not first time download")
+        }
+        
+        //let xmlUrlEn = URL(string: "https://dl.dropboxusercontent.com/s/8c9y36n1sjh95b8/darkskyalqueva-en.xml?dl=1")!
+        //fileVerification(file: xmlUrlEn, name: "/data.xml")
         
         GMSServices.provideAPIKey("AIzaSyAakLWKXp_Ce3B3fIOc4GolFrwK7pcWxng")
         //GMSPlacesClient.provideAPIKey("AIzaSyAakLWKXp_Ce3B3fIOc4GolFrwK7pcWxng")
         
         return true
+    }
+    
+    func checkFirstTime() -> Bool{
+        let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+        let documentDirectoryPath:String = path[0]
+        let fileManager = FileManager()
+        let destinationURLForFile = URL(fileURLWithPath: documentDirectoryPath + self.xmlDataFilename)
+        
+        if fileManager.fileExists(atPath: destinationURLForFile.path){
+            return false
+        }else{
+            return true
+        }
     }
     
     func stateControlDataInitialization(){
@@ -44,34 +73,75 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         mapconfiguration["satellite"] = false
         mapconfiguration["terrain"] = false
         
-        let languageFileURL = getAppLanguage()
-        fileVerification(file: languageFileURL)
-        
         self.stateControlData = StateControlData(xml: self.xml, mapFilterStatus: mapFilterStatus, mapConfiguration: mapconfiguration)
-        
     }
     
-    func getAppLanguage() -> URL{
+    func downloadVersion(version: String){
         
-        /* Version File URLs */
-        let versionUrlPt = URL(string: "https://dl.dropboxusercontent.com/s/38qpt41e7ve607d/version-pt.txt?dl=1")!
-        let versionUrlEs = URL(string: "https://dl.dropboxusercontent.com/s/egez7y46ldq2z9r/version-es.txt?dl=1")!
-        let versionUrlEn = URL(string: "https://dl.dropboxusercontent.com/s/xrf6b6raspmugr2/version-en.txt?dl=1")!
+        let versionURLPt = URL(string: "https://dl.dropboxusercontent.com/s/38qpt41e7ve607d/version-pt.txt?dl=1")!
+        let versionURLEs = URL(string: "https://dl.dropboxusercontent.com/s/egez7y46ldq2z9r/version-es.txt?dl=1")!
+        let versionURLEn = URL(string: "https://dl.dropboxusercontent.com/s/xrf6b6raspmugr2/version-en.txt?dl=1")!
         
+        if version == "pt"{
+            downloadFile(file: versionURLPt, identifier: "versionDownload")
+            print("Download portuguese version")
+        }else if version == "es"{
+            downloadFile(file: versionURLEs, identifier: "versionDownload")
+            print("Donwload Spanish version")
+        }else{
+            downloadFile(file: versionURLEn, identifier: "versionDownload")
+            print("Donwload English version")
+        }
+    }
+    
+    func getAppLanguage() -> String{
+        
+        if let systemLanguage = NSLocale.preferredLanguages[0] as String? {
+            print("Language = \(systemLanguage)")
+            if systemLanguage.range(of: "pt") != nil{
+                print("Sistema operativo em Portugues")
+                return "pt"
+            } else if systemLanguage.range(of: "es") != nil{
+                print("Sistema en Espanol")
+                return "es"
+            } else {
+                print("System in English")
+                return "en"
+            }
+        }
+    }
+    
+    func getLanguageUrlFileData(language: String) -> URL{
+       
         /* XML File URLs */
         let xmlUrlPt = URL(string: "https://dl.dropboxusercontent.com/s/qfh0fw7ajdo3hyg/darkskyalqueva-pt.xml?dl=1")!
         let xmlUrlEs = URL(string: "https://dl.dropboxusercontent.com/s/if16iq36ak5jnwu/darkskyalqueva-es.xml?dl=1")!
         let xmlUrlEn = URL(string: "https://dl.dropboxusercontent.com/s/8c9y36n1sjh95b8/darkskyalqueva-en.xml?dl=1")!
         
-        return xmlUrlEn
+        if language == "pt"{
+            return xmlUrlPt
+        } else if language == "es"{
+            return xmlUrlEs
+        } else {
+            return xmlUrlEn
+        }
+
     }
     
-    func fileVerification(file: URL){
+    func downloadFile(file: URL, identifier: String){
+        //download
+        let backgroundSessionConfiguration = URLSessionConfiguration.background(withIdentifier: identifier)
+        backgroundSession = Foundation.URLSession(configuration: backgroundSessionConfiguration, delegate: self, delegateQueue: OperationQueue.main)
+        downloadTask = backgroundSession.downloadTask(with: file)
+        downloadTask.resume()
+    }
+    
+    func fileVerification(file: URL, name: String){
         
         let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         let documentDirectoryPath:String = path[0]
         let fileManager = FileManager()
-        let destinationURLForFile = URL(fileURLWithPath: documentDirectoryPath + "/file.xml")
+        let destinationURLForFile = URL(fileURLWithPath: documentDirectoryPath + name)
         
         if fileManager.fileExists(atPath: destinationURLForFile.path){
             print("Ja existe")
@@ -79,14 +149,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         }else{
             print("Nao existe ainda")
             //download
-            let backgroundSessionConfiguration = URLSessionConfiguration.background(withIdentifier: "backgroundSession")
-            backgroundSession = Foundation.URLSession(configuration: backgroundSessionConfiguration, delegate: self, delegateQueue: OperationQueue.main)
+            downloadFile(file: file, identifier: "xmlDownload")
+        }
+    }
+    
+    func versionCompareDownload(){
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+        let documentsDir = paths.firstObject as! String
+        
+        let versionPath = documentsDir + versionFilename
+        let fileManager = FileManager.default
+        
+        if fileManager.fileExists(atPath: versionPath){
             
-            //progressView.setProgress(0.0, animated: false)
-            
-            //let url = NSURL(string: "http://publications.gbdirect.co.uk/c_book/thecbook.pdf")!
-            downloadTask = backgroundSession.downloadTask(with: file)
-            downloadTask.resume()
+            var version = "" // Used to store the file contents
+            do {
+                // Read the file version contents
+                version = try String(contentsOf: URL(fileURLWithPath: versionPath))
+                //print("Version path = \(versionPath)")
+                print("Version file content = \(version)")
+                // Check xml version
+                let existingXmlPath = documentsDir + xmlDataFilename
+                
+                if fileManager.fileExists(atPath: existingXmlPath){
+                    guard let data = try? Data(contentsOf: URL(fileURLWithPath: existingXmlPath))
+                        else
+                    {return}
+                    
+                    var existingXml: AEXMLDocument!
+                    do {
+                        existingXml = try AEXMLDocument(xml: data)
+                        
+                        //print("date = \(existingXml.root.attributes["date"]!)")
+                        guard let date = existingXml.root.attributes["date"] , existingXml.root.attributes["date"] != nil else{
+                            print("no date found")
+                            return
+                        }
+                        var xmlDate = date.replacingOccurrences(of: " ", with: "/")
+                        xmlDate = xmlDate.replacingOccurrences(of: ":", with: "/")
+                        print("Xml file version = \(xmlDate)")
+                        
+                        if version == xmlDate{
+                            try fileManager.removeItem(at: URL(fileURLWithPath: versionPath))
+                            loadXml()
+                            stateControlDataInitialization()
+                            print("Version is equal to xml version")
+                        }else{
+                            try fileManager.removeItem(at: URL(fileURLWithPath: existingXmlPath))
+                            downloadFile(file: getLanguageUrlFileData(language: appLanguage), identifier: "xmlDownload")
+                            print("Version is different from xml version")
+                        }
+                    }
+                    catch {
+                        print("\(error)")
+                    }
+                }else{
+                    NSLog("Failed to find data.xml")
+                }
+            } catch {
+                print("Failed reading from Uversion file")
+            }
+        }else{
+            NSLog("Failed to find file.xml")
         }
     }
     
@@ -95,8 +219,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let documentsDir = paths.firstObject as! String
         
-        let xmlPath = documentsDir + "/file.xml"
-        //print(xmlPath)
+        let xmlPath = documentsDir + xmlDataFilename
+        print(xmlPath)
         
         let fileManager = FileManager.default
         
@@ -115,20 +239,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
                     downloadTask: URLSessionDownloadTask,
                     didFinishDownloadingTo location: URL){
         
+        print("download identifier name = \(session.configuration.identifier)")
+        
         let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         let documentDirectoryPath:String = path[0]
         let fileManager = FileManager()
-        let destinationURLForFile = URL(fileURLWithPath: documentDirectoryPath + "/file.xml")
+        var destinationURLForFile: URL!
+        
+        if session.configuration.identifier == "versionDownload"{
+            destinationURLForFile = URL(fileURLWithPath: documentDirectoryPath + versionFilename)
+        }else if session.configuration.identifier == "xmlDownload"{
+            destinationURLForFile = URL(fileURLWithPath: documentDirectoryPath + xmlDataFilename)
+        }
         
         if fileManager.fileExists(atPath: destinationURLForFile.path){
-            //showFileWithPath(destinationURLForFile.path)
             print("download concluido")
         }
         else{
             do {
                 try fileManager.moveItem(at: location, to: destinationURLForFile)
-                // show file
-                //showFileWithPath(destinationURLForFile.path)
                 print("download concluido")
             }catch{
                 print("An error occurred while moving file to destination url")
@@ -150,7 +279,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
             
             //print("Path to the Documents directory\n\(documentsDir)")
             
-            loadXml()
+            if session.configuration.identifier == "versionDownload"{
+                versionCompareDownload()
+            }else if session.configuration.identifier == "xmlDownload"{
+                loadXml()
+                stateControlDataInitialization()
+            }
         }
     }
 

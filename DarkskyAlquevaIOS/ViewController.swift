@@ -39,10 +39,10 @@ class ViewController: UIViewController{
     
     func loadHomeContent(){
         //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let xml = stateControlData.xml
+        //let xml = stateControlData.xml
         
-        abstract.text = xml?.general
-        abstract.sizeToFit()
+        //abstract.text = xml?.general
+        //abstract.sizeToFit()
     }
     
     override func didReceiveMemoryWarning() {
