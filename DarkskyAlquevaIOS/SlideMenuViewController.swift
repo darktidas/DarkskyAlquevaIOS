@@ -10,14 +10,17 @@ import UIKit
 
 class SlideMenuViewController: UITableViewController{
     
-    var data = ["Home", "Map", "Route", "Informations", "About"]
-    var cellIdentifier = ["home", "map", "route", "informations", "about"]
+    //var home = NSLocalizedString("slide_home", comment: "home button")
+    var data: [String]!
+    var cellIdentifier = ["Home", "Map", "Route", "Informations", "About"]
     
     var stateControlData: StateControlData!
     var headerImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadSlideMenuLabels()
         
         //clean
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -31,7 +34,20 @@ class SlideMenuViewController: UITableViewController{
         //self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()        
+    }
+    
+    func loadSlideMenuLabels(){
+        
+        let home = NSLocalizedString("slide_home", comment: "home button")
+        let map = NSLocalizedString("slide_map", comment: "map button")
+        let route = NSLocalizedString("slide_route", comment: "route button")
+        let informations = NSLocalizedString("slide_informations", comment: "informations button")
+        let about = NSLocalizedString("slide_about", comment: "about button")
+        
+        
+        data = [home, map, route, informations, about]
+        print(data.count)
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,7 +86,7 @@ class SlideMenuViewController: UITableViewController{
         }
         else {
             //let cell = tableView.dequeueReusableCell(withIdentifier: "bodyCell", for: indexPath)
-            let cell = tableView.dequeueReusableCell(withIdentifier: self.data[indexPath.row-1], for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier[indexPath.row-1], for: indexPath)
     
             
             cell.textLabel?.text = data[indexPath.row-1]

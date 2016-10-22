@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  DarkskyAlquevaIOS
+
+  Created by tiago  on 22/10/16.
+  Copyright © 2016 tiago . All rights reserved.
+*/
+
+//Slide Menu
+slide_home = "Principio";
+slide_map = "Mapa";
+slide_route = "Ruta";
+slide_informations = "Informaciónes";
+slide_about = "Sobre";

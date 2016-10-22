@@ -30,6 +30,7 @@
 		B15DEBDA1D58BB7F00E42E6C /* XmlReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */; };
 		B187B5371DB38981005740DD /* StateControlData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B187B5361DB38981005740DD /* StateControlData.swift */; };
 		B1CB15F51DB257D9008D983D /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB15F41DB257D9008D983D /* PopoverViewController.swift */; };
+		B1D481E31DBBCBA400096755 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1D481E51DBBCBA400096755 /* Localizable.strings */; };
 		B1D7AD781D68A64200C8A6AF /* InterestPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */; };
 		B1E9D2351D4B7C8600C9CC45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2341D4B7C8600C9CC45 /* AppDelegate.swift */; };
 		B1E9D2371D4B7C8600C9CC45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9D2361D4B7C8600C9CC45 /* ViewController.swift */; };
@@ -91,8 +92,15 @@
 		B1516A751DAB2C3600F9D86D /* MoonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoonViewController.swift; sourceTree = "<group>"; };
 		B1516A791DAB319500F9D86D /* MoonCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoonCalculator.swift; sourceTree = "<group>"; };
 		B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XmlReader.swift; sourceTree = "<group>"; };
+		B17B85091DBAD842002FE60F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
+		B17B850A1DBAD842002FE60F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		B187B5361DB38981005740DD /* StateControlData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateControlData.swift; sourceTree = "<group>"; };
 		B1CB15F41DB257D9008D983D /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		B1D481E11DBBCAA400096755 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		B1D481E21DBBCAA400096755 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B1D481E41DBBCBA400096755 /* Base */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B1D481E61DBBCBBD00096755 /* pt-PT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B1D481E71DBBCBBF00096755 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestPoint.swift; sourceTree = "<group>"; };
 		B1E9D2311D4B7C8600C9CC45 /* DarkskyAlquevaIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DarkskyAlquevaIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1E9D2341D4B7C8600C9CC45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -249,6 +257,7 @@
 				B1E9D23D1D4B7C8600C9CC45 /* LaunchScreen.storyboard */,
 				B1E9D23B1D4B7C8600C9CC45 /* Assets.xcassets */,
 				B1E9D2401D4B7C8600C9CC45 /* Info.plist */,
+				B1D481E51DBBCBA400096755 /* Localizable.strings */,
 			);
 			path = DarkskyAlquevaIOS;
 			sourceTree = "<group>";
@@ -376,6 +385,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-PT",
+				es,
 			);
 			mainGroup = B1E9D2281D4B7C8600C9CC45;
 			productRefGroup = B1E9D2321D4B7C8600C9CC45 /* Products */;
@@ -394,6 +405,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1D481E31DBBCBA400096755 /* Localizable.strings in Resources */,
 				B1E9D23F1D4B7C8600C9CC45 /* LaunchScreen.storyboard in Resources */,
 				B1E9D23C1D4B7C8600C9CC45 /* Assets.xcassets in Resources */,
 				37F2E4171DAD1BC300344D3A /* Podfile in Resources */,
@@ -540,14 +552,28 @@
 			isa = PBXVariantGroup;
 			children = (
 				B14578DB1DB1C9BF00ADAE23 /* Base */,
+				B17B85091DBAD842002FE60F /* pt-PT */,
+				B1D481E11DBBCAA400096755 /* es */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B1D481E51DBBCBA400096755 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1D481E41DBBCBA400096755 /* Base */,
+				B1D481E61DBBCBBD00096755 /* pt-PT */,
+				B1D481E71DBBCBBF00096755 /* es */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		B1E9D23D1D4B7C8600C9CC45 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B1E9D23E1D4B7C8600C9CC45 /* Base */,
+				B17B850A1DBAD842002FE60F /* pt-PT */,
+				B1D481E21DBBCAA400096755 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -559,6 +585,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -607,6 +634,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

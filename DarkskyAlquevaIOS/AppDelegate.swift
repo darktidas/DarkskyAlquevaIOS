@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        //se nao houver net
         appLanguage = getAppLanguage()
         print("appLanguage = \(appLanguage)")
         //First time?

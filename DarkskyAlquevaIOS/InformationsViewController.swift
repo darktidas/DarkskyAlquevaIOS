@@ -64,7 +64,9 @@ class InformationsViewController: UIViewController {
         let phenomenaImage: UIImage = UIImage(named: "phenomena48")!
         phenomenaButton.setImage(phenomenaImage, for: .normal)
         phenomenaButton.tintColor = .white
-        phenomenaButton.setTitle(phenomenaEN, for: .normal)
+        //let title = NSLocalizedString("pnc-8d-0zG", value: phenomenaEN, comment:"Window title")
+        let home = NSLocalizedString("slide_home", comment: "home button")
+        phenomenaButton.setTitle(home, for: .normal)
         //accommodationButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
         let lineViewOne = UIView(frame: CGRect(x:0, y:60, width: largerSide, height:1))
         lineViewOne.backgroundColor=UIColor.white
