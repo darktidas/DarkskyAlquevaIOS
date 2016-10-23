@@ -116,14 +116,27 @@ class InterestPointViewController: UIViewController {
         
         loadCategoryInfo()
         
-        brightness.text = "Brightness: \(interestPoint.qualityParameters["brightness"]!)"
-        temperature.text = "Temperature: \(interestPoint.qualityParameters["temperature"]!)"
+        let brightnessLabel = NSLocalizedString("point_brightness", comment: "point brightness label")
+        let temperatureLabel = NSLocalizedString("point_temperature", comment: "point temperature label")
+        if interestPoint.qualityParameters["brightness"] != nil{
+            brightness.text = "\(brightnessLabel): \(interestPoint.qualityParameters["brightness"]!)"
+        }else{
+            brightness.text = "\(brightnessLabel):  -"
+        }
+        if interestPoint.qualityParameters["temperature"] != nil{
+            temperature.text = "\(temperatureLabel): \(interestPoint.qualityParameters["temperature"]!)"
+        }else{
+            temperature.text = "\(temperatureLabel):  -"
+        }
         
         longDescription.text = interestPoint.longDescription
        
     }
     
     func loadCategoryInfo(){
+        let astrophotoLabel = NSLocalizedString("point_astrophoto", comment: "point astrophoto label")
+        let landscapeLabel = NSLocalizedString("point_landscape", comment: "point landscape label")
+        let observationLabel = NSLocalizedString("point_observation", comment: "point observation label")
         
         var count = 0
         
@@ -144,29 +157,29 @@ class InterestPointViewController: UIViewController {
         switch count {
         case 1:
             if(interestPoint.typeMap["astrophoto"])!{
-                qual[0]?.text = "Astrophoto"
+                qual[0]?.text = astrophotoLabel
             }else if(interestPoint.typeMap["landscape"])!{
-                qual[0]?.text = "Landscape"
+                qual[0]?.text = landscapeLabel
             }else{
-                qual[0]?.text = "Observation"
+                qual[0]?.text = observationLabel
             }
         case 2:
             if(interestPoint.typeMap["astrophoto"])!{
                 if(interestPoint.typeMap["landscape"])!{
-                    qual[0]?.text = "Astrophoto"
-                    qual[1]?.text = "Landscape"
+                    qual[0]?.text = astrophotoLabel
+                    qual[1]?.text = landscapeLabel
                 }else{
-                    qual[0]?.text = "Astrophoto"
-                    qual[1]?.text = "Observation"
+                    qual[0]?.text = astrophotoLabel
+                    qual[1]?.text = observationLabel
                 }
             }else{
-                qual[0]?.text = "Landscape"
-                qual[1]?.text = "Observation"
+                qual[0]?.text = landscapeLabel
+                qual[1]?.text = observationLabel
             }
         case 3:
-            qual[0]?.text = "Astrophoto"
-            qual[1]?.text = "Landscape"
-            qual[2]?.text = "Observation"
+            qual[0]?.text = astrophotoLabel
+            qual[1]?.text = landscapeLabel
+            qual[2]?.text = observationLabel
         default:
             for q in qual{
                 q?.text = ""

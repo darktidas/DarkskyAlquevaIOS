@@ -62,19 +62,19 @@ class PopoverViewController: UIViewController {
         astrophoto.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         astrophoto.setImage(astrophotoCheck, for: .normal)
         astrophoto.tintColor = .white
-        astrophoto.setTitle("Astrophoto", for: .normal)
+        astrophoto.setTitle(NSLocalizedString("popover_astrophoto", comment: "popover astropoto type"), for: .normal)
         
         landscape.imageView?.contentMode = .scaleAspectFit
         landscape.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         landscape.setImage(landscapeCheck, for: .normal)
         landscape.tintColor = .white
-        landscape.setTitle("Landscape", for: .normal)
+        landscape.setTitle(NSLocalizedString("popover_landscape", comment: "popover landscape type"), for: .normal)
         
         observation.imageView?.contentMode = .scaleAspectFit
         observation.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         observation.setImage(observationCheck, for: .normal)
         observation.tintColor = .white
-        observation.setTitle("Observation", for: .normal)
+        observation.setTitle(NSLocalizedString("popover_observation", comment: "popover observation type"), for: .normal)
         
         loadRadioButtons()
     }
@@ -111,25 +111,25 @@ class PopoverViewController: UIViewController {
         normalMap.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         normalMap.setImage(normalMapRadio, for: .normal)
         normalMap.tintColor = .white
-        normalMap.setTitle("Normal Map", for: .normal)
+        normalMap.setTitle(NSLocalizedString("popover_normal", comment: "popover normal type"), for: .normal)
         
         hybridMap.imageView?.contentMode = .scaleAspectFit
         hybridMap.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         hybridMap.setImage(hybridMapRadio, for: .normal)
         hybridMap.tintColor = .white
-        hybridMap.setTitle("Hybrid Map", for: .normal)
+        hybridMap.setTitle(NSLocalizedString("popover_hybrid", comment: "popover hybrid type"), for: .normal)
         
         satelliteMap.imageView?.contentMode = .scaleAspectFit
         satelliteMap.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         satelliteMap.setImage(satelliteMapRadio, for: .normal)
         satelliteMap.tintColor = .white
-        satelliteMap.setTitle("Satellite Map", for: .normal)
+        satelliteMap.setTitle(NSLocalizedString("popover_satellite", comment: "popover satellite type"), for: .normal)
         
         terrainMap.imageView?.contentMode = .scaleAspectFit
         terrainMap.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         terrainMap.setImage(terrainMapRadio, for: .normal)
         terrainMap.tintColor = .white
-        terrainMap.setTitle("Terrain Map", for: .normal)
+        terrainMap.setTitle(NSLocalizedString("popover_terrain", comment: "popover terrain type"), for: .normal)
         
     }
     

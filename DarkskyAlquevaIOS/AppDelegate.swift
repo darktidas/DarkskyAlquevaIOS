@@ -27,13 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         // Override point for customization after application launch.
         //se nao houver net
         appLanguage = getAppLanguage()
-        print("appLanguage = \(appLanguage)")
+        print("appLanguage = \(appLanguage!)")
         //First time?
         if checkFirstTime(){
-            downloadFile(file: getLanguageUrlFileData(language: appLanguage), identifier: "xmlDownload")
+            downloadFile(file: getLanguageUrlFileData(language: appLanguage!), identifier: "xmlDownload")
             print("First time download")
         }else{
-            downloadVersion(version: appLanguage)
+            downloadVersion(version: appLanguage!)
             print("Not first time download")
         }
         
@@ -77,6 +77,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     }
     
     func downloadVersion(version: String){
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+        let documentsDir = paths.firstObject as! String
+        
+        let versionPath = documentsDir + versionFilename
+        let fileManager = FileManager.default
+        
+        if fileManager.fileExists(atPath: versionPath){
+            do{
+                try fileManager.removeItem(at: URL(fileURLWithPath: versionPath))
+            }
+            catch {
+                print("\(error)")
+            }
+        }else{
+            NSLog("Failed to find data.xml")
+        }
         
         let versionURLPt = URL(string: "https://dl.dropboxusercontent.com/s/38qpt41e7ve607d/version-pt.txt?dl=1")!
         let versionURLEs = URL(string: "https://dl.dropboxusercontent.com/s/egez7y46ldq2z9r/version-es.txt?dl=1")!
@@ -130,6 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     
     func downloadFile(file: URL, identifier: String){
         //download
+        print(identifier)
         let backgroundSessionConfiguration = URLSessionConfiguration.background(withIdentifier: identifier)
         backgroundSession = Foundation.URLSession(configuration: backgroundSessionConfiguration, delegate: self, delegateQueue: OperationQueue.main)
         downloadTask = backgroundSession.downloadTask(with: file)
@@ -166,7 +183,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
             do {
                 // Read the file version contents
                 version = try String(contentsOf: URL(fileURLWithPath: versionPath))
-                //print("Version path = \(versionPath)")
+                print("Version path = \(versionPath)")
                 print("Version file content = \(version)")
                 // Check xml version
                 let existingXmlPath = documentsDir + xmlDataFilename
@@ -190,7 +207,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
                         print("Xml file version = \(xmlDate)")
                         
                         if version == xmlDate{
-                            try fileManager.removeItem(at: URL(fileURLWithPath: versionPath))
                             loadXml()
                             stateControlDataInitialization()
                             print("Version is equal to xml version")
@@ -210,7 +226,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
                 print("Failed reading from Uversion file")
             }
         }else{
-            NSLog("Failed to find file.xml")
+            NSLog("Failed to find data.xml")
         }
     }
     
@@ -230,7 +246,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
             //print("path = " + xmlPath)
             xml = XmlReader(data: data)
         }else{
-            NSLog("Failed to find file.xml")
+            NSLog("Failed to find data.xml")
         }
     }
     

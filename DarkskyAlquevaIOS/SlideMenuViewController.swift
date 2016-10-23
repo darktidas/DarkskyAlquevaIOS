@@ -10,10 +10,8 @@ import UIKit
 
 class SlideMenuViewController: UITableViewController{
     
-    //var home = NSLocalizedString("slide_home", comment: "home button")
     var data: [String]!
     var cellIdentifier = ["Home", "Map", "Route", "Informations", "About"]
-    
     var stateControlData: StateControlData!
     var headerImage: UIImage!
     
@@ -45,9 +43,7 @@ class SlideMenuViewController: UITableViewController{
         let informations = NSLocalizedString("slide_informations", comment: "informations button")
         let about = NSLocalizedString("slide_about", comment: "about button")
         
-        
         data = [home, map, route, informations, about]
-        print(data.count)
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,7 +62,6 @@ class SlideMenuViewController: UITableViewController{
         // #warning Incomplete implementation, return the number of rows
         return data.count+1
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -85,14 +80,10 @@ class SlideMenuViewController: UITableViewController{
             return cell
         }
         else {
-            //let cell = tableView.dequeueReusableCell(withIdentifier: "bodyCell", for: indexPath)
             let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier[indexPath.row-1], for: indexPath)
-    
             
             cell.textLabel?.text = data[indexPath.row-1]
             print("row \(indexPath) = \(cell.textLabel?.text)")
-            
-            
             
             return cell
         }

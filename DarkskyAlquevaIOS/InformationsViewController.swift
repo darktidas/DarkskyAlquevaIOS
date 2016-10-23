@@ -16,24 +16,6 @@ class InformationsViewController: UIViewController {
     @IBOutlet weak var clothingButton: UIButton!
     @IBOutlet weak var moonPhases: UIButton!
     
-    //EN
-    let phenomenaEN = "Phenomena"
-    let constellationsEN = "Constellations"
-    let clothingEN = "Clothing"
-    let moonPhasesEN = "Moon Phases"
-    
-    //PT
-    let phenomenaPT = "Fenómenos"
-    let constellationsPT = "Constelações"
-    let clothingPT = "Vestuário"
-    let moonPhasesPT = "Fases da Lua"
-    
-    //ES
-    let phenomenaES = "Fenómenos"
-    let constellationsES = "Constelaciónes"
-    let clothingES = "Ropa"
-    let moonPhasesES = "Fases de la Luna"
-    
     var stateControlData: StateControlData!
     
     override func viewDidLoad() {
@@ -64,9 +46,7 @@ class InformationsViewController: UIViewController {
         let phenomenaImage: UIImage = UIImage(named: "phenomena48")!
         phenomenaButton.setImage(phenomenaImage, for: .normal)
         phenomenaButton.tintColor = .white
-        //let title = NSLocalizedString("pnc-8d-0zG", value: phenomenaEN, comment:"Window title")
-        let home = NSLocalizedString("slide_home", comment: "home button")
-        phenomenaButton.setTitle(home, for: .normal)
+        phenomenaButton.setTitle(NSLocalizedString("informations_phenomena", comment: "informations phenomena button"), for: .normal)
         //accommodationButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
         let lineViewOne = UIView(frame: CGRect(x:0, y:60, width: largerSide, height:1))
         lineViewOne.backgroundColor=UIColor.white
@@ -75,7 +55,7 @@ class InformationsViewController: UIViewController {
         let constellationsImage: UIImage = UIImage(named: "constellation48")!
         constellationsButton.setImage(constellationsImage, for: .normal)
         constellationsButton.tintColor = .white
-        constellationsButton.setTitle(constellationsEN, for: .normal)
+        constellationsButton.setTitle(NSLocalizedString("informations_constellations", comment: "informations contellations button"), for: .normal)
         //accommodationButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
         let lineViewTwo = UIView(frame: CGRect(x:0, y:60, width: largerSide, height:1))
         lineViewTwo.backgroundColor=UIColor.white
@@ -84,7 +64,7 @@ class InformationsViewController: UIViewController {
         let clothingImage: UIImage = UIImage(named: "mittens48")!
         clothingButton.setImage(clothingImage, for: .normal)
         clothingButton.tintColor = .white
-        clothingButton.setTitle(clothingEN, for: .normal)
+        clothingButton.setTitle(NSLocalizedString("informations_clothing", comment: "informations clothing button"), for: .normal)
         //accommodationButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
         let lineViewThree = UIView(frame: CGRect(x:0, y:60, width: largerSide, height:1))
         lineViewThree.backgroundColor=UIColor.white
@@ -93,7 +73,7 @@ class InformationsViewController: UIViewController {
         let moonImage: UIImage = UIImage(named: "waning_crescent48")!
         moonPhases.setImage(moonImage, for: .normal)
         moonPhases.tintColor = .white
-        moonPhases.setTitle(moonPhasesEN, for: .normal)
+        moonPhases.setTitle(NSLocalizedString("informations_moon", comment: "informations moon button"), for: .normal)
         //accommodationButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
         let lineViewFour = UIView(frame: CGRect(x:0, y:60, width: largerSide, height:1))
         lineViewFour.backgroundColor=UIColor.white

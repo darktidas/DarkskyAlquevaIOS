@@ -65,7 +65,7 @@ class RouteViewController: UIViewController {
         let bungalowImage: UIImage = UIImage(named: "bungalow48")!
         accommodationButton.setImage(bungalowImage, for: .normal)
         accommodationButton.tintColor = .white
-        accommodationButton.setTitle("Accomodation", for: .normal)
+        accommodationButton.setTitle(NSLocalizedString("route_accomodation", comment: "route accomodation label"), for: .normal)
         //accommodationButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
         let lineViewOne = UIView(frame: CGRect(x:0, y:60, width: largerSide, height:1))
         lineViewOne.backgroundColor=UIColor.white
@@ -75,7 +75,7 @@ class RouteViewController: UIViewController {
         let cutleryImage: UIImage = UIImage(named: "cutlery48")!
         gastronomyButton.setImage(cutleryImage, for: .normal)
         gastronomyButton.tintColor = .white
-        gastronomyButton.setTitle("Gastronomy", for: .normal)
+        gastronomyButton.setTitle(NSLocalizedString("route_gastronomy", comment: "route gastronomy label"), for: .normal)
         //gastronomyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
         let lineViewTwo = UIView(frame: CGRect(x:0, y:60, width: largerSide, height:1))
         lineViewTwo.backgroundColor=UIColor.white
@@ -84,7 +84,7 @@ class RouteViewController: UIViewController {
         let telescopeImage: UIImage = UIImage(named: "telescope48")!
         activitiesButton.setImage(telescopeImage, for: .normal)
         activitiesButton.tintColor = .white
-        activitiesButton.setTitle("Activities", for: .normal)
+        activitiesButton.setTitle(NSLocalizedString("route_activities", comment: "route activities label"), for: .normal)
         //activitiesButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
         let lineViewThree = UIView(frame: CGRect(x:0, y:60, width:largerSide, height:1))
         lineViewThree.backgroundColor=UIColor.white
@@ -93,7 +93,7 @@ class RouteViewController: UIViewController {
         let newsImage: UIImage = UIImage(named: "news48")!
         newsEventsButton.setImage(newsImage, for: .normal)
         newsEventsButton.tintColor = .white
-        newsEventsButton.setTitle("News and Events", for: .normal)
+        newsEventsButton.setTitle(NSLocalizedString("route_news_events", comment: "route news events label"), for: .normal)
         //newsEventsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
         let lineViewFour = UIView(frame: CGRect(x:0, y:60, width:largerSide, height:1))
         lineViewFour.backgroundColor=UIColor.white
@@ -107,25 +107,25 @@ class RouteViewController: UIViewController {
     }
     
     @IBAction func accomodationButtonAction(_ sender: AnyObject) {
-        if let url = URL(string: "http://www.darkskyalqueva.com/en/alojamento-en/") {
+        if let url = URL(string: NSLocalizedString("route_accomodation_link", comment: "route accomodation link")) {
             UIApplication.shared.open(url, options: [:])
         }
     }
     
     @IBAction func gastronomyButtonAction(_ sender: AnyObject) {
-        if let url = URL(string: "http://www.darkskyalqueva.com/en/atividades-en/") {
+        if let url = URL(string: NSLocalizedString("route_gastronomy_link", comment: "route gastronomy link")) {
             UIApplication.shared.open(url, options: [:])
         }
     }
     
     @IBAction func activitiesButtonAction(_ sender: AnyObject) {
-        if let url = URL(string: "http://www.darkskyalqueva.com/en/gastronomia-en/") {
+        if let url = URL(string: NSLocalizedString("route_activities_link", comment: "route activities link")) {
             UIApplication.shared.open(url, options: [:])
         }
     }
 
     @IBAction func newsEventsButtonAction(_ sender: AnyObject) {
-        if let url = URL(string: "http://www.darkskyalqueva.com/en/noticias-en/") {
+        if let url = URL(string: NSLocalizedString("route_news_events_link", comment: "route accomodatinews events link")) {
             UIApplication.shared.open(url, options: [:])
         }
     }

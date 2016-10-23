@@ -198,8 +198,14 @@ class XmlReader{
                     longDescription = spec.value
                 }
                 if spec.name == "quality"{
-                    quality["brightness"] = spec.children[0].value
-                    quality["temperature"] = spec.children[1].value
+                    if spec.children.count > 0{
+                        if spec.children[0].value != nil {
+                            quality["brightness"] = spec.children[0].value
+                        }
+                        if spec.children[1].value != nil {
+                            quality["temperature"] = spec.children[1].value
+                        }
+                    }
                 }
                 if spec.name == "imagesURL"{
                     //print("\(id) -- \(spec.children.count)")

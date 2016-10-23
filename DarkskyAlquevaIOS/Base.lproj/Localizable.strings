@@ -12,3 +12,59 @@ slide_map = "Map";
 slide_route = "Route";
 slide_informations = "Informations";
 slide_about = "About";
+
+//Map
+//legend
+legend_title = "Interest Points Types";
+legend_type_one = "One Type";
+legend_type_two = "Two Type";
+legend_type_three = "Three Types";
+//popover
+popover_astrophoto = "Astrophoto";
+popover_landscape = "Landscape";
+popover_observation = "Observation";
+popover_normal = "Normal Map";
+popover_hybrid = "Hybrid Map";
+popover_satellite = "Satellite Map";
+popover_terrain = "Terrain Map";
+
+//Interest Point info
+point_brightness = "Brightness";
+point_temperature = "Temperature";
+point_astrophoto = "Astrophoto";
+point_landscape = "Landscape";
+point_observation = "Observation";
+
+//Route
+route_accomodation = "Accomodation";
+route_gastronomy = "Gastronomy";
+route_activities = "Activities";
+route_news_events = "News and Events";
+route_accomodation_link = "http://www.darkskyalqueva.com/en/alojamento-en/";
+route_gastronomy_link = "http://www.darkskyalqueva.com/en/atividades-en/";
+route_activities_link = "http://www.darkskyalqueva.com/en/gastronomia-en/";
+route_news_events_link = "http://www.darkskyalqueva.com/en/noticias-en/";
+
+//Informations
+informations_phenomena = "Phenomena";
+informations_constellations = "Constellations";
+informations_clothing = "Clothing";
+informations_moon = "Moon Phases";
+
+//Moon
+moon_title = "Today is:";
+moon_title_second_one = "On";
+moon_title_second_two = "the moon will be:";
+moon_waxing_crescent = "Waxing crescent";
+moon_first_quarter = "First quarter";
+moon_waxing_gibbous = "Waxing gibbous";
+moon_full = "Full moon";
+moon_waning_gibbous = "Waning gibbous";
+moon_third_quarter = "Third quarter";
+moon_waning_crescent = "Waning crescent";
+moon_new = "New moon";
+moon_button_date = "Search Moon Phase";
+moon_date_title = "Choose a Day";
+moon_date_cancel = "Cancel";
+moon_date_done = "Done";
+

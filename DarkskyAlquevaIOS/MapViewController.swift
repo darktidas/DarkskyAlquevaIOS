@@ -64,8 +64,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         self.mapView.settings.compassButton = true
         //mylocation
         self.mapView.settings.myLocationButton = true
-        view = self.mapView
-        
+        view = self.mapView        
         
         popoverOptionsClick(type: "mapConfiguration")
         loadMarkers(mapView: mapView)
@@ -78,7 +77,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         self.legendView.backgroundColor = UIColor(white: 1, alpha: 0.8)
         let title = UILabel(frame: CGRect(x: 5, y: 5, width: 140, height: 20))
         title.font = title.font.withSize(14)
-        title.text = "Interest Points Types"
+        title.text = NSLocalizedString("legend_title", comment: "map legend title")
         title.textAlignment = .center
         self.legendView.addSubview(title)
         
@@ -88,7 +87,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         markerOneView.contentMode = .scaleAspectFit
         let markerOneText = UILabel(frame: CGRect(x: 55, y: 40, width: 120, height: 20))
         markerOneText.font = markerOneText.font.withSize(13)
-        markerOneText.text = "One Type"
+        markerOneText.text = NSLocalizedString("legend_type_one", comment: "legend type one")
         self.legendView.addSubview(markerOneView)
         self.legendView.addSubview(markerOneText)
         
@@ -98,7 +97,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         markerTwoView.contentMode = .scaleAspectFit
         let markerTwoText = UILabel(frame: CGRect(x: 55, y: 75, width: 120, height: 20))
         markerTwoText.font = markerTwoText.font.withSize(13)
-        markerTwoText.text = "Two Types"
+        markerTwoText.text = NSLocalizedString("legend_type_two", comment: "legend type two")
         self.legendView.addSubview(markerTwoView)
         self.legendView.addSubview(markerTwoText)
         
@@ -108,7 +107,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         markerThreeView.contentMode = .scaleAspectFit
         let markerThreeText = UILabel(frame: CGRect(x: 55, y: 110, width: 120, height: 20))
         markerThreeText.font = markerThreeText.font.withSize(13)
-        markerThreeText.text = "Three Types"
+        markerThreeText.text = NSLocalizedString("legend_type_three", comment: "legend type three")
         self.legendView.addSubview(markerThreeView)
         self.legendView.addSubview(markerThreeText)
         

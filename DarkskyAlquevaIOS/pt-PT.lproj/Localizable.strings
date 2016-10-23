@@ -12,3 +12,58 @@ slide_map = "Mapa";
 slide_route = "Rota";
 slide_informations = "Informações";
 slide_about = "Sobre";
+
+//Map
+//legend
+legend_title = "Pontos de Interesse";
+legend_type_one = "Um tipo";
+legend_type_two = "Dois tipos";
+legend_type_three = "Três tipos";
+//popover
+popover_astrophoto = "Astrofoto";
+popover_landscape = "Paisagem";
+popover_observation = "Observação";
+popover_normal = "Mapa Normal";
+popover_hybrid = "Mapa Híbrido";
+popover_satellite = "Mapa Satélite";
+popover_terrain = "Mapa Terreno";
+
+//Interest Point info
+point_brightness = "Luminosidade";
+point_temperature = "Temperatura";
+point_astrophoto = "Astrofoto";
+point_landscape = "Paisagem";
+point_observation = "Observação";
+
+//Route
+route_accomodation = "Alojamento";
+route_gastronomy = "Gastronomia";
+route_activities = "Atividades";
+route_news_events = "Notícias e Eventos";
+route_accomodation_link = "http://www.darkskyalqueva.com/en/alojamento/";
+route_gastronomy_link = "http://www.darkskyalqueva.com/en/atividades/";
+route_activities_link = "http://www.darkskyalqueva.com/en/gastronomia/";
+route_news_events_link = "http://www.darkskyalqueva.com/en/noticias/";
+
+//Informations
+informations_phenomena = "Fenómenos";
+informations_constellations = "Constelações";
+informations_clothing = "Vestuário";
+informations_moon = "Fases da Lua";
+
+//Moon
+moon_title = "Hoje está:";
+moon_title_second_one = "No dia";
+moon_title_second_two = "a lua estará:";
+moon_waxing_crescent = "Lua crescente";
+moon_first_quarter = "Quarto crescente";
+moon_waxing_gibbous = "Lua crescente convexa";
+moon_full = "Lua cheia";
+moon_waning_gibbous = "Lua minguante convexa";
+moon_third_quarter = "Quarto minguante";
+moon_waning_crescent = "Lua minguante";
+moon_new = "Lua nova";
+moon_button_date = "Procurar Fase da Lua";
+moon_date_title = "Escolha um dia";
+moon_date_cancel = "Cancelar";
+moon_date_done = "Feito";
