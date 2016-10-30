@@ -112,3 +112,18 @@
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "zJa-JJ-RiJ"; */
 "zJa-JJ-RiJ.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "oKl-YB-jLj"; */
+"oKl-YB-jLj.text" = "Desenvolvedor:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "KOf-Et-ecM"; */
+"KOf-Et-ecM.text" = "Tutor:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ueq-WW-pcM"; */
+"ueq-WW-pcM.text" = "Com o apoio do:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gsc-48-kZm"; */
+"gsc-48-kZm.text" = "Visite o site:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "cYq-iI-V37"; */
+"cYq-iI-V37.text" = "Ícones de:";

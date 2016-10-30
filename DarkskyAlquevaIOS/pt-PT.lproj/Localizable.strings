@@ -67,3 +67,7 @@ moon_button_date = "Procurar Fase da Lua";
 moon_date_title = "Escolha um dia";
 moon_date_cancel = "Cancelar";
 moon_date_done = "Feito";
+
+//About
+about_website_link = "http://www.darkskyalqueva.com/";
+

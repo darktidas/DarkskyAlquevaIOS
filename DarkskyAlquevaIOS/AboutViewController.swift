@@ -14,6 +14,9 @@ class AboutViewController: UIViewController, UIGestureRecognizerDelegate{
     @IBOutlet weak var darkskyLink: UILabel!
     @IBOutlet weak var iconsLink: UILabel!
     
+    @IBOutlet weak var developerLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,7 +50,7 @@ class AboutViewController: UIViewController, UIGestureRecognizerDelegate{
 
     func darkskyTapLink() {
         print("url clicked")
-        let url = "http://www.darkskyalqueva.com"
+        let url = NSLocalizedString("about_website_link", comment: "website url")
         UIApplication.shared.open(NSURL(string: url) as! URL)
     }
     

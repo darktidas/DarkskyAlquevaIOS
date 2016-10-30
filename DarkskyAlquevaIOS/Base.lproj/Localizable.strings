@@ -68,3 +68,6 @@ moon_date_title = "Choose a Day";
 moon_date_cancel = "Cancel";
 moon_date_done = "Done";
 
+//About
+about_website_link = "http://www.darkskyalqueva.com/en/";
+
