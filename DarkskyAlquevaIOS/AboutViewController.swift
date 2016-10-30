@@ -8,9 +8,12 @@
 
 import UIKit
 
-class AboutViewController: UIViewController {
+class AboutViewController: UIViewController, UIGestureRecognizerDelegate{
 
     @IBOutlet weak var openSideMenu: UIBarButtonItem!
+    @IBOutlet weak var darkskyLink: UILabel!
+    @IBOutlet weak var iconsLink: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,9 +25,38 @@ class AboutViewController: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        loadLabelLinks()
+
         // Do any additional setup after loading the view.
     }
+    
+    func loadLabelLinks(){
+        darkskyLink.isUserInteractionEnabled = true // Remember to do this
+        let darkskyTap = UITapGestureRecognizer(target: self, action: #selector(AboutViewController.darkskyTapLink))
+        darkskyTap.numberOfTapsRequired = 1
+        darkskyLink.addGestureRecognizer(darkskyTap)
+        darkskyTap.delegate = self // Remember to extend your class with UIGestureRecognizerDelegate
+        
+        
+        iconsLink.isUserInteractionEnabled = true // Remember to do this
+        let iconTap = UITapGestureRecognizer(target: self, action: #selector(AboutViewController.iconTapLink))
+        iconTap.numberOfTapsRequired = 1
+        iconsLink.addGestureRecognizer(iconTap)
+        iconTap.delegate = self // Remember to extend your class with UIGestureRecognizerDelegate
+    }
 
+    func darkskyTapLink() {
+        print("url clicked")
+        let url = "http://www.darkskyalqueva.com"
+        UIApplication.shared.open(NSURL(string: url) as! URL)
+    }
+    
+    func iconTapLink() {
+        print("url clicked")
+        let url = "https://icons8.com"
+        UIApplication.shared.open(NSURL(string: url) as! URL)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

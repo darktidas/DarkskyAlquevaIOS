@@ -133,7 +133,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         for i in 0...interestPoints.count{
             if(interestPoints[i] != nil){
                 if(self.stateControlData.mapFilterStatus["astrophoto"]! && (interestPoints[i]?.typeMap["astrophoto"])!){
-                    var marker = GMSMarker()
+                    let marker = GMSMarker()
                     marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
                     marker.title = interestPoints[i]?.name
                     marker.snippet = interestPoints[i]?.shortDescription
