@@ -19,6 +19,8 @@ class AboutViewController: UIViewController, UIGestureRecognizerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = NSLocalizedString("slide_about", comment: "about")
 
         openSideMenu.image = UIImage(named: "slide_menu")
         if self.revealViewController() != nil{

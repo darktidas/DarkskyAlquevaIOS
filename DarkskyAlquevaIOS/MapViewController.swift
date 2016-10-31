@@ -26,6 +26,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = NSLocalizedString("slide_map", comment: "map")
 
         openSideMenu.image = UIImage(named: "slide_menu")
         if self.revealViewController() != nil{

@@ -30,6 +30,9 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Title
+        self.title = NSLocalizedString("slide_home", comment: "home")      
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.stateControlData = appDelegate.stateControlData
         

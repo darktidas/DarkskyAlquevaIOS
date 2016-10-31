@@ -17,6 +17,8 @@ class PhenomenaTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = NSLocalizedString("informations_phenomena", comment: "phenomena")
+        
         self.phenomenasData = self.stateControlData.xml.phenomenas
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

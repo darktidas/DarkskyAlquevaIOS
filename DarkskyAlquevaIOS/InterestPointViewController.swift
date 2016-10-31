@@ -32,7 +32,7 @@ class InterestPointViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Passed: \(interestPoint.name)")
+        self.title = interestPoint.name
 
         loadPointInfo()
         

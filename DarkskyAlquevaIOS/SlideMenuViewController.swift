@@ -8,6 +8,14 @@
 
 import UIKit
 
+//bug map movement
+//bug popover
+//check internet conection
+//images size 
+//icon launch sizes
+//moon calculations rights
+//slide de imagens parar
+
 class SlideMenuViewController: UITableViewController{
     
     var data: [String]!
@@ -85,6 +93,10 @@ class SlideMenuViewController: UITableViewController{
             cell.textLabel?.text = data[indexPath.row-1]
             cell.textLabel?.textColor = UIColor.white
             print("row \(indexPath) = \(cell.textLabel?.text)")
+            
+            let bgColorView = UIView()
+            bgColorView.backgroundColor = UIColor.darkGray
+            cell.selectedBackgroundView = bgColorView
             
             return cell
         }

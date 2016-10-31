@@ -17,6 +17,8 @@ class ConstellationsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = NSLocalizedString("informations_constellations", comment: "constellations")
+        
         self.constellationsData = self.stateControlData.xml.constellations
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

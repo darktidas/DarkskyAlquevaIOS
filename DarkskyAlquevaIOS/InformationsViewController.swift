@@ -20,6 +20,8 @@ class InformationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = NSLocalizedString("slide_informations", comment: "informations")
 
         openSideMenu.image = UIImage(named: "slide_menu")
         if self.revealViewController() != nil{

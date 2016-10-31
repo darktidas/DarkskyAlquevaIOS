@@ -40,6 +40,8 @@ class RouteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = NSLocalizedString("slide_route", comment: "route")
+        
         openSideMenu.image = UIImage(named: "slide_menu")
         if self.revealViewController() != nil{
             

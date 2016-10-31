@@ -17,6 +17,8 @@ class MoonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = NSLocalizedString("informations_moon", comment: "moon")
 
         loadContent()
         loadTodayPhase()
