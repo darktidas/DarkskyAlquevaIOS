@@ -7,6 +7,17 @@
 //
 
 import UIKit
+import Foundation
+
+extension String {
+    func sliceFrom(start: String, to: String) -> String? {
+        return (range(of: start)?.upperBound).flatMap { sInd in
+            (range(of: to, range: sInd..<endIndex)?.lowerBound).map { eInd in
+                substring(with: sInd..<eInd)
+            }
+        }
+    }
+}
 
 class ViewController: UIViewController{
     
@@ -37,12 +48,26 @@ class ViewController: UIViewController{
         loadHomeContent()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        //loadHomeContent()
+    }
+    
     func loadHomeContent(){
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //let xml = stateControlData.xml
-        
-        //abstract.text = xml?.general
-        //abstract.sizeToFit()
+        if let url = URL(string: NSLocalizedString("dropbox_xml_link", comment: "dropbox link xml")) {
+            do {
+                let contents = try String(contentsOf: url)
+                print(contents)
+                let generalString = contents.sliceFrom(start: "input-type=\"textarea\">", to: "</general>")
+                if generalString != nil{
+                    abstract.text = generalString!
+                    abstract.sizeToFit()
+                }
+            } catch {
+                // contents could not be loaded
+            }
+        } else {
+            // the URL was bad!
+        }
     }
     
     override func didReceiveMemoryWarning() {

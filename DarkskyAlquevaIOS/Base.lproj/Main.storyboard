@@ -21,7 +21,6 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mcc-lM-W1X">
                                 <subviews>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AAS-lX-GWZ"/>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapa_rota" translatesAutoresizingMaskIntoConstraints="NO" id="SsL-MQ-uVg">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="399" id="lIV-D4-t3L"/>
@@ -35,16 +34,13 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="cbs-yP-N6w" secondAttribute="bottom" constant="30" id="0Rq-eM-RE6"/>
-                                    <constraint firstItem="AAS-lX-GWZ" firstAttribute="top" secondItem="Mcc-lM-W1X" secondAttribute="top" constant="16" id="5Z7-a7-RSu"/>
-                                    <constraint firstItem="AAS-lX-GWZ" firstAttribute="leading" secondItem="Mcc-lM-W1X" secondAttribute="leading" constant="20" id="86Z-0S-BDj"/>
-                                    <constraint firstItem="AAS-lX-GWZ" firstAttribute="centerX" secondItem="SsL-MQ-uVg" secondAttribute="centerX" id="8UR-Pa-Y6K"/>
-                                    <constraint firstItem="AAS-lX-GWZ" firstAttribute="leading" secondItem="cbs-yP-N6w" secondAttribute="leading" id="HDu-Tg-r9h"/>
-                                    <constraint firstItem="SsL-MQ-uVg" firstAttribute="top" secondItem="AAS-lX-GWZ" secondAttribute="bottom" constant="34" id="HsM-zp-WGu"/>
-                                    <constraint firstItem="AAS-lX-GWZ" firstAttribute="centerX" secondItem="Mcc-lM-W1X" secondAttribute="centerX" id="Qnu-R2-tfh"/>
-                                    <constraint firstItem="AAS-lX-GWZ" firstAttribute="trailing" secondItem="cbs-yP-N6w" secondAttribute="trailing" id="TmP-fv-LhO"/>
+                                    <constraint firstItem="SsL-MQ-uVg" firstAttribute="top" secondItem="Mcc-lM-W1X" secondAttribute="top" constant="20" id="8ex-Yy-vQk"/>
+                                    <constraint firstItem="cbs-yP-N6w" firstAttribute="centerX" secondItem="Mcc-lM-W1X" secondAttribute="centerX" id="VH5-ta-Jde"/>
+                                    <constraint firstItem="SsL-MQ-uVg" firstAttribute="centerX" secondItem="Mcc-lM-W1X" secondAttribute="centerX" id="WaO-8C-PVS"/>
                                     <constraint firstItem="cbs-yP-N6w" firstAttribute="top" secondItem="SsL-MQ-uVg" secondAttribute="bottom" constant="34" id="eGg-oM-aMU"/>
+                                    <constraint firstItem="cbs-yP-N6w" firstAttribute="leading" secondItem="Mcc-lM-W1X" secondAttribute="leading" constant="20" id="qg1-fY-M6G"/>
                                     <constraint firstItem="SsL-MQ-uVg" firstAttribute="leading" secondItem="Mcc-lM-W1X" secondAttribute="leading" constant="1" id="u6v-Sf-4Zv"/>
-                                    <constraint firstAttribute="trailing" secondItem="AAS-lX-GWZ" secondAttribute="trailing" constant="20" id="wdN-Gx-WZI"/>
+                                    <constraint firstAttribute="trailing" secondItem="cbs-yP-N6w" secondAttribute="trailing" constant="20" id="v5y-ar-L8s"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -69,7 +65,6 @@
                     <connections>
                         <outlet property="abstract" destination="cbs-yP-N6w" id="ZcC-An-Zmf"/>
                         <outlet property="openSideMenu" destination="W0w-c0-DiF" id="8B8-lI-1ZI"/>
-                        <outlet property="progressView" destination="AAS-lX-GWZ" id="0bX-Zn-IYW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -83,7 +78,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="iWj-Fz-AqZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="headerCell" id="wUk-zf-v2H">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
@@ -107,6 +102,7 @@
                                     <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.12941176469999999" green="0.1333333333" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="ehX-aA-2F6" kind="custom" identifier="toHome" customClass="SWRevealViewControllerSeguePushController" id="Q9S-Ao-nF1"/>
                                 </connections>
@@ -118,6 +114,7 @@
                                     <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="QOE-2h-VCn" kind="custom" identifier="toMap" customClass="SWRevealViewControllerSeguePushController" id="Nlh-Us-0Y2"/>
                                 </connections>
@@ -129,6 +126,7 @@
                                     <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.12941176469999999" green="0.1333333333" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="09T-w3-cjY" kind="custom" identifier="toRoute" customClass="SWRevealViewControllerSeguePushController" id="EIa-di-xMJ"/>
                                 </connections>
@@ -140,6 +138,7 @@
                                     <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="6h1-Zt-Aco" kind="custom" identifier="toInformation" customClass="SWRevealViewControllerSeguePushController" id="sur-a4-I5i"/>
                                 </connections>
@@ -151,6 +150,7 @@
                                     <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.12941176469999999" green="0.1333333333" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="qZu-bk-Hd1" kind="custom" identifier="toAbout" customClass="SWRevealViewControllerSeguePushController" id="vmN-yY-9D1"/>
                                 </connections>
@@ -912,9 +912,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ehX-aA-2F6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kag-2o-jYW">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" misplaced="YES" id="kag-2o-jYW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.12941176469999999" green="0.1333333333" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -923,7 +925,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggL-3o-ICW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385" y="-806"/>
+            <point key="canvasLocation" x="674" y="-877"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3hH-vD-5jS">
@@ -951,6 +953,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jip-y9-QhY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.0" green="0.0021507026020000002" blue="0.43529414729999999" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1204,6 +1208,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1jW-Pb-7DX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1243,6 +1249,6 @@
         <image name="slide_menu" width="33" height="33"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Q9S-Ao-nF1"/>
+        <segue reference="ms5-01-GkU"/>
     </inferredMetricsTieBreakers>
 </document>

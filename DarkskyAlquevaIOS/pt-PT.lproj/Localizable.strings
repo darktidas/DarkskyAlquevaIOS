@@ -6,6 +6,9 @@
   Copyright © 2016 tiago . All rights reserved.
 */
 
+//Link dropbox
+dropbox_xml_link = "https://dl.dropboxusercontent.com/s/qfh0fw7ajdo3hyg/darkskyalqueva-pt.xml?dl=1";
+
 //Slide Menu
 slide_home = "Início";
 slide_map = "Mapa";
@@ -46,7 +49,7 @@ route_activities_link = "http://www.darkskyalqueva.com/en/gastronomia/";
 route_news_events_link = "http://www.darkskyalqueva.com/en/noticias/";
 
 //Informations
-informations_phenomena = "Fenómenos";
+informations_phenomena = "Fenômenos";
 informations_constellations = "Constelações";
 informations_clothing = "Vestuário";
 informations_moon = "Fases da Lua";

@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     let versionFilename = "/dataVersion.txt"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
+        
+        
         // Override point for customization after application launch.
         //se nao houver net
         appLanguage = getAppLanguage()

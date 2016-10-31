@@ -83,6 +83,7 @@ class SlideMenuViewController: UITableViewController{
             let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier[indexPath.row-1], for: indexPath)
             
             cell.textLabel?.text = data[indexPath.row-1]
+            cell.textLabel?.textColor = UIColor.white
             print("row \(indexPath) = \(cell.textLabel?.text)")
             
             return cell

@@ -6,6 +6,9 @@
   Copyright © 2016 tiago . All rights reserved.
 */
 
+//Link dropbox
+dropbox_xml_link = "https://dl.dropboxusercontent.com/s/if16iq36ak5jnwu/darkskyalqueva-es.xml?dl=1";
+
 //Slide Menu
 slide_home = "Principio";
 slide_map = "Mapa";
