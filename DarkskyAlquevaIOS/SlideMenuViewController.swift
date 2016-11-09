@@ -8,13 +8,22 @@
 
 import UIKit
 
-//bug map movement
+//implementar a logica da legenda de acordo com os tipos
+//mudar a lupa para o i - done
+//popover texto à esquerda
+//imagem manter aspect ratio e altura
+//loading de imagem
+//ver ajuda em espanhol linguas - done
+//adicionar referenci
+
+//bug map movement - done
 //bug popover
 //check internet conection
 //images size 
 //icon launch sizes
 //moon calculations rights
 //slide de imagens parar
+//moon calculation
 
 class SlideMenuViewController: UITableViewController{
     
@@ -22,6 +31,7 @@ class SlideMenuViewController: UITableViewController{
     var cellIdentifier = ["Home", "Map", "Route", "Informations", "About"]
     var stateControlData: StateControlData!
     var headerImage: UIImage!
+    var testView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +46,69 @@ class SlideMenuViewController: UITableViewController{
         
         self.tableView.separatorStyle = .none
         
+        
         // Uncomment the following line to preserve selection between presentations
         //self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()        
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let screenSize: CGRect = UIScreen.main.bounds
+        var largerSide: CGFloat!
+        var smallerSide: CGFloat!
+        
+        if screenSize.width > screenSize.height{
+            largerSide = screenSize.width
+            smallerSide = screenSize.height
+        }else{
+            largerSide = screenSize.height
+            smallerSide = screenSize.width
+        }
+        var testFrame : CGRect!
+        if UIDevice.current.orientation.isLandscape {
+            testFrame = CGRect(x: 0,y: 44, width: largerSide,height: smallerSide-44)
+        }else{
+            testFrame = CGRect(x: 0,y: 64, width: smallerSide,height: largerSide-64)
+        }
+        
+        testView = UIView(frame: testFrame)
+        //testView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
+        //testView.alpha=0.5
+        self.revealViewController().frontViewController.view.addSubview(testView)
+        testView.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        testView.removeFromSuperview()
+        self.revealViewController().frontViewController.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+    }
+    
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        let screenSize: CGRect = UIScreen.main.bounds
+        var largerSide: CGFloat!
+        var smallerSide: CGFloat!
+        
+        if screenSize.width > screenSize.height{
+            largerSide = screenSize.width
+            smallerSide = screenSize.height
+        }else{
+            largerSide = screenSize.height
+            smallerSide = screenSize.width
+        }
+        if (toInterfaceOrientation.isLandscape) {
+            print(UIDevice.current.orientation.isLandscape)
+            testView.frame = CGRect(x: 0,y: 44, width: largerSide,height: smallerSide)
+        }
+        else {
+            print("Portrait")
+            print(UIDevice.current.orientation.isPortrait)
+            testView.frame = CGRect(x: 0,y: 64, width: smallerSide,height: largerSide)
+        }
+    }
+
     
     func loadSlideMenuLabels(){
         

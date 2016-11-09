@@ -23,6 +23,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     var stateControlData: StateControlData!
     
     var legendView: UIView!
+    var barButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         self.title = NSLocalizedString("slide_map", comment: "map")
 
         openSideMenu.image = UIImage(named: "slide_menu")
+        openSideMenu.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
+        openSideMenu.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .disabled)
+        navigationItem.setLeftBarButton(openSideMenu, animated: false)
+        
         if self.revealViewController() != nil{
             
             openSideMenu.target = self.revealViewController()
@@ -45,10 +50,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        print("popover desapareceu")
+        openSideMenu.isEnabled = true
     }
     
     override func loadView() {
@@ -223,6 +233,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
             let svc = segue.destination
             if let pop = svc.popoverPresentationController{
                 pop.delegate = self
+                openSideMenu.isEnabled = false
+                //openSideMenu.tintColor = UIColor.white
             }
             let inst = segue.destination as! PopoverViewController
             inst.stateControlData = self.stateControlData
@@ -231,6 +243,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
             //for delegate
             if let destinationViewController = segue.destination as? PopoverViewController {
                 destinationViewController.delegate = self
+                
             }
         }
     }
