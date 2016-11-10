@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import SystemConfiguration
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegate{
@@ -25,20 +26,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        stateControlDataInitialization()
+        
+        checkInternetConnection()
+        
         UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
         
-        
-        // Override point for customization after application launch.
-        //se nao houver net
         appLanguage = getAppLanguage()
         print("appLanguage = \(appLanguage!)")
         //First time?
-        if checkFirstTime(){
-            downloadFile(file: getLanguageUrlFileData(language: appLanguage!), identifier: "xmlDownload")
-            print("First time download")
+        
+        
+        if stateControlData.internetConnection! {
+            if checkFirstTime(){
+                downloadFile(file: getLanguageUrlFileData(language: appLanguage!), identifier: "xmlDownload")
+                print("First time download")
+            }else{
+                downloadVersion(version: appLanguage!)
+                print("Not first time download")
+            }
         }else{
-            downloadVersion(version: appLanguage!)
-            print("Not first time download")
+            if checkFirstTime(){
+                
+            } else {
+                loadXml()
+            }
         }
         
         //let xmlUrlEn = URL(string: "https://dl.dropboxusercontent.com/s/8c9y36n1sjh95b8/darkskyalqueva-en.xml?dl=1")!
@@ -50,6 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         return true
     }
     
+    func checkInternetConnection(){
+        //se nao houver net
+        stateControlData.setInternetConnection(connection: connectedToNetwork())
+    }
+    
     func checkFirstTime() -> Bool{
         let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         let documentDirectoryPath:String = path[0]
@@ -57,8 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         let destinationURLForFile = URL(fileURLWithPath: documentDirectoryPath + self.xmlDataFilename)
         
         if fileManager.fileExists(atPath: destinationURLForFile.path){
+            stateControlData.setFirstTime(first: false)
             return false
         }else{
+            stateControlData.setFirstTime(first: true)
             return true
         }
     }
@@ -77,7 +96,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         mapconfiguration["satellite"] = false
         mapconfiguration["terrain"] = false
         
-        self.stateControlData = StateControlData(xml: self.xml, mapFilterStatus: mapFilterStatus, mapConfiguration: mapconfiguration)
+        self.stateControlData = StateControlData(mapFilterStatus: mapFilterStatus, mapConfiguration: mapconfiguration)
+        
+        stateControlData.firstTime = false
     }
     
     func downloadVersion(version: String){
@@ -212,7 +233,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
                         
                         if version == xmlDate{
                             loadXml()
-                            stateControlDataInitialization()
+                            //self.stateControlData.setXml(xml: self.xml)
                             print("Version is equal to xml version")
                         }else{
                             try fileManager.removeItem(at: URL(fileURLWithPath: existingXmlPath))
@@ -248,7 +269,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
             guard let data = try? Data(contentsOf: URL(fileURLWithPath: xmlPath))
                 else{return}
             //print("path = " + xmlPath)
-            xml = XmlReader(data: data)
+            self.xml = XmlReader(data: data)
+            self.stateControlData.setXml(xml: self.xml)
         }else{
             NSLog("Failed to find data.xml")
         }
@@ -303,30 +325,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
                 versionCompareDownload()
             }else if session.configuration.identifier == "xmlDownload"{
                 loadXml()
-                stateControlDataInitialization()
             }
         }
     }
 
-    /*
-    // 2
-    func urlSession(_ session: URLSession,
-                    downloadTask: URLSessionDownloadTask,
-                    didWriteData bytesWritten: Int64,
-                    totalBytesWritten: Int64,
-                    totalBytesExpectedToWrite: Int64){
-        progressView.setProgress(Float(totalBytesWritten)/Float(totalBytesExpectedToWrite), animated: true)
-    }
-    
-    func showFileWithPath(_ path: String){
-        let isFileFound:Bool? = FileManager.default.fileExists(atPath: path)
-        if isFileFound == true{
-            let viewer = UIDocumentInteractionController(url: URL(fileURLWithPath: path))
-            viewer.delegate = self
-            viewer.presentPreview(animated: true)
+    func connectedToNetwork() -> Bool {
+        
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+            }
+        }) else {
+            return false
         }
-    }*/
-
+        
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return false
+        }
+        
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        
+        return (isReachable && !needsConnection)
+    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

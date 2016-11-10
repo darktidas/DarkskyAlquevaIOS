@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SystemConfiguration
 
 class InterestPointViewController: UIViewController {
 
@@ -28,6 +29,8 @@ class InterestPointViewController: UIViewController {
     var imagesViews = [UIImageView]()
     var hScrollWidth: CGFloat!
     var hScrollHeight: CGFloat!
+    
+    var existInternetConnection: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,32 +86,33 @@ class InterestPointViewController: UIViewController {
         //if let
         var validImgs = [UIImage]()
         
-        DispatchQueue.global().async {
-            DispatchQueue.main.async {
-                for img in imagesURL{
-                    let url: NSURL = NSURL(string: img)!
-                    do {
-                        let imgData = try NSData(contentsOf: url as URL, options: NSData.ReadingOptions())
-                        validImgs.append(UIImage(data: imgData as Data)!)
-                    } catch {
-                        print(error)
+        if connectedToNetwork() {
+            DispatchQueue.global().async {
+                DispatchQueue.main.async {
+                    for img in imagesURL{
+                        let url: NSURL = NSURL(string: img)!
+                        do {
+                            let imgData = try NSData(contentsOf: url as URL, options: NSData.ReadingOptions())
+                            validImgs.append(UIImage(data: imgData as Data)!)
+                        } catch {
+                            print(error)
+                        }
                     }
+                    for i in 0...validImgs.count-1{
+                        self.imagesViews.append(UIImageView(frame: CGRect(x: self.hScrollWidth*CGFloat(i)-1, y: 0, width: self.hScrollWidth, height: self.hScrollHeight)))
+                        //white line
+                        print(imagesURL[i])
+                        self.imagesViews[i].clipsToBounds = true
+                        self.imagesViews[i].image = validImgs[i]
+                        //self.imagesViews[i].contentMode = .scaleAspectFit
+                        self.horizontalScroll.addSubview(self.imagesViews[i])
+                    }
+                    
+                    print("total valid images = \(validImgs.count)")
+                    self.horizontalScroll.contentSize = CGSize(width: self.horizontalScroll.frame.width*CGFloat(validImgs.count), height: self.horizontalScroll.frame.height)
                 }
-                for i in 0...validImgs.count-1{
-                    self.imagesViews.append(UIImageView(frame: CGRect(x: self.hScrollWidth*CGFloat(i)-1, y: 0, width: self.hScrollWidth, height: self.hScrollHeight)))
-                    //white line
-                    print(imagesURL[i])
-                    self.imagesViews[i].clipsToBounds = true
-                    self.imagesViews[i].image = validImgs[i]
-                    //self.imagesViews[i].contentMode = .scaleAspectFit
-                    self.horizontalScroll.addSubview(self.imagesViews[i])
-                }
-                
-                print("total valid images = \(validImgs.count)")
-                self.horizontalScroll.contentSize = CGSize(width: self.horizontalScroll.frame.width*CGFloat(validImgs.count), height: self.horizontalScroll.frame.height)
             }
         }
-
         
         self.pointName.text = interestPoint.name
         self.shortDescription.text = interestPoint.shortDescription
@@ -222,6 +226,31 @@ class InterestPointViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func connectedToNetwork() -> Bool {
+        
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+            }
+        }) else {
+            return false
+        }
+        
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return false
+        }
+        
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        
+        return (isReachable && !needsConnection)
+    }
+
 
     /*
     // MARK: - Navigation

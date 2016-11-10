@@ -21,7 +21,6 @@ extension String {
 
 class ViewController: UIViewController{
     
-    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var openSideMenu: UIBarButtonItem!
     @IBOutlet weak var abstract: UILabel!
     
@@ -35,9 +34,10 @@ class ViewController: UIViewController{
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.stateControlData = appDelegate.stateControlData
+        //
+        //abstract.text = "internet = \(appDelegate.connectedToNetwork())"
         
         openSideMenu.image = UIImage(named: "slide_menu")
-        //openSideMenu.imageInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 30)
         
         
         if self.revealViewController() != nil{
@@ -49,27 +49,55 @@ class ViewController: UIViewController{
         }
         
         loadHomeContent()
+        
+        checkInternetConnection()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        //loadHomeContent()
+    func checkInternetConnection(){
+        
+        print("internet = \(self.stateControlData.internetConnection)")
+        print("first time = \(self.stateControlData.firstTime)")
+        
+        if !self.stateControlData.internetConnection && self.stateControlData.firstTime {
+            
+            alert(message: "First aplication launch needs internet connection.", title: "No Internet Connection")
+            
+            print("First Case")
+        }
+    }
+    
+    func alert(message: String, title: String = "") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func loadHomeContent(){
-        if let url = URL(string: NSLocalizedString("dropbox_xml_link", comment: "dropbox link xml")) {
-            do {
-                let contents = try String(contentsOf: url)
-                print(contents)
-                let generalString = contents.sliceFrom(start: "input-type=\"textarea\">", to: "</general>")
-                if generalString != nil{
-                    abstract.text = generalString!
-                    abstract.sizeToFit()
+        
+        if self.stateControlData.xml == nil{
+           
+            if let url = URL(string: NSLocalizedString("dropbox_xml_link", comment: "dropbox link xml")) {
+                do {
+                    let contents = try String(contentsOf: url)
+                    print(contents)
+                    let generalString = contents.sliceFrom(start: "input-type=\"textarea\">", to: "</general>")
+                    if generalString != nil{
+                        abstract.text = generalString!
+                        abstract.sizeToFit()
+                    }
+                } catch {
+                    // contents could not be loaded
                 }
-            } catch {
-                // contents could not be loaded
+            } else {
+                // the URL was bad!
             }
+            print("With internet")
+            
         } else {
-            // the URL was bad!
+            
+            print("Whithout internet")
+            abstract.text = self.stateControlData.xml.general
+            abstract.sizeToFit()
+            
         }
     }
     

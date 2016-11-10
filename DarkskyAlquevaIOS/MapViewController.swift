@@ -41,6 +41,25 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
             openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:)) //selector
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        checkInternetConnection()
+    }
+    
+    func checkInternetConnection(){
+        
+        if !self.stateControlData.internetConnection && !self.stateControlData.firstTime {
+            
+            print("Second Case")
+            alert(message: "Without internet connection map will not function properly and interest point images will not load.", title: "No Internet Connection")
+        }
+    }
+    
+    func alert(message: String, title: String = "") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(OKAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func filterAction(_ sender: AnyObject) {
@@ -228,6 +247,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         if (segue.identifier == "segue") {
             let svc = segue.destination as! InterestPointViewController
             svc.interestPoint = interestPointChoosen
+            svc.existInternetConnection = stateControlData.internetConnection
         }
         if (segue.identifier == "toPopover") {
             let svc = segue.destination

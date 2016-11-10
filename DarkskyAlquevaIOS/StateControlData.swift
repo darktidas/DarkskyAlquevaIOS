@@ -10,13 +10,29 @@ import Foundation
 
 class StateControlData {
     
-    let xml: XmlReader!
+    
     var mapFilterStatus: [String: Bool]
     var mapConfiguration: [String: Bool]
     
-    init(xml: XmlReader, mapFilterStatus: [String: Bool], mapConfiguration: [String: Bool]) {
-        self.xml = xml
+    var xml: XmlReader!
+    var internetConnection: Bool!
+    var firstTime: Bool!
+    
+    init(mapFilterStatus: [String: Bool], mapConfiguration: [String: Bool]) {
+        //self.xml = xml
         self.mapFilterStatus = mapFilterStatus
         self.mapConfiguration = mapConfiguration
+    }
+    
+    func setInternetConnection(connection: Bool) {
+        self.internetConnection = connection
+    }
+    
+    func setFirstTime(first: Bool) {
+        self.firstTime = first
+    }
+    
+    func setXml(xml: XmlReader) {
+        self.xml = xml
     }
 }

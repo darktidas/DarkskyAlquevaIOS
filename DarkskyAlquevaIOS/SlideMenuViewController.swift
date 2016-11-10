@@ -14,16 +14,17 @@ import UIKit
 //imagem manter aspect ratio e altura
 //loading de imagem
 //ver ajuda em espanhol linguas - done
-//adicionar referenci
 
+//load info from xml if it exists
+//bug pan gesture recognizer
 //bug map movement - done
-//bug popover
+//bug popover - done
 //check internet conection
 //images size 
 //icon launch sizes
-//moon calculations rights
+//moon calculations rights - make reference on report - done
 //slide de imagens parar
-//moon calculation
+//moon calculation - today legend
 
 class SlideMenuViewController: UITableViewController{
     
@@ -46,9 +47,8 @@ class SlideMenuViewController: UITableViewController{
         
         self.tableView.separatorStyle = .none
         
-        
         // Uncomment the following line to preserve selection between presentations
-        //self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()        
@@ -82,6 +82,10 @@ class SlideMenuViewController: UITableViewController{
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
         testView.removeFromSuperview()
         self.revealViewController().frontViewController.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
@@ -136,6 +140,14 @@ class SlideMenuViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return data.count+1
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 1 {
+            cell.setSelected(true, animated: false)
+            self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
