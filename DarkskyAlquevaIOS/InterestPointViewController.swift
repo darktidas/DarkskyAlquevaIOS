@@ -39,14 +39,14 @@ class InterestPointViewController: UIViewController {
 
         loadPointInfo()
         
+        horizontalScroll.isPagingEnabled = true
+        
+        //scrollViewDidScroll(scrollView: horizontalScroll)
         /*
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(InterestPointViewController.test))
         self.navigationItem.rightBarButtonItem = shareButton*/
     }
     
-    func test(){
-        
-    }
     @IBAction func shareButtonClick(_ sender: AnyObject) {
         
         let title: NSString = self.interestPoint.name as NSString
@@ -99,12 +99,12 @@ class InterestPointViewController: UIViewController {
                         }
                     }
                     for i in 0...validImgs.count-1{
-                        self.imagesViews.append(UIImageView(frame: CGRect(x: self.hScrollWidth*CGFloat(i)-1, y: 0, width: self.hScrollWidth, height: self.hScrollHeight)))
+                        self.imagesViews.append(UIImageView(frame: CGRect(x: self.hScrollWidth*CGFloat(i), y: 0, width: self.hScrollWidth, height: self.hScrollHeight)))
                         //white line
                         print(imagesURL[i])
                         self.imagesViews[i].clipsToBounds = true
                         self.imagesViews[i].image = validImgs[i]
-                        //self.imagesViews[i].contentMode = .scaleAspectFit
+                        self.imagesViews[i].contentMode = .scaleAspectFit
                         self.horizontalScroll.addSubview(self.imagesViews[i])
                     }
                     
@@ -209,7 +209,13 @@ class InterestPointViewController: UIViewController {
             self.imagesViews[i].frame = CGRect(x: largerSide*CGFloat(i)-1, y: 0, width: largerSide, height: self.hScrollHeight)
             }
             self.horizontalScroll.contentSize = CGSize(width: largerSide*CGFloat(self.imagesViews.count), height: self.horizontalScroll.frame.height)
-            self.horizontalScroll.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            
+            let positionX = self.horizontalScroll.contentOffset.x
+            print(positionX)
+            let newPosX = (positionX*largerSide)/smallerSide
+            print(newPosX)
+            
+            self.horizontalScroll.setContentOffset(CGPoint(x: newPosX, y: 0), animated: true)
         }
         else {
             print("Portrait")
@@ -217,7 +223,13 @@ class InterestPointViewController: UIViewController {
                 self.imagesViews[i].frame = CGRect(x: smallerSide*CGFloat(i)-1, y: 0, width: smallerSide, height: self.hScrollHeight)
             }
             self.horizontalScroll.contentSize = CGSize(width: smallerSide*CGFloat(self.imagesViews.count), height: self.horizontalScroll.frame.height)
-            self.horizontalScroll.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            let positionX = self.horizontalScroll.contentOffset.x
+            //bugg
+            print(positionX)
+            print(self.horizontalScroll.contentOffset.y)
+            let newPosX = (positionX*smallerSide)/largerSide
+            print(newPosX)
+            self.horizontalScroll.setContentOffset(CGPoint(x: newPosX, y: 0), animated: true)
         }
     }
     

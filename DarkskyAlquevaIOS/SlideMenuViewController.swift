@@ -9,22 +9,23 @@
 import UIKit
 
 //implementar a logica da legenda de acordo com os tipos
-//mudar a lupa para o i - done
 //popover texto à esquerda
-//imagem manter aspect ratio e altura
 //loading de imagem
-//ver ajuda em espanhol linguas - done
+//moon calculation - today legend
+//icon launch sizes
+//bug no rotate de imagens
+//bug slide menu
 
-//load info from xml if it exists
-//bug pan gesture recognizer
+//imagem manter aspect ratio e altura - done
+//mudar a lupa para o i - done
+//ver ajuda em espanhol linguas - done
+//load info from xml if it exists - done
+//bug pan gesture recognizer - done
 //bug map movement - done
 //bug popover - done
-//check internet conection
-//images size 
-//icon launch sizes
+//check internet conection - done
 //moon calculations rights - make reference on report - done
-//slide de imagens parar
-//moon calculation - today legend
+
 
 class SlideMenuViewController: UITableViewController{
     
