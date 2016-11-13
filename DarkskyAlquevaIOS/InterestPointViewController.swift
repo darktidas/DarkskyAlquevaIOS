@@ -41,10 +41,87 @@ class InterestPointViewController: UIViewController {
         
         horizontalScroll.isPagingEnabled = true
         
+        showLoading()
+        
         //scrollViewDidScroll(scrollView: horizontalScroll)
         /*
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(InterestPointViewController.test))
         self.navigationItem.rightBarButtonItem = shareButton*/
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.revealViewController().panGestureRecognizer().isEnabled = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.revealViewController().panGestureRecognizer().isEnabled = true
+    }
+    
+    var loadingView = UIView()
+    var container = UIView()
+    var activityIndicator = UIActivityIndicatorView()
+    
+    func showLoading() {
+        
+        let win:UIWindow = UIApplication.shared.delegate!.window!!
+        let screenSize: CGRect = UIScreen.main.bounds
+        
+        print(screenSize.width/4)
+        print(screenSize.height)
+        print("Navigationheight = \(self.navigationController?.navigationBar.frame.height)")
+        
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        
+        print("Scroll height = \(self.horizontalScroll.frame.height)")
+        
+        if screenSize.width > screenSize.height{
+            self.loadingView = UIView(frame: CGRect(x: screenSize.width/4, y: self.horizontalScroll.frame.height/2 - 63, width: 0, height: 0))
+        }else{
+            self.loadingView = UIView(frame: CGRect(x: screenSize.width/4, y: ((self.horizontalScroll.frame.height/2) + ((self.navigationController?.navigationBar.frame.height)! + statusBarHeight))/2, width: 0, height: 0))
+        }
+ 
+        //(200/2+44+20)/2)
+        //(self.horizontalScroll.frame.height/2) + ((self.navigationController?.navigationBar.frame.height)! + statusbat)/2
+        //self.loadingView = UIView(frame: self.horizontalScroll.frame)
+        self.loadingView.tag = 1
+        self.loadingView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0)
+        
+        win.addSubview(self.loadingView)
+        
+        container = UIView(frame: CGRect(x: 0, y: 0, width: win.frame.width/3, height: win.frame.width/3))
+        container.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.6)
+        container.layer.cornerRadius = 10.0
+        container.layer.borderColor = UIColor.gray.cgColor
+        container.layer.borderWidth = 0.5
+        container.clipsToBounds = true
+        container.center = self.loadingView.center
+        
+        
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: win.frame.width/5, height: win.frame.width/5)
+        activityIndicator.activityIndicatorViewStyle = .whiteLarge
+        activityIndicator.center = self.loadingView.center
+        
+        
+        self.loadingView.addSubview(container)
+        self.loadingView.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        
+    }
+    
+    func hideLoading(){
+        UIView.animate(withDuration: 0.0, delay: 1.0, options: .curveEaseOut, animations: {
+            self.container.alpha = 0.0
+            self.loadingView.alpha = 0.0
+            self.activityIndicator.stopAnimating()
+        }, completion: { finished in
+            self.activityIndicator.removeFromSuperview()
+            self.container.removeFromSuperview()
+            self.loadingView.removeFromSuperview()
+            let win:UIWindow = UIApplication.shared.delegate!.window!!
+            let removeView  = win.viewWithTag(1)
+            removeView?.removeFromSuperview()
+        })
     }
     
     @IBAction func shareButtonClick(_ sender: AnyObject) {
@@ -106,6 +183,7 @@ class InterestPointViewController: UIViewController {
                         self.imagesViews[i].image = validImgs[i]
                         self.imagesViews[i].contentMode = .scaleAspectFit
                         self.horizontalScroll.addSubview(self.imagesViews[i])
+                        self.hideLoading()
                     }
                     
                     print("total valid images = \(validImgs.count)")

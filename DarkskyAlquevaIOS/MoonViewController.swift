@@ -25,6 +25,14 @@ class MoonViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.revealViewController().panGestureRecognizer().isEnabled = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.revealViewController().panGestureRecognizer().isEnabled = true
+    }
+    
     func loadContent(){
         
         let screenSize: CGRect = UIScreen.main.bounds

@@ -20,6 +20,7 @@ class PhenomenaTableViewController: UITableViewController {
         self.title = NSLocalizedString("informations_phenomena", comment: "phenomena")
         
         self.phenomenasData = self.stateControlData.xml.phenomenas
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -27,6 +28,14 @@ class PhenomenaTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         tableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.revealViewController().panGestureRecognizer().isEnabled = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.revealViewController().panGestureRecognizer().isEnabled = true
     }
 
     override func didReceiveMemoryWarning() {

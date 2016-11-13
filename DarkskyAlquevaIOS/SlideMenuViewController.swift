@@ -14,8 +14,10 @@ import UIKit
 //moon calculation - today legend
 //icon launch sizes
 //bug no rotate de imagens
-//bug slide menu
+//String dos alerts
+//slide menu header cell user interection 
 
+//bug slide menu - done
 //imagem manter aspect ratio e altura - done
 //mudar a lupa para o i - done
 //ver ajuda em espanhol linguas - done

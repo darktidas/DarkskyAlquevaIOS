@@ -28,6 +28,14 @@ class ClothingTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.revealViewController().panGestureRecognizer().isEnabled = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.revealViewController().panGestureRecognizer().isEnabled = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
