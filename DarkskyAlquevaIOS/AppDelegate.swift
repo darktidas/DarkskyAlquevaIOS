@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        UIApplication.shared.setStatusBarHidden(true, with: .none)
+        UIApplication.shared.setStatusBarHidden(false, with: .none)
+        
         stateControlDataInitialization()
         
         checkInternetConnection()

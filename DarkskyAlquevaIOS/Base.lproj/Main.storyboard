@@ -885,9 +885,16 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsB-rM-SaJ">
+                                        <rect key="frame" x="166" y="90" width="42" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="gsd-4l-OQA" firstAttribute="top" secondItem="nEW-oq-Zye" secondAttribute="bottom" constant="14" id="023-0y-8nO"/>
+                                    <constraint firstAttribute="trailing" secondItem="rsB-rM-SaJ" secondAttribute="trailing" constant="167" id="14X-EY-RaB"/>
                                     <constraint firstItem="UH8-PC-wYf" firstAttribute="centerX" secondItem="Mel-Hz-uHm" secondAttribute="centerX" id="1Yo-DH-yTN"/>
                                     <constraint firstItem="94O-2v-QUn" firstAttribute="leading" secondItem="IVB-PD-yO2" secondAttribute="trailing" constant="20" id="1ng-Tf-G8k"/>
                                     <constraint firstItem="8M3-eq-R9f" firstAttribute="top" secondItem="Mel-Hz-uHm" secondAttribute="bottom" constant="14" id="25u-AU-XhG"/>
@@ -897,6 +904,7 @@
                                     <constraint firstItem="UH8-PC-wYf" firstAttribute="centerX" secondItem="7Ko-qs-5Ny" secondAttribute="centerX" id="97o-FT-dtI"/>
                                     <constraint firstItem="8M3-eq-R9f" firstAttribute="leading" secondItem="wpO-WJ-08Y" secondAttribute="leading" id="CG1-Qa-dri"/>
                                     <constraint firstItem="mNJ-WK-W35" firstAttribute="leading" secondItem="nEW-oq-Zye" secondAttribute="leading" id="Daj-md-1tY"/>
+                                    <constraint firstItem="rsB-rM-SaJ" firstAttribute="top" secondItem="7Ko-qs-5Ny" secondAttribute="top" constant="90" id="DrU-fZ-jIY"/>
                                     <constraint firstAttribute="trailing" secondItem="dal-GW-esN" secondAttribute="trailing" id="EsS-4s-02O"/>
                                     <constraint firstItem="wpO-WJ-08Y" firstAttribute="top" secondItem="8M3-eq-R9f" secondAttribute="bottom" constant="8" symbolic="YES" id="FAc-Vs-NjM"/>
                                     <constraint firstItem="dal-GW-esN" firstAttribute="leading" secondItem="7Ko-qs-5Ny" secondAttribute="leading" id="FD6-ob-f5c"/>
@@ -922,6 +930,7 @@
                                     <constraint firstItem="gsd-4l-OQA" firstAttribute="leading" secondItem="pf9-o8-tzr" secondAttribute="leading" id="mLQ-HJ-EEr"/>
                                     <constraint firstItem="Mel-Hz-uHm" firstAttribute="trailing" secondItem="I2W-KY-oIF" secondAttribute="trailing" id="ol1-Tz-vPQ"/>
                                     <constraint firstItem="nEW-oq-Zye" firstAttribute="leading" secondItem="Mel-Hz-uHm" secondAttribute="leading" id="pZs-65-Xe5"/>
+                                    <constraint firstItem="rsB-rM-SaJ" firstAttribute="leading" secondItem="7Ko-qs-5Ny" secondAttribute="leading" constant="166" id="rYi-7H-df4"/>
                                     <constraint firstItem="dal-GW-esN" firstAttribute="trailing" secondItem="mNJ-WK-W35" secondAttribute="trailing" id="sZC-CK-7Km"/>
                                     <constraint firstItem="c27-8G-aGt" firstAttribute="top" secondItem="gsd-4l-OQA" secondAttribute="bottom" constant="7" id="v2t-Gk-RDk"/>
                                     <constraint firstItem="Mel-Hz-uHm" firstAttribute="leading" secondItem="I2W-KY-oIF" secondAttribute="leading" id="v3j-4P-xSO"/>
@@ -952,6 +961,7 @@
                         <outlet property="horizontalScroll" destination="dal-GW-esN" id="QCf-AS-Djm"/>
                         <outlet property="longDescription" destination="4yd-my-oGV" id="KKC-SD-Oyd"/>
                         <outlet property="markerImage" destination="IVB-PD-yO2" id="Ou3-dT-iYX"/>
+                        <outlet property="noImageLabel" destination="rsB-rM-SaJ" id="1CF-qs-veG"/>
                         <outlet property="pointName" destination="GDo-pl-gVy" id="xhd-4Z-h8k"/>
                         <outlet property="shortDescription" destination="TA7-xi-D8Y" id="Vkw-Se-28z"/>
                         <outlet property="temperature" destination="Yb8-vQ-mRU" id="K82-BH-WHJ"/>

@@ -24,6 +24,7 @@ class InterestPointViewController: UIViewController {
     @IBOutlet weak var brightness: UILabel!
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var longDescription: UILabel!
+    @IBOutlet weak var noImageLabel: UILabel!
     
     var interestPoint: InterestPoint!
     var imagesViews = [UIImageView]()
@@ -32,18 +33,24 @@ class InterestPointViewController: UIViewController {
     
     var existInternetConnection: Bool!
     
+    var loadingView = UIView()
+    var container = UIView()
+    var activityIndicator = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = interestPoint.name
+        
+        if !connectedToNetwork(){
+            
+        }
 
         loadPointInfo()
         
         horizontalScroll.isPagingEnabled = true
         
-        showLoading()
         
-        //scrollViewDidScroll(scrollView: horizontalScroll)
         /*
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(InterestPointViewController.test))
         self.navigationItem.rightBarButtonItem = shareButton*/
@@ -57,29 +64,24 @@ class InterestPointViewController: UIViewController {
         self.revealViewController().panGestureRecognizer().isEnabled = true
     }
     
-    var loadingView = UIView()
-    var container = UIView()
-    var activityIndicator = UIActivityIndicatorView()
-    
     func showLoading() {
         
         let win:UIWindow = UIApplication.shared.delegate!.window!!
         let screenSize: CGRect = UIScreen.main.bounds
+        var largerSide: CGFloat!
+        var smallerSide: CGFloat!
         
-        print(screenSize.width/4)
-        print(screenSize.height)
-        print("Navigationheight = \(self.navigationController?.navigationBar.frame.height)")
+        if screenSize.width > screenSize.height{
+            largerSide = screenSize.width
+            smallerSide = screenSize.height
+        }else{
+            largerSide = screenSize.height
+            smallerSide = screenSize.width
+        }
         
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         
-        print("Scroll height = \(self.horizontalScroll.frame.height)")
-        
-        if screenSize.width > screenSize.height{
-            self.loadingView = UIView(frame: CGRect(x: screenSize.width/4, y: self.horizontalScroll.frame.height/2 - 63, width: 0, height: 0))
-        }else{
-            self.loadingView = UIView(frame: CGRect(x: screenSize.width/4, y: ((self.horizontalScroll.frame.height/2) + ((self.navigationController?.navigationBar.frame.height)! + statusBarHeight))/2, width: 0, height: 0))
-        }
- 
+        self.loadingView = UIView(frame: CGRect(x: screenSize.width/4, y: ((self.horizontalScroll.frame.height/2) + ((self.navigationController?.navigationBar.frame.height)! + statusBarHeight))/2, width: 0, height: 0))
         //(200/2+44+20)/2)
         //(self.horizontalScroll.frame.height/2) + ((self.navigationController?.navigationBar.frame.height)! + statusbat)/2
         //self.loadingView = UIView(frame: self.horizontalScroll.frame)
@@ -88,7 +90,14 @@ class InterestPointViewController: UIViewController {
         
         win.addSubview(self.loadingView)
         
-        container = UIView(frame: CGRect(x: 0, y: 0, width: win.frame.width/3, height: win.frame.width/3))
+        print("Smallerside= \(smallerSide!)")
+        //ipad
+        if smallerSide! > 414 {
+            print("É maior")
+            container = UIView(frame: CGRect(x: 0, y: 0, width: smallerSide/5, height: smallerSide/5))
+        }else{
+            container = UIView(frame: CGRect(x: 0, y: 0, width: smallerSide/3, height: smallerSide/3))
+        }
         container.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.6)
         container.layer.cornerRadius = 10.0
         container.layer.borderColor = UIColor.gray.cgColor
@@ -110,7 +119,7 @@ class InterestPointViewController: UIViewController {
     }
     
     func hideLoading(){
-        UIView.animate(withDuration: 0.0, delay: 1.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.0, delay: 0, options: .curveEaseOut, animations: {
             self.container.alpha = 0.0
             self.loadingView.alpha = 0.0
             self.activityIndicator.stopAnimating()
@@ -153,6 +162,7 @@ class InterestPointViewController: UIViewController {
     }
     
     func loadPointInfo(){
+        self.showLoading()
         //let screenSize: CGRect = UIScreen.main.bounds
         //image proportion
         self.horizontalScroll.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200)
@@ -166,6 +176,7 @@ class InterestPointViewController: UIViewController {
         if connectedToNetwork() {
             DispatchQueue.global().async {
                 DispatchQueue.main.async {
+                    
                     for img in imagesURL{
                         let url: NSURL = NSURL(string: img)!
                         do {
@@ -175,21 +186,35 @@ class InterestPointViewController: UIViewController {
                             print(error)
                         }
                     }
-                    for i in 0...validImgs.count-1{
-                        self.imagesViews.append(UIImageView(frame: CGRect(x: self.hScrollWidth*CGFloat(i), y: 0, width: self.hScrollWidth, height: self.hScrollHeight)))
-                        //white line
-                        print(imagesURL[i])
-                        self.imagesViews[i].clipsToBounds = true
-                        self.imagesViews[i].image = validImgs[i]
-                        self.imagesViews[i].contentMode = .scaleAspectFit
-                        self.horizontalScroll.addSubview(self.imagesViews[i])
-                        self.hideLoading()
-                    }
                     
-                    print("total valid images = \(validImgs.count)")
-                    self.horizontalScroll.contentSize = CGSize(width: self.horizontalScroll.frame.width*CGFloat(validImgs.count), height: self.horizontalScroll.frame.height)
+                    if validImgs.count > 0{
+                        self.hideLoading()
+                        
+                        for i in 0...validImgs.count-1{
+                            self.imagesViews.append(UIImageView(frame: CGRect(x: self.hScrollWidth*CGFloat(i), y: 0, width: self.hScrollWidth, height: self.hScrollHeight)))
+                            //white line
+                            print(imagesURL[i])
+                            self.imagesViews[i].clipsToBounds = true
+                            self.imagesViews[i].image = validImgs[i]
+                            self.imagesViews[i].contentMode = .scaleAspectFit
+                            self.horizontalScroll.addSubview(self.imagesViews[i])
+                        }
+                        
+                        print("total valid images = \(validImgs.count)")
+                        self.horizontalScroll.contentSize = CGSize(width: self.horizontalScroll.frame.width*CGFloat(validImgs.count), height: self.horizontalScroll.frame.height)
+                    }else{
+                        // print no images found
+                        self.hideLoading()
+                        
+                        self.noImageLabel.text = "No images found."
+                    }
                 }
             }
+        }else{
+            //no internet conection
+            self.hideLoading()
+            
+            self.noImageLabel.text = "Can't load images, please connect to an internet."
         }
         
         self.pointName.text = interestPoint.name
@@ -281,33 +306,37 @@ class InterestPointViewController: UIViewController {
             largerSide = screenSize.height
             smallerSide = screenSize.width
         }
+        
         if (toInterfaceOrientation.isLandscape) {
-            
-            for i in 0...self.imagesViews.count-1{
-            self.imagesViews[i].frame = CGRect(x: largerSide*CGFloat(i)-1, y: 0, width: largerSide, height: self.hScrollHeight)
+            if self.imagesViews.count > 0 {
+                for i in 0...self.imagesViews.count-1{
+                    self.imagesViews[i].frame = CGRect(x: largerSide*CGFloat(i)-1, y: 0, width: largerSide, height: self.hScrollHeight)
+                }
+                self.horizontalScroll.contentSize = CGSize(width: largerSide*CGFloat(self.imagesViews.count), height: self.horizontalScroll.frame.height)
+                
+                let positionX = self.horizontalScroll.contentOffset.x
+                print(positionX)
+                let newPosX = (positionX*largerSide)/smallerSide
+                print(newPosX)
+                
+                self.horizontalScroll.setContentOffset(CGPoint(x: newPosX, y: 0), animated: true)
             }
-            self.horizontalScroll.contentSize = CGSize(width: largerSide*CGFloat(self.imagesViews.count), height: self.horizontalScroll.frame.height)
-            
-            let positionX = self.horizontalScroll.contentOffset.x
-            print(positionX)
-            let newPosX = (positionX*largerSide)/smallerSide
-            print(newPosX)
-            
-            self.horizontalScroll.setContentOffset(CGPoint(x: newPosX, y: 0), animated: true)
         }
         else {
             print("Portrait")
-            for i in 0...self.imagesViews.count-1{
-                self.imagesViews[i].frame = CGRect(x: smallerSide*CGFloat(i)-1, y: 0, width: smallerSide, height: self.hScrollHeight)
+            if self.imagesViews.count > 0 {
+                for i in 0...self.imagesViews.count-1{
+                    self.imagesViews[i].frame = CGRect(x: smallerSide*CGFloat(i)-1, y: 0, width: smallerSide, height: self.hScrollHeight)
+                }
+                self.horizontalScroll.contentSize = CGSize(width: smallerSide*CGFloat(self.imagesViews.count), height: self.horizontalScroll.frame.height)
+                let positionX = self.horizontalScroll.contentOffset.x
+                //bugg
+                print(positionX)
+                print(self.horizontalScroll.contentOffset.y)
+                let newPosX = (positionX*smallerSide)/largerSide
+                print(newPosX)
+                self.horizontalScroll.setContentOffset(CGPoint(x: newPosX, y: 0), animated: true)
             }
-            self.horizontalScroll.contentSize = CGSize(width: smallerSide*CGFloat(self.imagesViews.count), height: self.horizontalScroll.frame.height)
-            let positionX = self.horizontalScroll.contentOffset.x
-            //bugg
-            print(positionX)
-            print(self.horizontalScroll.contentOffset.y)
-            let newPosX = (positionX*smallerSide)/largerSide
-            print(newPosX)
-            self.horizontalScroll.setContentOffset(CGPoint(x: newPosX, y: 0), animated: true)
         }
     }
     
