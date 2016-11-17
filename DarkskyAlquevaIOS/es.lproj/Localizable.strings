@@ -16,7 +16,13 @@ slide_route = "Ruta";
 slide_informations = "Informaciónes";
 slide_about = "Sobre";
 
+//Home
+home_alert_no_internet_title = "Sin conexión a Internet";
+home_alert_no_internet_message = "El primer acceso a la aplicación requiere una conexión a Internet.";
+
 //Map
+map_alert_no_internet_title = "Sin conexión a Internet";
+map_alert_no_internet_message = "El mapa no funcionará correctamente sin conexión a Internet y las imágenes de puntos de interés no se cargarán.";
 //legend
 legend_title = "Interés Puntos";
 legend_type_one = "Uno tipo";
@@ -37,6 +43,8 @@ point_temperature = "Temperatura";
 point_astrophoto = "Astrofoto";
 point_landscape = "Paisaje";
 point_observation = "Observación";
+point_no_internet = "No se pueden cargar imágenes, por favor, conéctese a Internet.";
+point_no_images = "No se encontraron imágenes.";
 
 //Route
 route_accomodation = "Alojamiento";
@@ -58,6 +66,7 @@ informations_moon = "Fases de la Luna";
 moon_title = "hoy es:";
 moon_title_second_one = "En el día";
 moon_title_second_two = "la luna será:";
+moon_title_second_three = "La luna era:";
 moon_waxing_crescent = "Luna creciente";
 moon_first_quarter = "Cuarto creciente";
 moon_waxing_gibbous = "Luna creciente convexa";

@@ -22,7 +22,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     var interestPointChoosen: InterestPoint!
     var stateControlData: StateControlData!
     
-    var legendView: UIView!
+    var legendView: MapLegendView!
     var barButton: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -49,8 +49,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         
         if !self.stateControlData.internetConnection && !self.stateControlData.firstTime {
             
-            print("Second Case")
-            alert(message: "Without internet connection map will not function properly and interest point images will not load.", title: "No Internet Connection")
+            alert(message: NSLocalizedString("map_alert_no_internet_message", comment: "no internet message")  , title: NSLocalizedString("map_alert_no_internet_title", comment: "no internet title"))
         }
     }
     
@@ -72,11 +71,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        print("popover desapareceu")
         openSideMenu.isEnabled = true
     }
     
@@ -104,43 +101,19 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     }
     
     func loadMapLegend(){
-        self.legendView = UIView(frame: CGRect(x: 10, y: 10, width: 150, height: 145))
-        self.legendView.backgroundColor = UIColor(white: 1, alpha: 0.8)
-        let title = UILabel(frame: CGRect(x: 5, y: 5, width: 140, height: 20))
-        title.font = title.font.withSize(14)
-        title.text = NSLocalizedString("legend_title", comment: "map legend title")
-        title.textAlignment = .center
-        self.legendView.addSubview(title)
+        self.legendView = MapLegendView(frame: CGRect(x: 10, y: 10, width: 150, height: 145))
         
-        let markerOneView = UIImageView(frame: CGRect(x: 10, y: 30, width: 40, height: 40))
-        let markerOne = UIImage(named: "marker_1_70")
-        markerOneView.image = markerOne
-        markerOneView.contentMode = .scaleAspectFit
-        let markerOneText = UILabel(frame: CGRect(x: 55, y: 40, width: 120, height: 20))
-        markerOneText.font = markerOneText.font.withSize(13)
-        markerOneText.text = NSLocalizedString("legend_type_one", comment: "legend type one")
-        self.legendView.addSubview(markerOneView)
-        self.legendView.addSubview(markerOneText)
+        self.legendView.titleLabel.text =  NSLocalizedString("legend_title", comment: "map legend title")
         
-        let markerTwoView = UIImageView(frame: CGRect(x: 10, y: 65, width: 40, height: 40))
-        let markerTwo = UIImage(named: "marker_2_70")
-        markerTwoView.image = markerTwo
-        markerTwoView.contentMode = .scaleAspectFit
-        let markerTwoText = UILabel(frame: CGRect(x: 55, y: 75, width: 120, height: 20))
-        markerTwoText.font = markerTwoText.font.withSize(13)
-        markerTwoText.text = NSLocalizedString("legend_type_two", comment: "legend type two")
-        self.legendView.addSubview(markerTwoView)
-        self.legendView.addSubview(markerTwoText)
+        let markerOneImage = UIImage(named: "marker_1_70")
+        self.legendView.markerOneImageView.image = markerOneImage
+        self.legendView.markerOneTitle.text = NSLocalizedString("legend_type_one", comment: "legend type one")
         
-        let markerThreeView = UIImageView(frame: CGRect(x: 10, y: 100, width: 40, height: 40))
-        let markerThree = UIImage(named: "marker_3_70")
-        markerThreeView.image = markerThree
-        markerThreeView.contentMode = .scaleAspectFit
-        let markerThreeText = UILabel(frame: CGRect(x: 55, y: 110, width: 120, height: 20))
-        markerThreeText.font = markerThreeText.font.withSize(13)
-        markerThreeText.text = NSLocalizedString("legend_type_three", comment: "legend type three")
-        self.legendView.addSubview(markerThreeView)
-        self.legendView.addSubview(markerThreeText)
+        self.legendView.markerTwoImageView.image = UIImage(named: "marker_2_70")
+        self.legendView.markerTwoTitle.text = NSLocalizedString("legend_type_two", comment: "legend type two")
+        
+        self.legendView.markerThreeImageView.image = UIImage(named: "marker_3_70")
+        self.legendView.markerThreeTitle.text = NSLocalizedString("legend_type_three", comment: "legend type three")
         
         self.view.addSubview(self.legendView)
         self.view.bringSubview(toFront: self.legendView)
@@ -148,13 +121,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     
     
     func updateMarkers(){
-        print("updated")
-        print(markers.count)
         
         for mark in markers{
             mark.map = nil
         }
-        //remove nil markers
         
         loadMarkers(mapView: self.mapView)
     }
@@ -226,7 +196,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        print(marker.title)
         for i in 0...interestPoints.count{
             if(interestPoints[i] != nil){
                 if(marker.title == interestPoints[i]?.name){
@@ -236,11 +205,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         }
         
         performSegue(withIdentifier: "segue", sender: nil)
-        /*
-         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-         
-         let interestPointInfoView = storyBoard.instantiateViewController(withIdentifier: "InterestPointViewController") as! InterestPointViewController
-         self.navigationController?.pushViewController(interestPointInfoView, animated: true)*/
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -254,13 +218,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
             if let pop = svc.popoverPresentationController{
                 pop.delegate = self
                 openSideMenu.isEnabled = false
-                //openSideMenu.tintColor = UIColor.white
             }
             let inst = segue.destination as! PopoverViewController
             inst.stateControlData = self.stateControlData
-            //inst.mapViewController = self
-            
-            //for delegate
             if let destinationViewController = segue.destination as? PopoverViewController {
                 destinationViewController.delegate = self
                 
@@ -269,7 +229,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     }
     
     func popoverOptionsClick(type: String) {
-        print("passou informaçao")
         if type == "mapFilter" {
             updateMarkers()
         }
@@ -286,15 +245,4 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

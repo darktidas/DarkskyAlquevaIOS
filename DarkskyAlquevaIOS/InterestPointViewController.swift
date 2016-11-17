@@ -9,7 +9,7 @@
 import UIKit
 import SystemConfiguration
 
-class InterestPointViewController: UIViewController {
+class InterestPointViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var horizontalScroll: UIScrollView!
     @IBOutlet weak var pointName: UILabel!
@@ -26,10 +26,13 @@ class InterestPointViewController: UIViewController {
     @IBOutlet weak var longDescription: UILabel!
     @IBOutlet weak var noImageLabel: UILabel!
     
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    
     var interestPoint: InterestPoint!
     var imagesViews = [UIImageView]()
     var hScrollWidth: CGFloat!
     var hScrollHeight: CGFloat!
+    var scrollPositionX: CGFloat!
     
     var existInternetConnection: Bool!
     
@@ -43,17 +46,16 @@ class InterestPointViewController: UIViewController {
         self.title = interestPoint.name
         
         if !connectedToNetwork(){
-            
+            shareButton.isEnabled = false
+        } else {
+            shareButton.isEnabled = true
         }
 
         loadPointInfo()
         
         horizontalScroll.isPagingEnabled = true
         
-        
-        /*
-        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(InterestPointViewController.test))
-        self.navigationItem.rightBarButtonItem = shareButton*/
+        self.horizontalScroll.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,32 +70,24 @@ class InterestPointViewController: UIViewController {
         
         let win:UIWindow = UIApplication.shared.delegate!.window!!
         let screenSize: CGRect = UIScreen.main.bounds
-        var largerSide: CGFloat!
         var smallerSide: CGFloat!
         
         if screenSize.width > screenSize.height{
-            largerSide = screenSize.width
             smallerSide = screenSize.height
         }else{
-            largerSide = screenSize.height
             smallerSide = screenSize.width
         }
         
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         
         self.loadingView = UIView(frame: CGRect(x: screenSize.width/4, y: ((self.horizontalScroll.frame.height/2) + ((self.navigationController?.navigationBar.frame.height)! + statusBarHeight))/2, width: 0, height: 0))
-        //(200/2+44+20)/2)
-        //(self.horizontalScroll.frame.height/2) + ((self.navigationController?.navigationBar.frame.height)! + statusbat)/2
-        //self.loadingView = UIView(frame: self.horizontalScroll.frame)
         self.loadingView.tag = 1
         self.loadingView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0)
         
         win.addSubview(self.loadingView)
         
-        print("Smallerside= \(smallerSide!)")
         //ipad
         if smallerSide! > 414 {
-            print("É maior")
             container = UIView(frame: CGRect(x: 0, y: 0, width: smallerSide/5, height: smallerSide/5))
         }else{
             container = UIView(frame: CGRect(x: 0, y: 0, width: smallerSide/3, height: smallerSide/3))
@@ -115,7 +109,6 @@ class InterestPointViewController: UIViewController {
         self.loadingView.addSubview(activityIndicator)
         
         activityIndicator.startAnimating()
-        
     }
     
     func hideLoading(){
@@ -150,21 +143,17 @@ class InterestPointViewController: UIViewController {
         }
         
         let share = [title, description, shareImg, link] as [Any]
-        // set up activity view controller
         let activityViewController = UIActivityViewController(activityItems: share, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.barButtonItem = (sender as! UIBarButtonItem)// so that iPads won't crash
+        activityViewController.popoverPresentationController?.barButtonItem = (sender as! UIBarButtonItem)
         
         // exclude some activity types from the list (optional)
         activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.assignToContact, UIActivityType.addToReadingList]
         
-        // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
     }
     
     func loadPointInfo(){
         self.showLoading()
-        //let screenSize: CGRect = UIScreen.main.bounds
-        //image proportion
         self.horizontalScroll.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200)
         hScrollWidth = self.horizontalScroll.frame.width
         hScrollHeight = self.horizontalScroll.frame.height
@@ -203,18 +192,14 @@ class InterestPointViewController: UIViewController {
                         print("total valid images = \(validImgs.count)")
                         self.horizontalScroll.contentSize = CGSize(width: self.horizontalScroll.frame.width*CGFloat(validImgs.count), height: self.horizontalScroll.frame.height)
                     }else{
-                        // print no images found
                         self.hideLoading()
-                        
-                        self.noImageLabel.text = "No images found."
+                        self.noImageLabel.text = NSLocalizedString("point_no_images", comment: "no images found")
                     }
                 }
             }
         }else{
-            //no internet conection
             self.hideLoading()
-            
-            self.noImageLabel.text = "Can't load images, please connect to an internet."
+            self.noImageLabel.text = NSLocalizedString("point_no_internet", comment: "no internet conection")
         }
         
         self.pointName.text = interestPoint.name
@@ -237,7 +222,6 @@ class InterestPointViewController: UIViewController {
         }
         
         longDescription.text = interestPoint.longDescription
-       
     }
     
     func loadCategoryInfo(){
@@ -295,6 +279,7 @@ class InterestPointViewController: UIViewController {
     }
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        scrollPositionX = self.horizontalScroll.contentOffset.x
         let screenSize: CGRect = UIScreen.main.bounds
         var largerSide: CGFloat!
         var smallerSide: CGFloat!
@@ -313,28 +298,19 @@ class InterestPointViewController: UIViewController {
                     self.imagesViews[i].frame = CGRect(x: largerSide*CGFloat(i)-1, y: 0, width: largerSide, height: self.hScrollHeight)
                 }
                 self.horizontalScroll.contentSize = CGSize(width: largerSide*CGFloat(self.imagesViews.count), height: self.horizontalScroll.frame.height)
-                
-                let positionX = self.horizontalScroll.contentOffset.x
-                print(positionX)
-                let newPosX = (positionX*largerSide)/smallerSide
+                let newPosX = (scrollPositionX*largerSide)/smallerSide
                 print(newPosX)
                 
                 self.horizontalScroll.setContentOffset(CGPoint(x: newPosX, y: 0), animated: true)
             }
         }
         else {
-            print("Portrait")
             if self.imagesViews.count > 0 {
                 for i in 0...self.imagesViews.count-1{
                     self.imagesViews[i].frame = CGRect(x: smallerSide*CGFloat(i)-1, y: 0, width: smallerSide, height: self.hScrollHeight)
                 }
                 self.horizontalScroll.contentSize = CGSize(width: smallerSide*CGFloat(self.imagesViews.count), height: self.horizontalScroll.frame.height)
-                let positionX = self.horizontalScroll.contentOffset.x
-                //bugg
-                print(positionX)
-                print(self.horizontalScroll.contentOffset.y)
-                let newPosX = (positionX*smallerSide)/largerSide
-                print(newPosX)
+                let newPosX = (scrollPositionX*smallerSide)/largerSide
                 self.horizontalScroll.setContentOffset(CGPoint(x: newPosX, y: 0), animated: true)
             }
         }
@@ -342,7 +318,6 @@ class InterestPointViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func connectedToNetwork() -> Bool {
@@ -369,16 +344,4 @@ class InterestPointViewController: UIViewController {
         
         return (isReachable && !needsConnection)
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

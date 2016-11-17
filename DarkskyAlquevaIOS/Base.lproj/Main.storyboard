@@ -373,7 +373,7 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnc-8d-0zG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnc-8d-0zG" customClass="SubmenuButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="kHW-uS-fum"/>
@@ -382,7 +382,7 @@
                                 <attributedString key="userComments">
                                     <fragment content="Phenomena Button">
                                         <attributes>
-                                            <font key="NSFont" metaFont="smallSystem"/>
+                                            <font key="NSFont" metaFont="toolTip"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -391,7 +391,7 @@
                                     <segue destination="5xC-ey-HoY" kind="show" identifier="toPhenomena" id="LCd-jN-Hml"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3DP-rT-AOw">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3DP-rT-AOw" customClass="SubmenuButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="68" width="375" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="UQL-2t-7P2"/>
@@ -401,7 +401,7 @@
                                     <segue destination="1K9-lv-3EY" kind="show" identifier="toConstellations" id="ibe-hW-QZX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPB-8t-kkm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPB-8t-kkm" customClass="SubmenuButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="375" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="ODK-9c-kbN"/>
@@ -411,7 +411,7 @@
                                     <segue destination="e2k-5I-kdt" kind="show" identifier="toClothing" id="QuW-Gc-C5C"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-WJ-cVG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-WJ-cVG" customClass="SubmenuButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="204" width="375" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="lqQ-6H-KOY"/>
@@ -447,11 +447,11 @@
                         <barButtonItem key="leftBarButtonItem" id="24C-Gy-l7r"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="clothingButton" destination="uPB-8t-kkm" id="dHe-96-2J7"/>
-                        <outlet property="constellationsButton" destination="3DP-rT-AOw" id="0LZ-86-Hen"/>
-                        <outlet property="moonPhases" destination="nil-WJ-cVG" id="F6K-t7-C3u"/>
+                        <outlet property="clothingButton" destination="uPB-8t-kkm" id="PhE-Q2-9Q9"/>
+                        <outlet property="constellationsButton" destination="3DP-rT-AOw" id="BL1-LK-fPX"/>
+                        <outlet property="moonPhasesButton" destination="nil-WJ-cVG" id="u6E-Gg-tye"/>
                         <outlet property="openSideMenu" destination="24C-Gy-l7r" id="TCc-cM-Ce6"/>
-                        <outlet property="phenomenaButton" destination="pnc-8d-0zG" id="rkX-1Q-og2"/>
+                        <outlet property="phenomenaButton" destination="pnc-8d-0zG" id="p13-VD-Xjp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCE-yN-egt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -473,7 +473,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMJ-Nn-fxa">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nH-TJ-q6U">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nH-TJ-q6U" customClass="SubmenuButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="68" width="375" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="YOD-us-HSu"/>
@@ -483,24 +483,14 @@
                                             <action selector="gastronomyButtonAction:" destination="I21-lu-ayL" eventType="touchUpInside" id="605-7s-K2P"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5s-8L-nNv">
-                                        <rect key="frame" x="0.0" y="136" width="375" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="Kd4-Lu-yNJ"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="activitiesButtonAction:" destination="I21-lu-ayL" eventType="touchUpInside" id="Sbc-47-DO5"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndd-Xz-Zp0">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndd-Xz-Zp0" customClass="SubmenuButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="204" width="375" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="newsEventsButtonAction:" destination="I21-lu-ayL" eventType="touchUpInside" id="Ugq-KN-Tz0"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZtH-do-Rj7">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZtH-do-Rj7" customClass="SubmenuButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="hzq-6b-GU3"/>
@@ -516,6 +506,16 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5s-8L-nNv" customClass="SubmenuButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="136" width="375" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Kd4-Lu-yNJ"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="activitiesButtonAction:" destination="I21-lu-ayL" eventType="touchUpInside" id="Sbc-47-DO5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ZtH-do-Rj7" secondAttribute="trailing" id="8du-48-AWO"/>
@@ -551,10 +551,10 @@
                         <barButtonItem key="leftBarButtonItem" id="AJT-Ah-Eyj"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="accommodationButton" destination="ZtH-do-Rj7" id="NOP-gn-dTp"/>
-                        <outlet property="activitiesButton" destination="A5s-8L-nNv" id="bA9-eD-ZMl"/>
-                        <outlet property="gastronomyButton" destination="6nH-TJ-q6U" id="42D-R8-YgK"/>
-                        <outlet property="newsEventsButton" destination="ndd-Xz-Zp0" id="uDi-33-Sg8"/>
+                        <outlet property="accommodationButton" destination="ZtH-do-Rj7" id="ETu-AB-Ie2"/>
+                        <outlet property="activitiesButton" destination="A5s-8L-nNv" id="4tQ-OW-f8Y"/>
+                        <outlet property="gastronomyButton" destination="6nH-TJ-q6U" id="NLs-Im-eSg"/>
+                        <outlet property="newsEventsButton" destination="ndd-Xz-Zp0" id="vPN-UD-LNY"/>
                         <outlet property="openSideMenu" destination="AJT-Ah-Eyj" id="QxM-on-syF"/>
                         <outlet property="routeText" destination="h2j-md-xn7" id="AHu-df-mKr"/>
                     </connections>
@@ -571,11 +571,11 @@
                         <viewControllerLayoutGuide type="top" id="vxj-XH-sR7"/>
                         <viewControllerLayoutGuide type="bottom" id="VIM-9R-JTa"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="h9K-3O-FXE">
+                    <view key="view" contentMode="scaleToFill" id="h9K-3O-FXE" customClass="PopoverButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rI-nv-TIK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rI-nv-TIK" customClass="PopoverButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="84" width="375" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="JhQ-Ap-pGY"/>
@@ -590,7 +590,7 @@
                                     <action selector="observationClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="x06-D9-uxH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtD-db-kSt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtD-db-kSt" customClass="PopoverButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="122" width="375" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="MbW-hq-xOd"/>
@@ -605,7 +605,7 @@
                                     <action selector="normalMapClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="iWN-sT-qYK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ro0-OR-0Uy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ro0-OR-0Uy" customClass="PopoverButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="198" width="375" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Zef-dH-RZT"/>
@@ -620,7 +620,7 @@
                                     <action selector="satelliteMapClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="hCr-zK-wDe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elQ-7I-v7H">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elQ-7I-v7H" customClass="PopoverButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="236" width="375" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Qtr-CD-wwt"/>
@@ -635,7 +635,7 @@
                                     <action selector="terrainMapClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="gu4-RP-ul6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EV-uR-hPX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EV-uR-hPX" customClass="PopoverButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="8" width="375" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="6W3-YR-zFc"/>
@@ -650,22 +650,7 @@
                                     <action selector="astrophotoClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="qKP-Kv-yzQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WU2-hW-Q6Q">
-                                <rect key="frame" x="0.0" y="160" width="375" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="JHZ-mE-98z"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="tintColor" red="0.12941176469999999" green="0.1333333333" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="contentEdgeInsets" minX="115" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="titleEdgeInsets" minX="-200" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="130" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="hybridMapClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="KYf-oJ-cuJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUH-gV-0qr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUH-gV-0qr" customClass="PopoverButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="46" width="375" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="uyS-TW-TpJ"/>
@@ -678,6 +663,21 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="landscapeClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="H4s-F5-iMY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WU2-hW-Q6Q" customClass="PopoverButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="160" width="375" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JHZ-mE-98z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" red="0.12941176469999999" green="0.1333333333" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="115" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-200" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="130" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="hybridMapClick:" destination="3gs-1o-svP" eventType="touchUpInside" id="KYf-oJ-cuJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -706,13 +706,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="astrophoto" destination="8EV-uR-hPX" id="7tT-Kw-qyY"/>
-                        <outlet property="hybridMap" destination="WU2-hW-Q6Q" id="2ae-Ux-urj"/>
-                        <outlet property="landscape" destination="IUH-gV-0qr" id="nde-3X-FZc"/>
-                        <outlet property="normalMap" destination="BtD-db-kSt" id="kr0-ch-jCu"/>
-                        <outlet property="observation" destination="1rI-nv-TIK" id="HG0-f2-17h"/>
-                        <outlet property="satelliteMap" destination="Ro0-OR-0Uy" id="7LH-F2-yy5"/>
-                        <outlet property="terrainMap" destination="elQ-7I-v7H" id="lKv-BF-cxb"/>
+                        <outlet property="astrophoto" destination="8EV-uR-hPX" id="1N3-B0-GGf"/>
+                        <outlet property="hybridMap" destination="WU2-hW-Q6Q" id="7vJ-ds-SZe"/>
+                        <outlet property="landscape" destination="IUH-gV-0qr" id="r3o-jk-Hgy"/>
+                        <outlet property="normalMap" destination="BtD-db-kSt" id="Rxp-ry-5eO"/>
+                        <outlet property="observation" destination="1rI-nv-TIK" id="3AP-bu-ciR"/>
+                        <outlet property="satelliteMap" destination="Ro0-OR-0Uy" id="A3b-9E-pAO"/>
+                        <outlet property="terrainMap" destination="elQ-7I-v7H" id="LFn-yu-RSi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tT1-kU-P9R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -963,6 +963,7 @@
                         <outlet property="markerImage" destination="IVB-PD-yO2" id="Ou3-dT-iYX"/>
                         <outlet property="noImageLabel" destination="rsB-rM-SaJ" id="1CF-qs-veG"/>
                         <outlet property="pointName" destination="GDo-pl-gVy" id="xhd-4Z-h8k"/>
+                        <outlet property="shareButton" destination="dgJ-4r-Srt" id="HtP-Ou-qxf"/>
                         <outlet property="shortDescription" destination="TA7-xi-D8Y" id="Vkw-Se-28z"/>
                         <outlet property="temperature" destination="Yb8-vQ-mRU" id="K82-BH-WHJ"/>
                         <outlet property="typeOne" destination="pf9-o8-tzr" id="yRe-qO-mo9"/>
@@ -1001,7 +1002,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ehX-aA-2F6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" misplaced="YES" id="kag-2o-jYW">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" id="kag-2o-jYW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1024,7 +1025,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QOE-2h-VCn" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eon-nO-Cf8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eon-nO-Cf8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1047,7 +1048,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="09T-w3-cjY" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jip-y9-QhY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jip-y9-QhY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1096,7 +1097,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuN-hN-axC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuN-hN-axC" customClass="TopLineButtonView" customModule="DarkskyAlquevaIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="543" width="375" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="FT5-lS-uqO"/>
@@ -1126,7 +1127,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
-                        <outlet property="dayButton" destination="EuN-hN-axC" id="djz-r2-J4R"/>
+                        <outlet property="dayButton" destination="EuN-hN-axC" id="u8y-PN-KFP"/>
                         <outlet property="moonImage" destination="SNQ-lr-XtH" id="bMg-WU-ALO"/>
                         <outlet property="moonName" destination="kqz-8B-aqw" id="pGF-QT-SoI"/>
                         <outlet property="topText" destination="rAK-bi-baZ" id="0UK-8d-6O8"/>
@@ -1315,7 +1316,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6h1-Zt-Aco" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1jW-Pb-7DX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1jW-Pb-7DX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1338,7 +1339,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qZu-bk-Hd1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PdJ-59-VlR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PdJ-59-VlR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

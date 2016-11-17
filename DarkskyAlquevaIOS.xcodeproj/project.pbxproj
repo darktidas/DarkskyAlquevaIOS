@@ -28,6 +28,10 @@
 		B1516A761DAB2C3600F9D86D /* MoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1516A751DAB2C3600F9D86D /* MoonViewController.swift */; };
 		B1516A7A1DAB319500F9D86D /* MoonCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1516A791DAB319500F9D86D /* MoonCalculator.swift */; };
 		B15DEBDA1D58BB7F00E42E6C /* XmlReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */; };
+		B17712051DDD35D70014739D /* MapLegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17712041DDD35D70014739D /* MapLegendView.swift */; };
+		B17712071DDD3FD40014739D /* SubmenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17712061DDD3FD40014739D /* SubmenuButtonView.swift */; };
+		B17712091DDD4E880014739D /* TopLineButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17712081DDD4E880014739D /* TopLineButtonView.swift */; };
+		B1792F231DDD0E9D00509CF2 /* PopoverButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1792F221DDD0E9D00509CF2 /* PopoverButtonView.swift */; };
 		B187B5371DB38981005740DD /* StateControlData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B187B5361DB38981005740DD /* StateControlData.swift */; };
 		B1CB15F51DB257D9008D983D /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB15F41DB257D9008D983D /* PopoverViewController.swift */; };
 		B1D481E31DBBCBA400096755 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1D481E51DBBCBA400096755 /* Localizable.strings */; };
@@ -69,7 +73,7 @@
 		0E3DA2E54EDAFF96A7DC6A31 /* libPods-DarkskyAlquevaIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DarkskyAlquevaIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2637EE9F47CE3DE09E5F0D3E /* Pods-DarkskyAlquevaIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DarkskyAlquevaIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DarkskyAlquevaIOS/Pods-DarkskyAlquevaIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		37D3F0E11DAE62B400695D99 /* InterestPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestPointViewController.swift; sourceTree = "<group>"; };
-		37F2E4161DAD1BC300344D3A /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		37F2E4161DAD1BC300344D3A /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		69E43BEF380239C7419B52C5 /* Pods-DarkskyAlquevaIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DarkskyAlquevaIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-DarkskyAlquevaIOS/Pods-DarkskyAlquevaIOS.release.xcconfig"; sourceTree = "<group>"; };
 		B134960D1D7B8A49001427F4 /* Clothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clothing.swift; sourceTree = "<group>"; };
 		B134960F1D7B8CCB001427F4 /* Constellation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constellation.swift; sourceTree = "<group>"; };
@@ -92,6 +96,10 @@
 		B1516A751DAB2C3600F9D86D /* MoonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoonViewController.swift; sourceTree = "<group>"; };
 		B1516A791DAB319500F9D86D /* MoonCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoonCalculator.swift; sourceTree = "<group>"; };
 		B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XmlReader.swift; sourceTree = "<group>"; };
+		B17712041DDD35D70014739D /* MapLegendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLegendView.swift; sourceTree = "<group>"; };
+		B17712061DDD3FD40014739D /* SubmenuButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmenuButtonView.swift; sourceTree = "<group>"; };
+		B17712081DDD4E880014739D /* TopLineButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLineButtonView.swift; sourceTree = "<group>"; };
+		B1792F221DDD0E9D00509CF2 /* PopoverButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverButtonView.swift; sourceTree = "<group>"; };
 		B17B85091DBAD842002FE60F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
 		B17B850A1DBAD842002FE60F /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		B187B5361DB38981005740DD /* StateControlData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateControlData.swift; sourceTree = "<group>"; };
@@ -182,6 +190,10 @@
 				B1516A671DAAF61B00F9D86D /* PhenomenaTableViewCell.swift */,
 				B1516A711DAB17B300F9D86D /* ConstellationTableViewCell.swift */,
 				B1516A731DAB1C6600F9D86D /* ClothingTableViewCell.swift */,
+				B1792F221DDD0E9D00509CF2 /* PopoverButtonView.swift */,
+				B17712041DDD35D70014739D /* MapLegendView.swift */,
+				B17712061DDD3FD40014739D /* SubmenuButtonView.swift */,
+				B17712081DDD4E880014739D /* TopLineButtonView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -486,11 +498,13 @@
 				B13496121D7B8E4D001427F4 /* HeaderInfo.swift in Sources */,
 				B134960E1D7B8A49001427F4 /* Clothing.swift in Sources */,
 				B1FC7EFE1D88DF8300000C61 /* Options.swift in Sources */,
+				B17712071DDD3FD40014739D /* SubmenuButtonView.swift in Sources */,
 				B134FF831D96E31B00861AE5 /* AboutViewController.swift in Sources */,
 				B187B5371DB38981005740DD /* StateControlData.swift in Sources */,
 				B1E9D2371D4B7C8600C9CC45 /* ViewController.swift in Sources */,
 				B13496101D7B8CCB001427F4 /* Constellation.swift in Sources */,
 				B1FC7EFD1D88DF8300000C61 /* Error.swift in Sources */,
+				B17712091DDD4E880014739D /* TopLineButtonView.swift in Sources */,
 				B1EA3F9B1DAC5378007C1F2C /* DatePickerDialog.swift in Sources */,
 				B1516A741DAB1C6600F9D86D /* ClothingTableViewCell.swift in Sources */,
 				B1FC7EFF1D88DF8300000C61 /* Parser.swift in Sources */,
@@ -502,6 +516,8 @@
 				B1516A6E1DAB0BE600F9D86D /* ConstellationsTableViewController.swift in Sources */,
 				B1FC7EFC1D88DF8300000C61 /* Element.swift in Sources */,
 				B134FF7F1D96E24A00861AE5 /* InformationsViewController.swift in Sources */,
+				B17712051DDD35D70014739D /* MapLegendView.swift in Sources */,
+				B1792F231DDD0E9D00509CF2 /* PopoverButtonView.swift in Sources */,
 				B1EF2D771D933B350064DCEC /* SlideMenuViewController.swift in Sources */,
 				B1D7AD781D68A64200C8A6AF /* InterestPoint.swift in Sources */,
 				B1CB15F51DB257D9008D983D /* PopoverViewController.swift in Sources */,

@@ -29,13 +29,10 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Title
         self.title = NSLocalizedString("slide_home", comment: "home")      
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.stateControlData = appDelegate.stateControlData
-        //
-        //abstract.text = "internet = \(appDelegate.connectedToNetwork())"
         
         openSideMenu.image = UIImage(named: "slide_menu")
         
@@ -59,8 +56,8 @@ class ViewController: UIViewController{
         print("first time = \(self.stateControlData.firstTime)")
         
         if !self.stateControlData.internetConnection && self.stateControlData.firstTime {
-            
-            alert(message: "First aplication launch needs internet connection.", title: "No Internet Connection")
+        
+            alert(message: NSLocalizedString("home_alert_no_internet_message", comment: "no internet message")  , title: NSLocalizedString("home_alert_no_internet_title", comment: "no internet title"))
             
             print("First Case")
         }
@@ -85,19 +82,15 @@ class ViewController: UIViewController{
                         abstract.sizeToFit()
                     }
                 } catch {
-                    // contents could not be loaded
+                    print("Couldn't load data!")
                 }
             } else {
-                // the URL was bad!
+                print("Url not working!")
             }
-            print("With internet")
             
         } else {
-            
-            print("Whithout internet")
             abstract.text = self.stateControlData.xml.general
             abstract.sizeToFit()
-            
         }
     }
     

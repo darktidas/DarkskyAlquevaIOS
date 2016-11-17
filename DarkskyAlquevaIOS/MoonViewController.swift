@@ -13,7 +13,8 @@ class MoonViewController: UIViewController {
     @IBOutlet weak var topText: UILabel!
     @IBOutlet weak var moonImage: UIImageView!
     @IBOutlet weak var moonName: UILabel!
-    @IBOutlet weak var dayButton: UIButton!
+    @IBOutlet weak var dayButton: TopLineButtonView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,6 @@ class MoonViewController: UIViewController {
 
         loadContent()
         loadTodayPhase()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,24 +35,11 @@ class MoonViewController: UIViewController {
     
     func loadContent(){
         
-        let screenSize: CGRect = UIScreen.main.bounds
-        var largerSide: CGFloat!
-        
-        if screenSize.width > screenSize.height{
-            largerSide = screenSize.width
-        }else{
-            largerSide = screenSize.height
-        }
         topText.text = NSLocalizedString("moon_title", comment: "moon title")
         
         let calendarImage: UIImage = UIImage(named: "calendar48")!
         dayButton.setImage(calendarImage, for: .normal)
-        dayButton.tintColor = .white
         dayButton.setTitle(NSLocalizedString("moon_button_date", comment: "search button text"), for: .normal)
-        dayButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-        let lineView = UIView(frame: CGRect(x:0, y:0, width: largerSide, height:1))
-        lineView.backgroundColor=UIColor.white
-        dayButton.addSubview(lineView)
     }
 
     func loadTodayPhase(){
@@ -62,7 +49,6 @@ class MoonViewController: UIViewController {
         let day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)
         let year = calendar.component(.year, from: date)
-        print("day = \(day)/\(month)/\(year)")
         
         phaseCalculation(year: year, month: month, day: day)
     }
@@ -115,9 +101,9 @@ class MoonViewController: UIViewController {
         
         DatePickerDialog().show(title: NSLocalizedString("moon_date_title", comment: "date picker title"), doneButtonTitle: NSLocalizedString("moon_date_done", comment: "date picker done"), cancelButtonTitle: NSLocalizedString("moon_date_cancel", comment: "date picker cancel"), datePickerMode: .date) {
             (date) -> Void in
-            print(date)
             
             if (date != nil){
+                
                 let calendar = Calendar.current
                 
                 let day = calendar.component(.day, from: date!)
@@ -125,22 +111,28 @@ class MoonViewController: UIViewController {
                 let year = calendar.component(.year, from: date!)
                 self.phaseCalculation(year: year, month: month, day: day)
                 
-                //bug today on today
-                let partOne = NSLocalizedString("moon_title_second_one", comment: "moon description title")
-                let partTwo = NSLocalizedString("moon_title_second_two", comment: "moon description title")
-                self.topText.text = "\(partOne) \(year)/\(month)/\(day) \(partTwo)"
+                let todayDate = Date()
+                
+                let order = calendar.compare(date!, to: todayDate, toGranularity: .day)
+                
+                if order == .orderedDescending{
+                    
+                    let partOne = NSLocalizedString("moon_title_second_one", comment: "moon description title")
+                    let partTwo = NSLocalizedString("moon_title_second_two", comment: "moon description title")
+                    self.topText.text = "\(partOne) \(year)/\(month)/\(day) \(partTwo)"
+                    
+                } else if order == .orderedSame{
+                    
+                    self.topText.text = NSLocalizedString("moon_title", comment: "moon title")
+                    
+                } else {
+                    
+                    let partOne = NSLocalizedString("moon_title_second_one", comment: "moon description title")
+                    let partTwo = NSLocalizedString("moon_title_second_three", comment: "moon description title")
+                    self.topText.text = "\(partOne) \(year)/\(month)/\(day) \(partTwo)"
+                    
+                }
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

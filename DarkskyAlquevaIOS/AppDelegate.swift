@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        UIApplication.shared.setStatusBarHidden(true, with: .none)
         UIApplication.shared.setStatusBarHidden(false, with: .none)
         
         stateControlDataInitialization()
@@ -37,8 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         
         appLanguage = getAppLanguage()
         print("appLanguage = \(appLanguage!)")
-        //First time?
-        
         
         if stateControlData.internetConnection! {
             if checkFirstTime(){
@@ -56,9 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
             }
         }
         
-        //let xmlUrlEn = URL(string: "https://dl.dropboxusercontent.com/s/8c9y36n1sjh95b8/darkskyalqueva-en.xml?dl=1")!
-        //fileVerification(file: xmlUrlEn, name: "/data.xml")
-        
         GMSServices.provideAPIKey("AIzaSyAakLWKXp_Ce3B3fIOc4GolFrwK7pcWxng")
         //GMSPlacesClient.provideAPIKey("AIzaSyAakLWKXp_Ce3B3fIOc4GolFrwK7pcWxng")
         
@@ -66,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     }
     
     func checkInternetConnection(){
-        //se nao houver net
         stateControlData.setInternetConnection(connection: connectedToNetwork())
     }
     
@@ -143,13 +136,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         if let systemLanguage = NSLocale.preferredLanguages[0] as String? {
             print("Language = \(systemLanguage)")
             if systemLanguage.range(of: "pt") != nil{
-                print("Sistema operativo em Portugues")
                 return "pt"
             } else if systemLanguage.range(of: "es") != nil{
-                print("Sistema en Espanol")
                 return "es"
             } else {
-                print("System in English")
                 return "en"
             }
         }
@@ -157,7 +147,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     
     func getLanguageUrlFileData(language: String) -> URL{
        
-        /* XML File URLs */
         let xmlUrlPt = URL(string: "https://dl.dropboxusercontent.com/s/qfh0fw7ajdo3hyg/darkskyalqueva-pt.xml?dl=1")!
         let xmlUrlEs = URL(string: "https://dl.dropboxusercontent.com/s/if16iq36ak5jnwu/darkskyalqueva-es.xml?dl=1")!
         let xmlUrlEn = URL(string: "https://dl.dropboxusercontent.com/s/8c9y36n1sjh95b8/darkskyalqueva-en.xml?dl=1")!
@@ -169,11 +158,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         } else {
             return xmlUrlEn
         }
-
     }
     
     func downloadFile(file: URL, identifier: String){
-        //download
+        
         print(identifier)
         let backgroundSessionConfiguration = URLSessionConfiguration.background(withIdentifier: identifier)
         backgroundSession = Foundation.URLSession(configuration: backgroundSessionConfiguration, delegate: self, delegateQueue: OperationQueue.main)
@@ -189,11 +177,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         let destinationURLForFile = URL(fileURLWithPath: documentDirectoryPath + name)
         
         if fileManager.fileExists(atPath: destinationURLForFile.path){
-            print("Ja existe")
+            print("Already exists")
             loadXml()
         }else{
-            print("Nao existe ainda")
-            //download
+            print("Not yet created")
+            
             downloadFile(file: file, identifier: "xmlDownload")
         }
     }
@@ -314,15 +302,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
                     task: URLSessionTask,
                     didCompleteWithError error: Error?){
         downloadTask = nil
-        //progressView.setProgress(0.0, animated: true)
         if (error != nil) {
-            //print(error?.description)
+            
         }else{
             print("The task finished transferring data successfully")
-            //let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
-            //let documentsDir = paths.firstObject as! String
-            
-            //print("Path to the Documents directory\n\(documentsDir)")
             
             if session.configuration.identifier == "versionDownload"{
                 versionCompareDownload()

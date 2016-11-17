@@ -31,23 +31,21 @@ class AboutViewController: UIViewController, UIGestureRecognizerDelegate{
         }
         
         loadLabelLinks()
-
-        // Do any additional setup after loading the view.
     }
     
     func loadLabelLinks(){
-        darkskyLink.isUserInteractionEnabled = true // Remember to do this
+        darkskyLink.isUserInteractionEnabled = true
         let darkskyTap = UITapGestureRecognizer(target: self, action: #selector(AboutViewController.darkskyTapLink))
         darkskyTap.numberOfTapsRequired = 1
         darkskyLink.addGestureRecognizer(darkskyTap)
-        darkskyTap.delegate = self // Remember to extend your class with UIGestureRecognizerDelegate
+        darkskyTap.delegate = self
         
         
-        iconsLink.isUserInteractionEnabled = true // Remember to do this
+        iconsLink.isUserInteractionEnabled = true
         let iconTap = UITapGestureRecognizer(target: self, action: #selector(AboutViewController.iconTapLink))
         iconTap.numberOfTapsRequired = 1
         iconsLink.addGestureRecognizer(iconTap)
-        iconTap.delegate = self // Remember to extend your class with UIGestureRecognizerDelegate
+        iconTap.delegate = self
     }
 
     func darkskyTapLink() {
@@ -64,18 +62,5 @@ class AboutViewController: UIViewController, UIGestureRecognizerDelegate{
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

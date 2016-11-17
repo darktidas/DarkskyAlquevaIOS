@@ -15,13 +15,13 @@ protocol DestinationViewControllerDelegate {
 
 class PopoverViewController: UIViewController {
 
-    @IBOutlet weak var astrophoto: UIButton!
-    @IBOutlet weak var landscape: UIButton!
-    @IBOutlet weak var observation: UIButton!
-    @IBOutlet weak var normalMap: UIButton!
-    @IBOutlet weak var hybridMap: UIButton!
-    @IBOutlet weak var satelliteMap: UIButton!
-    @IBOutlet weak var terrainMap: UIButton!
+    @IBOutlet weak var astrophoto: PopoverButtonView!
+    @IBOutlet weak var landscape: PopoverButtonView!
+    @IBOutlet weak var observation: PopoverButtonView!
+    @IBOutlet weak var normalMap: PopoverButtonView!
+    @IBOutlet weak var hybridMap: PopoverButtonView!
+    @IBOutlet weak var satelliteMap: PopoverButtonView!
+    @IBOutlet weak var terrainMap: PopoverButtonView!
     
     var mapViewController: MapViewController!
     var stateControlData: StateControlData!
@@ -58,22 +58,13 @@ class PopoverViewController: UIViewController {
             observationCheck = UIImage(named: "unchecked_checkbox48")!
         }
         
-        astrophoto.imageView?.contentMode = .scaleAspectFit
-        astrophoto.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         astrophoto.setImage(astrophotoCheck, for: .normal)
-        //astrophoto.tintColor = .black
         astrophoto.setTitle(NSLocalizedString("popover_astrophoto", comment: "popover astropoto type"), for: .normal)
         
-        landscape.imageView?.contentMode = .scaleAspectFit
-        landscape.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         landscape.setImage(landscapeCheck, for: .normal)
-        //landscape.tintColor = .black
         landscape.setTitle(NSLocalizedString("popover_landscape", comment: "popover landscape type"), for: .normal)
         
-        observation.imageView?.contentMode = .scaleAspectFit
-        observation.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         observation.setImage(observationCheck, for: .normal)
-        //observation.tintColor = .white
         observation.setTitle(NSLocalizedString("popover_observation", comment: "popover observation type"), for: .normal)
         
         loadRadioButtons()
@@ -107,28 +98,16 @@ class PopoverViewController: UIViewController {
             terrainMapRadio = UIImage(named: "unchecked_radio_button")!
         }
         
-        normalMap.imageView?.contentMode = .scaleAspectFit
-        normalMap.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         normalMap.setImage(normalMapRadio, for: .normal)
-        //normalMap.tintColor = .white
         normalMap.setTitle(NSLocalizedString("popover_normal", comment: "popover normal type"), for: .normal)
         
-        hybridMap.imageView?.contentMode = .scaleAspectFit
-        hybridMap.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         hybridMap.setImage(hybridMapRadio, for: .normal)
-        //hybridMap.tintColor = .white
         hybridMap.setTitle(NSLocalizedString("popover_hybrid", comment: "popover hybrid type"), for: .normal)
         
-        satelliteMap.imageView?.contentMode = .scaleAspectFit
-        satelliteMap.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         satelliteMap.setImage(satelliteMapRadio, for: .normal)
-        //satelliteMap.tintColor = .white
         satelliteMap.setTitle(NSLocalizedString("popover_satellite", comment: "popover satellite type"), for: .normal)
         
-        terrainMap.imageView?.contentMode = .scaleAspectFit
-        terrainMap.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         terrainMap.setImage(terrainMapRadio, for: .normal)
-        //terrainMap.tintColor = .white
         terrainMap.setTitle(NSLocalizedString("popover_terrain", comment: "popover terrain type"), for: .normal)
         
     }
@@ -154,9 +133,6 @@ class PopoverViewController: UIViewController {
             button.setImage(UIImage(named: "checked_checkbox48"), for: .normal)
         }
         filterAsChanged(type: "mapFilter")
-        print(self.stateControlData.mapFilterStatus["astrophoto"])
-        print(self.stateControlData.mapFilterStatus["landscape"])
-        print(self.stateControlData.mapFilterStatus["observation"])
     }
     
     func filterAsChanged(type: String) {
@@ -176,11 +152,6 @@ class PopoverViewController: UIViewController {
         terrainMap.setImage(UIImage(named: "unchecked_radio_button"), for: .normal)
         
         filterAsChanged(type: "mapConfiguration")
-        
-        print(self.stateControlData.mapConfiguration["normal"])
-        print(self.stateControlData.mapConfiguration["hybrid"])
-        print(self.stateControlData.mapConfiguration["satellite"])
-        print(self.stateControlData.mapConfiguration["terrain"])
     }
     
     @IBAction func hybridMapClick(_ sender: AnyObject) {
@@ -227,18 +198,6 @@ class PopoverViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

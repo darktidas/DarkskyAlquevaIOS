@@ -9,13 +9,12 @@
 import UIKit
 
 //implementar a logica da legenda de acordo com os tipos
-//popover texto à esquerda
-//loading de imagem
-//moon calculation - today legend
+//loading de imagem - done
+//moon calculation - today legend ----- passado
 //icon launch sizes
-//bug no rotate de imagens
-//String dos alerts
-//slide menu header cell user interection 
+//bug no rotate de imagens - 
+//slide menu header cell user interection - done
+//disable share no network - done
 
 //bug slide menu - done
 //imagem manter aspect ratio e altura - done
@@ -42,55 +41,46 @@ class SlideMenuViewController: UITableViewController{
         
         loadSlideMenuLabels()
         
-        //clean
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.stateControlData = appDelegate.stateControlData
         
         headerImage = UIImage(named: "logo")
         
         self.tableView.separatorStyle = .none
-        
-        // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        let screenSize: CGRect = UIScreen.main.bounds
-        var largerSide: CGFloat!
-        var smallerSide: CGFloat!
-        
-        if screenSize.width > screenSize.height{
-            largerSide = screenSize.width
-            smallerSide = screenSize.height
-        }else{
-            largerSide = screenSize.height
-            smallerSide = screenSize.width
-        }
-        var testFrame : CGRect!
-        if UIDevice.current.orientation.isLandscape {
-            testFrame = CGRect(x: 0,y: 44, width: largerSide,height: smallerSide-44)
-        }else{
-            testFrame = CGRect(x: 0,y: 64, width: smallerSide,height: largerSide-64)
-        }
-        
-        testView = UIView(frame: testFrame)
-        //testView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
-        //testView.alpha=0.5
-        self.revealViewController().frontViewController.view.addSubview(testView)
-        testView.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+         let screenSize: CGRect = UIScreen.main.bounds
+         var largerSide: CGFloat!
+         var smallerSide: CGFloat!
+         
+         if screenSize.width > screenSize.height{
+         largerSide = screenSize.width
+         smallerSide = screenSize.height
+         }else{
+         largerSide = screenSize.height
+         smallerSide = screenSize.width
+         }
+         var testFrame : CGRect!
+         if UIDevice.current.orientation.isLandscape {
+         testFrame = CGRect(x: 0,y: 44, width: largerSide,height: smallerSide-44)
+         }else{
+         testFrame = CGRect(x: 0,y: 64, width: smallerSide,height: largerSide-64)
+         }
+         
+         testView = UIView(frame: testFrame)
+         self.revealViewController().frontViewController.view.addSubview(testView)
+         testView.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
+        self.revealViewController().frontViewController.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         testView.removeFromSuperview()
-        self.revealViewController().frontViewController.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
@@ -110,12 +100,10 @@ class SlideMenuViewController: UITableViewController{
             testView.frame = CGRect(x: 0,y: 44, width: largerSide,height: smallerSide)
         }
         else {
-            print("Portrait")
             print(UIDevice.current.orientation.isPortrait)
             testView.frame = CGRect(x: 0,y: 64, width: smallerSide,height: largerSide)
         }
     }
-
     
     func loadSlideMenuLabels(){
         
@@ -130,18 +118,12 @@ class SlideMenuViewController: UITableViewController{
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return data.count+1
     }
     
@@ -166,6 +148,7 @@ class SlideMenuViewController: UITableViewController{
             cell.backgroundView!.addSubview(imageView)
             
             cell.selectionStyle = .none
+            cell.isUserInteractionEnabled = false
             
             return cell
         }
@@ -174,7 +157,6 @@ class SlideMenuViewController: UITableViewController{
             
             cell.textLabel?.text = data[indexPath.row-1]
             cell.textLabel?.textColor = UIColor.white
-            print("row \(indexPath) = \(cell.textLabel?.text)")
             
             let bgColorView = UIView()
             bgColorView.backgroundColor = UIColor.darkGray
@@ -190,7 +172,7 @@ class SlideMenuViewController: UITableViewController{
         if  indexPath.row == 0 {
             return slideMenuWidth*(self.headerImage.size.height)/(self.headerImage.size.width)
         }else{
-            return 50.0//Choose your custom row height
+            return 50.0
         }
     }
     

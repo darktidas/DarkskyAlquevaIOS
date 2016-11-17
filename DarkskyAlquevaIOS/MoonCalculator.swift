@@ -5,6 +5,41 @@
 //  Created by tiago  on 10/10/16.
 //  Copyright © 2016 tiago . All rights reserved.
 //
+// Code from: http://raingod.com/raingod/resources/Programming/Java/Software/Moon/javafiles/MoonCalculation.java
+
+/*
+ File:      MoonCalculation.java
+ Author:    Angus McIntyre <angus@pobox.com>
+ Date:      31.05.96
+ Updated:   01.06.96
+ 
+ Java class to calculate the phase of the moon, given a date. The
+ 'moonPhase' method is a Java port of some public domain C source which
+ was apparently originally part of the Decus C distribution (whatever
+ that was). Details of the algorithm are given below.
+ 
+ To use this in a program, create an object of class 'MoonCalculation'.
+ 
+ I'm not convinced that the algorithm is entirely accurate, but I don't
+ know enough to confirm whether it is or not.
+ 
+ HISTORY
+ -------
+ 
+ 31.05.96    SLAM    Converted from C
+ 01.06.96    SLAM    Added 'phaseName' to return the name of a phase.
+ Fixed leap year test in 'daysInMonth'.
+ 
+ LEGAL
+ -----
+ 
+ This software is free. It can be used and modified in any way you
+ choose. The author assumes no liability for any loss or damage you
+ may incur through use of or inability to use this software. This
+ disclaimer must appear on any modified or unmodified version of
+ the software in which the name of the author also appears.
+ 
+ */
 
 import Foundation
 

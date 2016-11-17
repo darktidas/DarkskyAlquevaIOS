@@ -16,7 +16,13 @@ slide_route = "Route";
 slide_informations = "Informations";
 slide_about = "About";
 
+//Home
+home_alert_no_internet_title = "No Internet Connection";
+home_alert_no_internet_message = "First aplication launch needs internet connection.";
+
 //Map
+map_alert_no_internet_title = "No Internet Connection";
+map_alert_no_internet_message = "Without internet connection map will not function properly and interest point images will not load.";
 //legend
 legend_title = "Interest Points Types";
 legend_type_one = "One Type";
@@ -37,6 +43,8 @@ point_temperature = "Temperature";
 point_astrophoto = "Astrophoto";
 point_landscape = "Landscape";
 point_observation = "Observation";
+point_no_internet = "Can't load images, please connect to an internet.";
+point_no_images = "No images found.";
 
 //Route
 route_accomodation = "Accomodation";
@@ -58,6 +66,7 @@ informations_moon = "Moon Phases";
 moon_title = "Today is:";
 moon_title_second_one = "On";
 moon_title_second_two = "the moon will be:";
+moon_title_second_three = "the moon was:";
 moon_waxing_crescent = "Waxing crescent";
 moon_first_quarter = "First quarter";
 moon_waxing_gibbous = "Waxing gibbous";
