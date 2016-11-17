@@ -19,6 +19,7 @@ slide_about = "Sobre";
 //Home
 home_alert_no_internet_title = "Sin conexión a Internet";
 home_alert_no_internet_message = "El primer acceso a la aplicación requiere una conexión a Internet.";
+home_alert_new_language = "Nuevo idioma detectado, relanza la aplicación con conexión a Internet para realizar cambios.";
 
 //Map
 map_alert_no_internet_title = "Sin conexión a Internet";

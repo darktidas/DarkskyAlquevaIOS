@@ -34,6 +34,8 @@ class ViewController: UIViewController{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.stateControlData = appDelegate.stateControlData
         
+        checkLanguageChange()
+        
         openSideMenu.image = UIImage(named: "slide_menu")
         
         
@@ -48,6 +50,16 @@ class ViewController: UIViewController{
         loadHomeContent()
         
         checkInternetConnection()
+    }
+    
+    func checkLanguageChange() {
+        if stateControlData.xml != nil {
+            let systemLanguage = NSLocale.preferredLanguages[0] as String?
+            
+            if systemLanguage?.range(of: stateControlData.xml.headerInfo.language) == nil{
+                 alert(message: NSLocalizedString("home_alert_new_language" , comment: "no internet title") , title: NSLocalizedString("home_alert_no_internet_title", comment: "no internet title"))
+            }
+        }
     }
     
     func checkInternetConnection(){

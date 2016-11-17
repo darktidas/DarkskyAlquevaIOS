@@ -27,6 +27,8 @@ import UIKit
 //check internet conection - done
 //moon calculations rights - make reference on report - done
 
+//resume app after change language
+
 
 class SlideMenuViewController: UITableViewController{
     
@@ -49,7 +51,6 @@ class SlideMenuViewController: UITableViewController{
         self.tableView.separatorStyle = .none
         self.clearsSelectionOnViewWillAppear = false
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
          let screenSize: CGRect = UIScreen.main.bounds

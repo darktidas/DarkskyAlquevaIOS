@@ -41,16 +41,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
             openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:)) //selector
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
-        checkInternetConnection()
-    }
     
-    func checkInternetConnection(){
-        
-        if !self.stateControlData.internetConnection && !self.stateControlData.firstTime {
-            
-            alert(message: NSLocalizedString("map_alert_no_internet_message", comment: "no internet message")  , title: NSLocalizedString("map_alert_no_internet_title", comment: "no internet title"))
-        }
+        checkInternetConnection()
     }
     
     func alert(message: String, title: String = "") {
@@ -243,6 +235,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
             }else{
                 self.mapView.mapType = kGMSTypeTerrain
             }
+        }
+    }
+    
+    func checkInternetConnection(){
+        
+        if !self.stateControlData.internetConnection && !self.stateControlData.firstTime {
+            
+            alert(message: NSLocalizedString("map_alert_no_internet_message", comment: "no internet message")  , title: NSLocalizedString("map_alert_no_internet_title", comment: "no internet title"))
         }
     }
 }

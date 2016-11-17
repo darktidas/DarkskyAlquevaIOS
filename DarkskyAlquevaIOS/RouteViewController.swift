@@ -38,7 +38,7 @@ class RouteViewController: UIViewController {
         
         loadRouteContent()
     }
-
+    
     func loadRouteContent(){
         
         let bungalowImage: UIImage = UIImage(named: "bungalow48")!

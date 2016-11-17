@@ -15,12 +15,11 @@ class MoonViewController: UIViewController {
     @IBOutlet weak var moonName: UILabel!
     @IBOutlet weak var dayButton: TopLineButtonView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = NSLocalizedString("informations_moon", comment: "moon")
-
+        
         loadContent()
         loadTodayPhase()
     }

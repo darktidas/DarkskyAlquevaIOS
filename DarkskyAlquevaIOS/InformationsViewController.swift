@@ -35,7 +35,6 @@ class InformationsViewController: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        
         loadInformationsContent()
     }
 

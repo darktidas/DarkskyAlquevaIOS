@@ -19,6 +19,7 @@ slide_about = "About";
 //Home
 home_alert_no_internet_title = "No Internet Connection";
 home_alert_no_internet_message = "First aplication launch needs internet connection.";
+home_alert_new_language = "New language detected, please relaunch the app with internet connection to make changes.";
 
 //Map
 map_alert_no_internet_title = "No Internet Connection";
