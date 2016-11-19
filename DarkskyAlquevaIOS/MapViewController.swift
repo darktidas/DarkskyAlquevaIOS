@@ -93,7 +93,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
     }
     
     func loadMapLegend(){
-        self.legendView = MapLegendView(frame: CGRect(x: 10, y: 10, width: 150, height: 145))
+        self.legendView = MapLegendView(frame: CGRect(x: 10, y: 10, width: 155, height: 145))
         
         self.legendView.titleLabel.text =  NSLocalizedString("legend_title", comment: "map legend title")
         

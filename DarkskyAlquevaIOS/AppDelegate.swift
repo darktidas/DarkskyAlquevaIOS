@@ -46,9 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
                 print("Not first time download")
             }
         }else{
-            if checkFirstTime(){
-                
-            } else {
+            if !checkFirstTime(){
                 loadXml()
             }
         }
@@ -139,7 +137,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
                 return "pt"
             } else if systemLanguage.range(of: "es") != nil{
                 return "es"
-            } else {
+            } else if systemLanguage.range(of: "en") != nil{
+                return "en"
+            }
+            else{
+                for i in 1...NSLocale.preferredLanguages.count{
+                    let prefLanguage = NSLocale.preferredLanguages[i] as String?
+                    if prefLanguage != nil{
+                        if prefLanguage?.range(of: "pt") != nil{
+                            return "pt"
+                        } else if prefLanguage?.range(of: "es") != nil{
+                            return "es"
+                        } else if prefLanguage?.range(of: "en") != nil{
+                            return "en"
+                        }
+                    }
+                }
                 return "en"
             }
         }

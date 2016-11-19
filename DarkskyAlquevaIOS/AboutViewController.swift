@@ -51,13 +51,15 @@ class AboutViewController: UIViewController, UIGestureRecognizerDelegate{
     func darkskyTapLink() {
         print("url clicked")
         let url = NSLocalizedString("about_website_link", comment: "website url")
-        UIApplication.shared.open(NSURL(string: url) as! URL)
+        //UIApplication.shared.open(NSURL(string: url) as! URL)
+        UIApplication.shared.openURL(URL(string: url)!)
     }
     
     func iconTapLink() {
         print("url clicked")
         let url = "https://icons8.com"
-        UIApplication.shared.open(NSURL(string: url) as! URL)
+        UIApplication.shared.openURL(URL(string: url)!)
+        //UIApplication.shared.open(NSURL(string: url) as! URL)
     }
     
     override func didReceiveMemoryWarning() {

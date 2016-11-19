@@ -26,9 +26,9 @@ map_alert_no_internet_title = "Sem conexão à Internet";
 map_alert_no_internet_message = "Sem internet o mapa não funcionará correctamente e as imagens dos pontos de interesse não serão carregadas.";
 //legend
 legend_title = "Pontos de Interesse";
-legend_type_one = "Um tipo";
-legend_type_two = "Dois tipos";
-legend_type_three = "Três tipos";
+legend_type_one = "Uma Categoria";
+legend_type_two = "Duas Categorias";
+legend_type_three = "Três Categorias";
 //popover
 popover_astrophoto = "Astrofoto";
 popover_landscape = "Paisagem";

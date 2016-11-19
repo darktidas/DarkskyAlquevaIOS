@@ -66,25 +66,29 @@ class RouteViewController: UIViewController {
     
     @IBAction func accomodationButtonAction(_ sender: AnyObject) {
         if let url = URL(string: NSLocalizedString("route_accomodation_link", comment: "route accomodation link")) {
-            UIApplication.shared.open(url, options: [:])
+            //UIApplication.shared.open(url, options: [:])
+            UIApplication.shared.openURL(url)
         }
     }
     
     @IBAction func gastronomyButtonAction(_ sender: AnyObject) {
         if let url = URL(string: NSLocalizedString("route_gastronomy_link", comment: "route gastronomy link")) {
-            UIApplication.shared.open(url, options: [:])
+            //UIApplication.shared.open(url, options: [:])
+            UIApplication.shared.openURL(url)
         }
     }
     
     @IBAction func activitiesButtonAction(_ sender: AnyObject) {
         if let url = URL(string: NSLocalizedString("route_activities_link", comment: "route activities link")) {
-            UIApplication.shared.open(url, options: [:])
+            //UIApplication.shared.open(url, options: [:])
+            UIApplication.shared.openURL(url)
         }
     }
 
     @IBAction func newsEventsButtonAction(_ sender: AnyObject) {
         if let url = URL(string: NSLocalizedString("route_news_events_link", comment: "route accomodatinews events link")) {
-            UIApplication.shared.open(url, options: [:])
+            //UIApplication.shared.open(url, options: [:])
+            UIApplication.shared.openURL(url)
         }
     }
 }

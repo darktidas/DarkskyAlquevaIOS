@@ -24,6 +24,7 @@ class ViewController: UIViewController{
     @IBOutlet weak var openSideMenu: UIBarButtonItem!
     @IBOutlet weak var abstract: UILabel!
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var stateControlData: StateControlData!
     
     override func viewDidLoad() {
@@ -31,7 +32,7 @@ class ViewController: UIViewController{
         
         self.title = NSLocalizedString("slide_home", comment: "home")      
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         self.stateControlData = appDelegate.stateControlData
         
         checkLanguageChange()
@@ -54,11 +55,24 @@ class ViewController: UIViewController{
     
     func checkLanguageChange() {
         if stateControlData.xml != nil {
+            
+            /*for i in 1...NSLocale.preferredLanguages.count{
+                let prefLanguage = NSLocale.preferredLanguages[i] as String?
+                
+                if prefLanguage?.range(of: stateControlData.xml.headerInfo.language) == nil{
+                    
+                }
+            }*/
             let systemLanguage = NSLocale.preferredLanguages[0] as String?
             
-            if systemLanguage?.range(of: stateControlData.xml.headerInfo.language) == nil{
-                 alert(message: NSLocalizedString("home_alert_new_language" , comment: "no internet title") , title: NSLocalizedString("home_alert_no_internet_title", comment: "no internet title"))
+            if appDelegate.getAppLanguage() != stateControlData.xml.headerInfo.language && !self.stateControlData.internetConnection{
+                alert(message: NSLocalizedString("home_alert_new_language" , comment: "no internet title") , title: NSLocalizedString("home_alert_no_internet_title", comment: "no internet title"))
             }
+
+            /*
+            if systemLanguage?.range(of: stateControlData.xml.headerInfo.language) == nil && !self.stateControlData.internetConnection{
+                 alert(message: NSLocalizedString("home_alert_new_language" , comment: "no internet title") , title: NSLocalizedString("home_alert_no_internet_title", comment: "no internet title"))
+            }*/
         }
     }
     

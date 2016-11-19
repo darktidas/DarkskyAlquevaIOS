@@ -26,9 +26,9 @@ map_alert_no_internet_title = "No Internet Connection";
 map_alert_no_internet_message = "Without internet connection map will not function properly and interest point images will not load.";
 //legend
 legend_title = "Interest Points Types";
-legend_type_one = "One Type";
-legend_type_two = "Two Type";
-legend_type_three = "Three Types";
+legend_type_one = "One Category";
+legend_type_two = "Two Categories";
+legend_type_three = "Three Categories";
 //popover
 popover_astrophoto = "Astrophoto";
 popover_landscape = "Landscape";
