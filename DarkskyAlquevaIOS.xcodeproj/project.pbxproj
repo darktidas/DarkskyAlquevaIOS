@@ -187,6 +187,7 @@
 		B1516A6F1DAB0BF400F9D86D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B1EA3F9A1DAC5378007C1F2C /* DatePickerDialog.swift */,
 				B1516A671DAAF61B00F9D86D /* PhenomenaTableViewCell.swift */,
 				B1516A711DAB17B300F9D86D /* ConstellationTableViewCell.swift */,
 				B1516A731DAB1C6600F9D86D /* ClothingTableViewCell.swift */,
@@ -221,7 +222,6 @@
 		B15DEBD81D58BA9D00E42E6C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B1EA3F9A1DAC5378007C1F2C /* DatePickerDialog.swift */,
 				B1FC7EF51D88DF5300000C61 /* AEXML */,
 				B15DEBD91D58BB7F00E42E6C /* XmlReader.swift */,
 				B1D7AD771D68A64200C8A6AF /* InterestPoint.swift */,
@@ -392,9 +392,8 @@
 			};
 			buildConfigurationList = B1E9D22C1D4B7C8600C9CC45 /* Build configuration list for PBXProject "DarkskyAlquevaIOS" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
 			developmentRegion = en;
+			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
