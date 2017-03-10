@@ -53,8 +53,8 @@ route_gastronomy = "Gastronomia";
 route_activities = "Atividades";
 route_news_events = "Notícias e Eventos";
 route_accomodation_link = "http://www.darkskyalqueva.com/en/alojamento/";
-route_gastronomy_link = "http://www.darkskyalqueva.com/en/atividades/";
-route_activities_link = "http://www.darkskyalqueva.com/en/gastronomia/";
+route_gastronomy_link = "http://www.darkskyalqueva.com/en/gastronomia/";
+route_activities_link = "http://www.darkskyalqueva.com/en/atividades/";
 route_news_events_link = "http://www.darkskyalqueva.com/en/noticias/";
 
 //Informations

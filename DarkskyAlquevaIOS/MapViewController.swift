@@ -89,7 +89,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         popoverOptionsClick(type: "mapConfiguration")
         loadMarkers(mapView: mapView)
         
-        loadMapLegend()
+        //loadMapLegend()
     }
     
     func loadMapLegend(){
@@ -125,6 +125,60 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
         
         for i in 0...interestPoints.count{
             if(interestPoints[i] != nil){
+                
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
+                marker.title = interestPoints[i]?.name
+                marker.snippet = interestPoints[i]?.shortDescription
+                
+                var toDisplayMarker = [String: Bool]()
+                
+                if(self.stateControlData.mapFilterStatus["astrophoto"]! && (interestPoints[i]?.typeMap["astrophoto"])!){
+                    toDisplayMarker["astrophoto"] = true
+                }else{
+                    toDisplayMarker["astrophoto"] = false
+                }
+                
+                if(self.stateControlData.mapFilterStatus["landscape"]! && (interestPoints[i]?.typeMap["landscape"])!){
+                    toDisplayMarker["landscape"] = true
+                }else{
+                    toDisplayMarker["landscape"] = false
+                }
+                
+                if(self.stateControlData.mapFilterStatus["observation"]! && (interestPoints[i]?.typeMap["observation"])!){
+                    toDisplayMarker["observation"] = true
+                }else{
+                    toDisplayMarker["observation"] = false
+                }
+                
+                var image: UIImage! = nil
+                
+                if toDisplayMarker["astrophoto"] == true && toDisplayMarker["landscape"] == false && toDisplayMarker["observation"] == false{
+                    image = UIImage(named: "marker_astrophoto")
+                } else if toDisplayMarker["astrophoto"] == false && toDisplayMarker["landscape"] == true && toDisplayMarker["observation"] == false{
+                    image = UIImage(named: "marker_landscape")
+                } else if toDisplayMarker["astrophoto"] == false && toDisplayMarker["landscape"] == false && toDisplayMarker["observation"] == true{
+                    image = UIImage(named: "marker_observation")
+                } else if toDisplayMarker["astrophoto"] == true && toDisplayMarker["landscape"] == true && toDisplayMarker["observation"] == false{
+                    image = UIImage(named: "marker_astrophoto_landscape")
+                } else if toDisplayMarker["astrophoto"] == true && toDisplayMarker["landscape"] == false && toDisplayMarker["observation"] == true{
+                    image = UIImage(named: "marker_astrophoto_observation")
+                } else if toDisplayMarker["astrophoto"] == false && toDisplayMarker["landscape"] == true && toDisplayMarker["observation"] == true{
+                    image = UIImage(named: "marker_landscape_observation")
+                } else if toDisplayMarker["astrophoto"] == true && toDisplayMarker["landscape"] == true && toDisplayMarker["observation"] == true{
+                    image = UIImage(named: "marker_astrophoto_landscape_observation")
+                } else {
+                    print("No matching point with the present filter!!")
+                }
+                
+                if (image != nil){
+                    marker.icon = image
+                }
+                
+                marker.map = mapView
+                markers.append(marker)
+                
+                /*
                 if(self.stateControlData.mapFilterStatus["astrophoto"]! && (interestPoints[i]?.typeMap["astrophoto"])!){
                     let marker = GMSMarker()
                     marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
@@ -181,7 +235,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
                     markers.append(marker)
                 }else{
                     
-                }
+                }*/
             }
         }
         mapView.delegate = self
