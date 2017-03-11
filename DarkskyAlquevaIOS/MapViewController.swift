@@ -131,41 +131,21 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
                 marker.title = interestPoints[i]?.name
                 marker.snippet = interestPoints[i]?.shortDescription
                 
-                var toDisplayMarker = [String: Bool]()
-                
-                if(self.stateControlData.mapFilterStatus["astrophoto"]! && (interestPoints[i]?.typeMap["astrophoto"])!){
-                    toDisplayMarker["astrophoto"] = true
-                }else{
-                    toDisplayMarker["astrophoto"] = false
-                }
-                
-                if(self.stateControlData.mapFilterStatus["landscape"]! && (interestPoints[i]?.typeMap["landscape"])!){
-                    toDisplayMarker["landscape"] = true
-                }else{
-                    toDisplayMarker["landscape"] = false
-                }
-                
-                if(self.stateControlData.mapFilterStatus["observation"]! && (interestPoints[i]?.typeMap["observation"])!){
-                    toDisplayMarker["observation"] = true
-                }else{
-                    toDisplayMarker["observation"] = false
-                }
-                
                 var image: UIImage! = nil
                 
-                if toDisplayMarker["astrophoto"] == true && toDisplayMarker["landscape"] == false && toDisplayMarker["observation"] == false{
+                if interestPoints[i]?.typeMap["astrophoto"] == true && interestPoints[i]?.typeMap["landscape"] == false && interestPoints[i]?.typeMap["observation"] == false{
                     image = UIImage(named: "marker_astrophoto")
-                } else if toDisplayMarker["astrophoto"] == false && toDisplayMarker["landscape"] == true && toDisplayMarker["observation"] == false{
+                } else if interestPoints[i]?.typeMap["astrophoto"] == false && interestPoints[i]?.typeMap["landscape"] == true && interestPoints[i]?.typeMap["observation"] == false{
                     image = UIImage(named: "marker_landscape")
-                } else if toDisplayMarker["astrophoto"] == false && toDisplayMarker["landscape"] == false && toDisplayMarker["observation"] == true{
+                } else if interestPoints[i]?.typeMap["astrophoto"] == false && interestPoints[i]?.typeMap["landscape"] == false && interestPoints[i]?.typeMap["observation"] == true{
                     image = UIImage(named: "marker_observation")
-                } else if toDisplayMarker["astrophoto"] == true && toDisplayMarker["landscape"] == true && toDisplayMarker["observation"] == false{
+                } else if interestPoints[i]?.typeMap["astrophoto"] == true && interestPoints[i]?.typeMap["landscape"] == true && interestPoints[i]?.typeMap["observation"] == false{
                     image = UIImage(named: "marker_astrophoto_landscape")
-                } else if toDisplayMarker["astrophoto"] == true && toDisplayMarker["landscape"] == false && toDisplayMarker["observation"] == true{
+                } else if interestPoints[i]?.typeMap["astrophoto"] == true && interestPoints[i]?.typeMap["landscape"] == false && interestPoints[i]?.typeMap["observation"] == true{
                     image = UIImage(named: "marker_astrophoto_observation")
-                } else if toDisplayMarker["astrophoto"] == false && toDisplayMarker["landscape"] == true && toDisplayMarker["observation"] == true{
+                } else if interestPoints[i]?.typeMap["astrophoto"] == false && interestPoints[i]?.typeMap["landscape"] == true && interestPoints[i]?.typeMap["observation"] == true{
                     image = UIImage(named: "marker_landscape_observation")
-                } else if toDisplayMarker["astrophoto"] == true && toDisplayMarker["landscape"] == true && toDisplayMarker["observation"] == true{
+                } else if interestPoints[i]?.typeMap["astrophoto"] == true && interestPoints[i]?.typeMap["landscape"] == true && interestPoints[i]?.typeMap["observation"] == true{
                     image = UIImage(named: "marker_astrophoto_landscape_observation")
                 } else {
                     print("No matching point with the present filter!!")
@@ -175,10 +155,23 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIPopoverPresenta
                     marker.icon = image
                 }
                 
-                marker.map = mapView
-                markers.append(marker)
                 
-                /*
+                if(self.stateControlData.mapFilterStatus["astrophoto"]! && (interestPoints[i]?.typeMap["astrophoto"])!){
+                    marker.map = mapView
+                    markers.append(marker)
+                }else if(self.stateControlData.mapFilterStatus["landscape"]! && (interestPoints[i]?.typeMap["landscape"])!){
+                    marker.map = mapView
+                    markers.append(marker)
+                }else if(self.stateControlData.mapFilterStatus["observation"]! && (interestPoints[i]?.typeMap["observation"])!){
+                    marker.map = mapView
+                    markers.append(marker)
+                }else{
+                    marker.map = nil
+                }
+                
+                
+                /* Old version
+                 
                 if(self.stateControlData.mapFilterStatus["astrophoto"]! && (interestPoints[i]?.typeMap["astrophoto"])!){
                     let marker = GMSMarker()
                     marker.position = CLLocationCoordinate2D(latitude: (interestPoints[i]?.latitude)!, longitude: (interestPoints[i]?.longitude)!)
